@@ -2,7 +2,8 @@
 /**
  * Compose the showcase from each version's built dist/.
  *
- * Expects `pnpm build` to have run (each packages/v*/dist/ exists).
+ * Expects `pnpm build` to have run (each packages/v1-editorial, v2-kinetic,
+ * v3-brutalist has a dist/ directory).
  *
  * Output: dist-showcase/
  *   ├── index.html      (showcase.html with localhost links rewritten to ./v1, ./v2, ./v3)
