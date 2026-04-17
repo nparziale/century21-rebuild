@@ -3,6 +3,7 @@ services:
     name: century21-rebuild
     runtime: static
     branch: main
+    autoDeploy: true
     buildCommand: corepack enable && pnpm install --frozen-lockfile && pnpm build && pnpm build:showcase
     staticPublishPath: dist-showcase
     pullRequestPreviewsEnabled: false
