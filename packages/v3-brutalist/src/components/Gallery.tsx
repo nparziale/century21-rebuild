@@ -44,7 +44,7 @@ export function Gallery({ photos, listingId }: Props) {
 
   return (
     <section data-section="gallery">
-      <FolioRule sectionNumber={3} label="GALERÍA" />
+      <FolioRule sectionNumber={2} total={11} label="GALERÍA" />
       <div className="mx-auto max-w-[1920px] px-4 md:px-6 xl:px-10 py-8 xl:py-12">
         <div className="flex items-baseline justify-between flex-wrap gap-3 mb-6">
           <h2

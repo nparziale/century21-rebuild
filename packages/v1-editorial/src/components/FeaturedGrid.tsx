@@ -81,10 +81,9 @@ export function FeaturedGrid() {
           </ul>
         ) : null}
 
-        {/* Mobile: snap-track is pre-sized to 85vw columns by its class; the
-            <li> doesn't need a width override (that used to fight the grid). */}
-        <ul className="snap-track lg:hidden" tabIndex={0}>
-          {list.slice(0, 6).map((l) => (
+        {/* Mobile: vertical stack, max 4 cards, no carousel. */}
+        <ul className="flex flex-col gap-12 lg:hidden">
+          {list.slice(0, 4).map((l) => (
             <li key={l.id}>
               <Card l={l} />
             </li>

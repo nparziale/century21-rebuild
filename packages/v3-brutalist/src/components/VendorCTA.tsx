@@ -8,7 +8,7 @@ import { FolioRule } from './FolioRule.tsx';
 export function VendorCTA() {
   return (
     <section data-section="vendor-cta" data-invert="true">
-      <FolioRule sectionNumber={4} label="VENDER" invert />
+      <FolioRule sectionNumber={4} total={10} label="VENDER" invert />
       <div className="mx-auto max-w-[1920px] px-4 md:px-6 xl:px-10 py-14 xl:py-24">
         <div className="grid grid-cols-4 xl:grid-cols-12 gap-4 xl:gap-6 items-end">
           <div className="col-span-4 xl:col-span-8">
@@ -16,7 +16,7 @@ export function VendorCTA() {
               className="mono text-xs uppercase tracking-widest mb-4"
               style={{ fontFamily: 'var(--font-mono)', color: 'var(--color-concrete)' }}
             >
-              04 / 13 · Para propietarios
+              04 / 10 · Para propietarios
             </p>
             <h2
               className="uppercase"

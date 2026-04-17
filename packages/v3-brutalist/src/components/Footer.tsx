@@ -10,15 +10,19 @@ import {
 } from '@c21/shared';
 import { FolioRule } from './FolioRule.tsx';
 
-export function Footer() {
+type FooterProps = { sectionNumber: number; total: number };
+
+export function Footer({ sectionNumber, total }: FooterProps) {
+  const pad = (n: number) => String(n).padStart(2, '0');
   return (
     <footer data-section="footer" data-invert="true" className="relative">
-      <FolioRule sectionNumber={13} label="PIE" invert />
+      <FolioRule sectionNumber={sectionNumber} total={total} label="PIE" invert />
       <div className="mx-auto max-w-[1920px] px-4 md:px-6 xl:px-10 pt-12 xl:pt-16 pb-4">
+        {/* Logo + positioning — always visible */}
         <div className="grid grid-cols-4 xl:grid-cols-12 gap-6 xl:gap-8">
           <div className="col-span-4 xl:col-span-3">
             <img
-              src="./brand/c21-white.svg"
+              src="/brand/c21-white.svg"
               alt="Century 21 Argentina"
               width={160}
               height={80}
@@ -39,10 +43,16 @@ export function Footer() {
               Casa matriz · {BRAND.hq}
             </p>
           </div>
+
+          {/* xl ≥1280: flat sitemap */}
           {(Object.keys(FOOTER_COLUMNS) as Array<keyof typeof FOOTER_COLUMNS>).map((key) => {
             const col = FOOTER_COLUMNS[key];
             return (
-              <nav key={key} aria-label={col.label} className="col-span-2 xl:col-span-2">
+              <nav
+                key={key}
+                aria-label={col.label}
+                className="col-span-2 xl:col-span-2 hidden xl:block"
+              >
                 <h3
                   className="uppercase tracking-widest text-xs mb-4"
                   style={{ fontFamily: 'var(--font-body)', fontWeight: 600 }}
@@ -65,7 +75,7 @@ export function Footer() {
               </nav>
             );
           })}
-          <div className="col-span-4 xl:col-span-3">
+          <div className="col-span-4 xl:col-span-3 hidden xl:block">
             <h3
               className="uppercase tracking-widest text-xs mb-4"
               style={{ fontFamily: 'var(--font-body)', fontWeight: 600 }}
@@ -88,8 +98,8 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Regions — five groups */}
-        <section className="mt-12 pt-8 border-t border-white/30">
+        {/* xl ≥1280: flat region grid */}
+        <section className="mt-12 pt-8 border-t border-white/30 hidden xl:block">
           <h3
             className="uppercase tracking-widest text-xs mb-4"
             style={{ fontFamily: 'var(--font-body)', fontWeight: 600 }}
@@ -122,6 +132,72 @@ export function Footer() {
             ))}
           </div>
         </section>
+
+        {/* <1280: native <details> accordions for sitemap, regions, international */}
+        <div className="xl:hidden mt-8 border-t border-white/30">
+          {(Object.keys(FOOTER_COLUMNS) as Array<keyof typeof FOOTER_COLUMNS>).map((key) => {
+            const col = FOOTER_COLUMNS[key];
+            return (
+              <FootDetails key={key} label={col.label}>
+                <ul className="flex flex-col gap-2 pb-3">
+                  {col.links.map((l) => (
+                    <li key={`${key}-${l.href}-${l.label}`}>
+                      <a
+                        href={l.href}
+                        className="text-sm"
+                        style={{ fontFamily: 'var(--font-body)' }}
+                      >
+                        {l.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </FootDetails>
+            );
+          })}
+          <FootDetails label="Buscá por provincia">
+            <div className="space-y-4 pb-3">
+              {REGION_GROUPS.map((group) => (
+                <div key={group}>
+                  <h4
+                    className="uppercase tracking-widest text-[11px] mb-2"
+                    style={{ color: 'var(--color-concrete)', fontFamily: 'var(--font-body)' }}
+                  >
+                    {group}
+                  </h4>
+                  <ul className="grid grid-cols-2 gap-x-4 gap-y-1.5">
+                    {regionsByGroup(group).map((r) => (
+                      <li key={r.key}>
+                        <a
+                          href={`/?ubicacion=${r.key}`}
+                          className="text-sm"
+                          style={{ fontFamily: 'var(--font-body)' }}
+                        >
+                          {r.label}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </FootDetails>
+          <FootDetails label="Internacional">
+            <ul className="grid grid-cols-2 gap-x-4 gap-y-1.5 pb-3">
+              {INTERNATIONAL_COUNTRIES.map((c) => (
+                <li key={c.code}>
+                  <a
+                    href={`https://century21.${c.code.toLowerCase()}`}
+                    className="text-sm mono"
+                    style={{ fontFamily: 'var(--font-mono)' }}
+                  >
+                    {c.code} · {c.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </FootDetails>
+        </div>
 
         {/* Socials */}
         <section className="mt-10 flex items-center gap-4 flex-wrap">
@@ -170,7 +246,7 @@ export function Footer() {
             className="absolute right-0 bottom-2 mono text-xs uppercase tracking-widest"
             style={{ fontFamily: 'var(--font-mono)' }}
           >
-            13 / 13
+            {pad(sectionNumber)} / {pad(total)}
           </span>
         </div>
 
@@ -193,5 +269,24 @@ export function Footer() {
         </div>
       </div>
     </footer>
+  );
+}
+
+function FootDetails({ label, children }: { label: string; children: React.ReactNode }) {
+  return (
+    <details className="group border-b border-white/30">
+      <summary
+        className="flex cursor-pointer list-none items-center justify-between py-4 text-xs uppercase tracking-widest"
+        style={{ fontFamily: 'var(--font-body)', fontWeight: 600 }}
+      >
+        <span>{label}</span>
+        <span aria-hidden className="grid h-7 w-7 place-items-center border border-white/40 transition-transform group-open:rotate-45">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+            <path d="M6 1v10M1 6h10" stroke="currentColor" strokeWidth="1.4" strokeLinecap="square" />
+          </svg>
+        </span>
+      </summary>
+      <div className="pl-1">{children}</div>
+    </details>
   );
 }

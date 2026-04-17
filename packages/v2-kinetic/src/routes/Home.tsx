@@ -6,7 +6,6 @@ import { SearchWidget } from '../components/SearchWidget.tsx';
 import { FeaturedGrid } from '../components/FeaturedGrid.tsx';
 import { VendorCta } from '../components/VendorCta.tsx';
 import { BrandStory } from '../components/BrandStory.tsx';
-import { OfficeLocator } from '../components/OfficeLocator.tsx';
 import { FranchiseCta } from '../components/FranchiseCta.tsx';
 import { TestimonialsGrid } from '../components/TestimonialsGrid.tsx';
 import { BlogGrid } from '../components/BlogGrid.tsx';
@@ -16,9 +15,9 @@ import { Footer } from '../components/Footer.tsx';
 /**
  * V2 — Kinetic Marquee — Home
  *
- * 13 required data-section keys:
+ * Required data-section keys:
  *   utility-bar · nav · hero · search · featured · vendor-cta · brand-story ·
- *   office-locator · franchise-cta · testimonials · blog · newsletter · footer
+ *   franchise-cta · testimonials · blog · newsletter · footer
  */
 export function HomePage() {
   return (
@@ -34,7 +33,6 @@ export function HomePage() {
         <FeaturedGrid />
         <VendorCta />
         <BrandStory />
-        <OfficeLocator />
         <FranchiseCta />
         <TestimonialsGrid />
         <BlogGrid />

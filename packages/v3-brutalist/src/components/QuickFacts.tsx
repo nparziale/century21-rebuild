@@ -50,7 +50,7 @@ export function QuickFacts({ listing }: Props) {
 
   return (
     <section data-section="quick-facts">
-      <FolioRule sectionNumber={5} label="FICHA TÉCNICA" />
+      <FolioRule sectionNumber={4} total={11} label="FICHA TÉCNICA" />
       <div className="mx-auto max-w-[1920px] px-4 md:px-6 xl:px-10 py-8">
         <div className="flex items-baseline justify-between flex-wrap gap-3 mb-6">
           <h2
@@ -63,7 +63,7 @@ export function QuickFacts({ listing }: Props) {
             className="mono text-xs uppercase tracking-widest"
             style={{ fontFamily: 'var(--font-mono)', color: 'var(--color-ink-mute)' }}
           >
-            05 / 15
+            04 / 11
           </span>
         </div>
         <dl className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 border-t border-black">

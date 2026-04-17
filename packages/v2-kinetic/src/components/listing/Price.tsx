@@ -14,11 +14,10 @@ export function Price({ listing }: { listing: Listing }) {
   useEffect(() => setMounted(true), []);
 
   const usd = formatMoney(listing.price);
-  const ars = listing.priceARS ? formatMoney(listing.priceARS) : null;
 
   return (
     <section data-section="price" className="zone-neutral border-t border-[var(--color-divider)]">
-      <div className="mx-auto grid max-w-[var(--container-max)] grid-cols-1 gap-6 px-4 py-8 md:grid-cols-[1fr_1fr_auto] md:items-end md:px-6 md:py-10">
+      <div className="mx-auto grid max-w-[var(--container-max)] grid-cols-1 gap-6 px-4 py-8 md:grid-cols-[1fr_auto] md:items-end md:px-6 md:py-10">
         <div>
           <p className="v2-mono text-[0.7rem] uppercase tracking-[0.22em] text-[var(--color-ink-mute)]">
             Precio — USD
@@ -27,16 +26,6 @@ export function Price({ listing }: { listing: Listing }) {
             {mounted && !reduced ? <SlotText value={usd} /> : usd}
           </p>
         </div>
-        {ars && (
-          <div>
-            <p className="v2-mono text-[0.7rem] uppercase tracking-[0.22em] text-[var(--color-ink-mute)]">
-              Referencia ARS
-            </p>
-            <p className="v2-mono mt-2 text-[clamp(1.25rem,1rem+1.2vw,1.75rem)] font-[500] leading-none text-[var(--color-ink-mute)] tabular-nums">
-              {ars}
-            </p>
-          </div>
-        )}
         <p className="v2-mono text-[0.72rem] uppercase tracking-[0.18em] text-[var(--color-ink-mute)]">
           Última actualización{' '}
           <time dateTime={listing.updatedAt}>{formatDateISO(listing.updatedAt)}</time>

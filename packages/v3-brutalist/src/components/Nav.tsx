@@ -38,7 +38,7 @@ export function Nav() {
       <div className="mx-auto max-w-[1920px] px-4 md:px-6 xl:px-10 h-14 lg:h-[72px] flex items-center justify-between gap-6">
         <Link to="/" aria-label="Century 21 Argentina — Inicio" className="flex items-center gap-2">
           <img
-            src="./brand/c21-black.svg"
+            src="/brand/c21-black.svg"
             alt=""
             width={48}
             height={32}
@@ -126,7 +126,7 @@ export function Nav() {
                   </Link>
                   <ul className="pb-3">
                     {item.children.map((c) => (
-                      <li key={c.href}>
+                      <li key={`${c.href}-${c.label}`}>
                         <Link
                           to={c.href}
                           className="block px-4 py-2 text-base"

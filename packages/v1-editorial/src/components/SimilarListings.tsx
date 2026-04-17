@@ -33,15 +33,8 @@ export function SimilarListings() {
             Ver más casas
           </a>
         </div>
-        <ul className="hidden md:grid md:grid-cols-3 md:gap-8">
-          {SIMILAR_LISTINGS.map((l) => (
-            <li key={l.id}>
-              <Card l={l} />
-            </li>
-          ))}
-        </ul>
-        <ul className="snap-track md:hidden" tabIndex={0}>
-          {SIMILAR_LISTINGS.map((l) => (
+        <ul className="grid grid-cols-1 gap-8 md:grid-cols-3">
+          {SIMILAR_LISTINGS.slice(0, 4).map((l) => (
             <li key={l.id}>
               <Card l={l} />
             </li>

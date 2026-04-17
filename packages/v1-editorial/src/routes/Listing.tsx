@@ -191,11 +191,6 @@ export function ListingPage() {
               <p className="mt-1 font-mono text-3xl text-[color:var(--color-ink)] tabular md:text-4xl">
                 {formatMoney(l.price)}
               </p>
-              {l.priceARS && (
-                <p className="font-mono text-sm text-[color:var(--color-ink-mute)] tabular">
-                  {formatMoney(l.priceARS)} (ARS referencial)
-                </p>
-              )}
               {l.expensas && l.expensas.amount > 0 && (
                 <p className="mt-1 font-mono text-xs text-[color:var(--color-ink-mute)] tabular">
                   Expensas: {formatMoney(l.expensas)} /mes

@@ -16,7 +16,7 @@ export function ListingTitle({ listing }: Props) {
 
   return (
     <section data-section="title">
-      <FolioRule sectionNumber={1} label="PORTADA" />
+      <FolioRule sectionNumber={1} total={11} label="PORTADA" />
       <div className="relative mx-auto max-w-[1920px] px-4 md:px-6 xl:px-10 py-8 xl:py-12">
         {/* Poster ≥1024 */}
         <div className="hidden xl:block relative">
@@ -65,14 +65,6 @@ export function ListingTitle({ listing }: Props) {
                 kind="currencyUsd"
                 className="mt-1 text-3xl"
               />
-              {listing.priceARS && (
-                <p
-                  className="mono text-[11px] mt-1"
-                  style={{ fontFamily: 'var(--font-mono)', color: 'var(--color-concrete)' }}
-                >
-                  ≈ {formatMoney(listing.priceARS)}
-                </p>
-              )}
             </div>
           </div>
         </div>

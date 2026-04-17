@@ -10,7 +10,7 @@ function pickOffice(index: number) {
 export function TestimonialsGrid() {
   return (
     <section data-section="testimonials">
-      <FolioRule sectionNumber={8} label="TESTIMONIOS" />
+      <FolioRule sectionNumber={7} total={10} label="TESTIMONIOS" />
       <div className="mx-auto max-w-[1920px] px-4 md:px-6 xl:px-10 py-10 xl:py-14">
         <div className="flex items-baseline justify-between flex-wrap gap-3 mb-6">
           <h2
@@ -23,7 +23,7 @@ export function TestimonialsGrid() {
             className="mono text-xs uppercase tracking-widest"
             style={{ fontFamily: 'var(--font-mono)', color: 'var(--color-ink-mute)' }}
           >
-            08 / 13
+            07 / 10
           </span>
         </div>
         <ul className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 xl:gap-6">

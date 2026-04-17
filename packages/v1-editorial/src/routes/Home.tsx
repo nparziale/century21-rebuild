@@ -6,7 +6,6 @@ import { FranchiseCTA } from '../components/FranchiseCTA';
 import { Hero } from '../components/Hero';
 import { Nav } from '../components/Nav';
 import { Newsletter } from '../components/Newsletter';
-import { OfficeLocator } from '../components/OfficeLocator';
 import { SearchWidget } from '../components/SearchWidget';
 import { Testimonials } from '../components/Testimonials';
 import { UtilityBar } from '../components/UtilityBar';
@@ -31,7 +30,6 @@ export function HomePage() {
         <FeaturedGrid />
         <VendorCTA />
         <BrandStory />
-        <OfficeLocator />
         <FranchiseCTA />
         <Testimonials />
         <Blog />

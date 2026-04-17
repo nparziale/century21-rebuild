@@ -14,7 +14,7 @@ export function ContactForm({ listing }: Props) {
 
   return (
     <section data-section="contact-form">
-      <FolioRule sectionNumber={11} label="CONTACTO" />
+      <FolioRule sectionNumber={9} total={11} label="CONTACTO" />
       <div className="mx-auto max-w-[1920px] px-4 md:px-6 xl:px-10 py-10 xl:py-14">
         <div className="flex items-baseline justify-between flex-wrap gap-3 mb-6">
           <h2
@@ -27,7 +27,7 @@ export function ContactForm({ listing }: Props) {
             className="mono text-xs uppercase tracking-widest"
             style={{ fontFamily: 'var(--font-mono)', color: 'var(--color-ink-mute)' }}
           >
-            11 / 15 · Ref. {listing.id}
+            09 / 11 · Ref. {listing.id}
           </span>
         </div>
         <form

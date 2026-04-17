@@ -32,7 +32,7 @@ export function SearchWidget() {
 
   return (
     <section id="search" data-section="search">
-      <FolioRule sectionNumber={2} label="BUSCAR" />
+      <FolioRule sectionNumber={2} total={10} label="BUSCAR" />
       <div className="mx-auto max-w-[1920px] px-4 md:px-6 xl:px-10 py-10 xl:py-14">
         <div className="flex items-baseline justify-between flex-wrap gap-3 mb-6">
           <h2
@@ -45,7 +45,7 @@ export function SearchWidget() {
             className="mono uppercase text-xs tracking-widest"
             style={{ fontFamily: 'var(--font-mono)', color: 'var(--color-ink-mute)' }}
           >
-            02 / 13
+            02 / 10
           </span>
         </div>
         <form

@@ -48,7 +48,13 @@ async function main() {
   }
   await writeFile(resolve(OUT, 'index.html'), html);
   await cp(resolve(ROOT, 'showcase.css'), resolve(OUT, 'showcase.css'));
-  console.log(`✓ showcase.html + showcase.css → dist-showcase/`);
+  const assetsSrc = resolve(ROOT, 'showcase-assets');
+  if (existsSync(assetsSrc)) {
+    await cp(assetsSrc, resolve(OUT, 'showcase-assets'), { recursive: true });
+    console.log(`✓ showcase.html + showcase.css + showcase-assets → dist-showcase/`);
+  } else {
+    console.log(`✓ showcase.html + showcase.css → dist-showcase/ (no showcase-assets dir found — run \`node scripts/showcase-assets.mjs\` to regenerate phone-frame screenshots)`);
+  }
 
   console.log(`\nShowcase ready at ${OUT}`);
   console.log(`Run: pnpm preview:showcase  (or serve dist-showcase/ with any static server)`);

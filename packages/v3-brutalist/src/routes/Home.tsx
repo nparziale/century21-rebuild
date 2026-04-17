@@ -6,7 +6,6 @@ import { SearchWidget } from '../components/SearchWidget.tsx';
 import { FeaturedGrid } from '../components/FeaturedGrid.tsx';
 import { VendorCTA } from '../components/VendorCTA.tsx';
 import { BrandStory } from '../components/BrandStory.tsx';
-import { OfficeLocator } from '../components/OfficeLocator.tsx';
 import { FranchiseCTA } from '../components/FranchiseCTA.tsx';
 import { TestimonialsGrid } from '../components/TestimonialsGrid.tsx';
 import { BlogGrid } from '../components/BlogGrid.tsx';
@@ -29,13 +28,12 @@ export function HomePage() {
         <FeaturedGrid />
         <VendorCTA />
         <BrandStory />
-        <OfficeLocator />
         <FranchiseCTA />
         <TestimonialsGrid />
         <BlogGrid />
         <Newsletter />
       </main>
-      <Footer />
+      <Footer sectionNumber={10} total={10} />
     </MotionConfig>
   );
 }

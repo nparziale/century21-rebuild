@@ -10,7 +10,6 @@ export const HOME_SECTIONS = [
   'featured',
   'vendor-cta',
   'brand-story',
-  'office-locator',
   'franchise-cta',
   'testimonials',
   'blog',

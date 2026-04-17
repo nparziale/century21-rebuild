@@ -181,7 +181,7 @@ export function FeaturedGrid() {
   const total = filtered.length;
   return (
     <section data-section="featured">
-      <FolioRule sectionNumber={3} label="DESTACADAS" />
+      <FolioRule sectionNumber={3} total={10} label="DESTACADAS" />
       <div className="mx-auto max-w-[1920px] px-4 md:px-6 xl:px-10 py-10 xl:py-14">
         <div className="flex items-baseline justify-between flex-wrap gap-3 mb-6">
           <h2
@@ -194,7 +194,7 @@ export function FeaturedGrid() {
             className="mono text-xs uppercase tracking-widest"
             style={{ fontFamily: 'var(--font-mono)', color: 'var(--color-ink-mute)' }}
           >
-            {String(total).padStart(2, '0')} resultados · 03 / 13
+            {String(total).padStart(2, '0')} resultados · 03 / 10
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 xl:gap-6">

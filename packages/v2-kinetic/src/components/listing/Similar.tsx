@@ -18,21 +18,10 @@ export function Similar() {
         </h2>
       </div>
 
-      {/* Mobile snap */}
-      <div className="mt-8 -mx-4 px-4 overflow-x-auto snap-x snap-mandatory md:hidden v2-edge-fade">
-        <div className="flex gap-4 w-max pr-4">
-          {SIMILAR_LISTINGS.map((x) => (
-            <div key={x.id} className="w-[82vw] max-w-[360px] snap-start shrink-0">
-              <Card item={x} />
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Desktop grid */}
-      <div className="mx-auto mt-8 hidden max-w-[var(--container-max)] px-4 md:block md:px-6">
-        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-          {SIMILAR_LISTINGS.map((x) => (
+      {/* Vertical stack on mobile, 2 cols at md, 3 cols at lg. No carousel. */}
+      <div className="mx-auto mt-8 max-w-[var(--container-max)] px-4 md:px-6">
+        <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+          {SIMILAR_LISTINGS.slice(0, 4).map((x) => (
             <Card key={x.id} item={x} />
           ))}
         </div>

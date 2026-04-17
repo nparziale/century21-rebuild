@@ -8,10 +8,10 @@ type Props = { listing: Listing };
 export function PriceBlock({ listing }: Props) {
   return (
     <section data-section="price">
-      <FolioRule sectionNumber={4} label="PRECIO" />
+      <FolioRule sectionNumber={3} total={11} label="PRECIO" />
       <div className="mx-auto max-w-[1920px] px-4 md:px-6 xl:px-10 py-8">
-        <dl className="grid grid-cols-2 xl:grid-cols-4 border border-black">
-          <div className="p-5 border-r border-black">
+        <dl className="grid grid-cols-1 md:grid-cols-3 border border-black">
+          <div className="p-5 border-b md:border-b-0 md:border-r border-black">
             <dt
               className="uppercase text-[11px] tracking-widest"
               style={{ color: 'var(--color-ink-mute)' }}
@@ -27,21 +27,7 @@ export function PriceBlock({ listing }: Props) {
               />
             </dd>
           </div>
-          <div className="p-5 xl:border-r border-black">
-            <dt
-              className="uppercase text-[11px] tracking-widest"
-              style={{ color: 'var(--color-ink-mute)' }}
-            >
-              Precio ARS (ref.)
-            </dt>
-            <dd
-              className="mono text-xl xl:text-2xl mt-1"
-              style={{ fontFamily: 'var(--font-mono)', fontVariantNumeric: 'tabular-nums' }}
-            >
-              {listing.priceARS ? formatMoney(listing.priceARS) : '—'}
-            </dd>
-          </div>
-          <div className="p-5 border-t xl:border-t-0 border-r border-black">
+          <div className="p-5 border-b md:border-b-0 md:border-r border-black">
             <dt
               className="uppercase text-[11px] tracking-widest"
               style={{ color: 'var(--color-ink-mute)' }}
@@ -57,7 +43,7 @@ export function PriceBlock({ listing }: Props) {
                 : 'Sin expensas'}
             </dd>
           </div>
-          <div className="p-5 border-t xl:border-t-0">
+          <div className="p-5 border-black">
             <dt
               className="uppercase text-[11px] tracking-widest"
               style={{ color: 'var(--color-ink-mute)' }}

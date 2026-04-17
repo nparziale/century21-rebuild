@@ -2,14 +2,10 @@ import { motion } from 'motion/react';
 import { BedDouble, Bath, Ruler, MapPin } from 'lucide-react';
 import { FEATURED_LISTINGS, unsplashUrl, unsplashSrcSet } from '@c21/shared';
 import { formatMoney } from '../lib/format.ts';
-import { Marquee } from './Marquee.tsx';
 import { Link } from 'react-router-dom';
 
 /**
- * Featured section.
- * Mobile: 1.2-up horizontal scroll-snap row of 6+ cards.
- * Desktop: 8-card slow marquee pinned above a 4-col grid (first 8 featured).
- * Stagger reveal 300 ms on intersection.
+ * Featured section — responsive grid (1/2/4 cols). Stagger reveal on intersection.
  */
 export function FeaturedGrid() {
   return (
@@ -31,27 +27,8 @@ export function FeaturedGrid() {
             Ver todas
           </Link>
         </header>
-      </div>
 
-      {/* Slow marquee — desktop only */}
-      <div className="hidden md:block mb-10">
-        <Marquee items={FEATURED_LISTINGS} speed={12} />
-      </div>
-
-      {/* Mobile: horizontal snap */}
-      <div className="md:hidden -mx-4 px-4 overflow-x-auto snap-x snap-mandatory v2-edge-fade">
-        <div className="flex gap-4 w-max pr-4">
-          {FEATURED_LISTINGS.slice(0, 6).map((item) => (
-            <div key={item.id} className="w-[82vw] max-w-[360px] snap-start shrink-0">
-              <Card item={item} />
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Desktop: 4-col grid */}
-      <div className="mx-auto hidden max-w-[var(--container-max)] px-4 md:px-6 md:block">
-        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
           {FEATURED_LISTINGS.slice(0, 8).map((item, i) => (
             <motion.div
               key={item.id}

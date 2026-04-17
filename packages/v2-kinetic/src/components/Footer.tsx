@@ -42,12 +42,12 @@ export function Footer() {
           </ul>
         </div>
 
-        <div className="grid grid-cols-2 gap-8 py-10 md:grid-cols-3 lg:grid-cols-5">
+        {/* Desktop ≥1024: 5-col flat sitemap */}
+        <div className="hidden gap-8 py-10 lg:grid lg:grid-cols-5">
           <FooterColumn label={FOOTER_COLUMNS.nosotros.label} links={FOOTER_COLUMNS.nosotros.links} />
           <FooterColumn label={FOOTER_COLUMNS.explora.label} links={FOOTER_COLUMNS.explora.links} />
           <FooterColumn label={FOOTER_COLUMNS.contacto.label} links={FOOTER_COLUMNS.contacto.links} />
 
-          {/* Regiones — 28 grouped */}
           <div>
             <p className="v2-mono text-[0.7rem] uppercase tracking-[0.22em] text-[var(--color-brand-gold)]">
               Regiones
@@ -102,6 +102,66 @@ export function Footer() {
           </div>
         </div>
 
+        {/* Mobile <1024: native <details> accordions, zero JS, fully a11y. */}
+        <div className="divide-y divide-white/10 border-y border-white/10 lg:hidden">
+          <FooterAccordion label={FOOTER_COLUMNS.nosotros.label}>
+            <FlatLinks links={FOOTER_COLUMNS.nosotros.links} />
+          </FooterAccordion>
+          <FooterAccordion label={FOOTER_COLUMNS.explora.label}>
+            <FlatLinks links={FOOTER_COLUMNS.explora.links} />
+          </FooterAccordion>
+          <FooterAccordion label={FOOTER_COLUMNS.contacto.label}>
+            <FlatLinks links={FOOTER_COLUMNS.contacto.links} />
+          </FooterAccordion>
+          <FooterAccordion label="Regiones">
+            <div className="space-y-4 pb-2">
+              {REGION_GROUPS.map((g) => (
+                <div key={g}>
+                  <p className="v2-mono text-[0.68rem] uppercase tracking-[0.18em] text-white/65">{g}</p>
+                  <ul className="mt-2 grid grid-cols-2 gap-x-4 gap-y-1.5">
+                    {regionsByGroup(g).map((r) => (
+                      <li key={r.key}>
+                        <a
+                          href={`/?region=${r.key}`}
+                          className="text-[0.85rem] text-white/95 hover:text-white"
+                        >
+                          {r.label}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </FooterAccordion>
+          <FooterAccordion label="Internacional">
+            <ul className="grid grid-cols-2 gap-x-4 gap-y-1.5">
+              {INTERNATIONAL_COUNTRIES.map((c) => (
+                <li key={c.code}>
+                  <a
+                    href={`https://century21global.com/${c.code.toLowerCase()}`}
+                    rel="noreferrer noopener"
+                    target="_blank"
+                    className="text-[0.85rem] text-white/95 hover:text-white"
+                  >
+                    {c.name}
+                  </a>
+                </li>
+              ))}
+              <li className="col-span-2">
+                <a
+                  href="/comercial"
+                  className="text-[0.85rem] font-[600] text-white hover:text-[var(--color-brand-gold)]"
+                >
+                  CENTURY 21 Comercial
+                </a>
+              </li>
+            </ul>
+          </FooterAccordion>
+        </div>
+
+        <div className="h-10 lg:h-0" />
+
         <p className="border-t border-white/10 pt-8 text-[0.76rem] leading-[1.6] text-white/55">
           {LEGAL_FOOTER}
         </p>
@@ -119,7 +179,7 @@ function FooterColumn({ label, links }: { label: string; links: readonly { label
       <p className="v2-mono text-[0.7rem] uppercase tracking-[0.22em] text-[var(--color-brand-gold)]">{label}</p>
       <ul className="mt-4 space-y-1.5">
         {links.map((l) => (
-          <li key={l.href}>
+          <li key={`${l.href}-${l.label}`}>
             <a href={l.href} className="text-[0.85rem] text-white/65 hover:text-white">
               {l.label}
             </a>
@@ -127,6 +187,36 @@ function FooterColumn({ label, links }: { label: string; links: readonly { label
         ))}
       </ul>
     </div>
+  );
+}
+
+function FlatLinks({ links }: { links: readonly { label: string; href: string }[] }) {
+  return (
+    <ul className="space-y-2">
+      {links.map((l) => (
+        <li key={`${l.href}-${l.label}`}>
+          <a href={l.href} className="text-[0.9rem] text-white/95 hover:text-white">
+            {l.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+function FooterAccordion({ label, children }: { label: string; children: React.ReactNode }) {
+  return (
+    <details className="group">
+      <summary className="v2-tap flex cursor-pointer list-none items-center justify-between py-4 text-[0.74rem] uppercase tracking-[0.22em] text-[var(--color-brand-gold)]">
+        <span className="v2-mono">{label}</span>
+        <span aria-hidden className="grid h-6 w-6 place-items-center text-white/65 transition-transform group-open:rotate-45">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7 1v12M1 7h12" stroke="currentColor" strokeWidth="1.4" strokeLinecap="square" />
+          </svg>
+        </span>
+      </summary>
+      <div className="pb-4 pl-1">{children}</div>
+    </details>
   );
 }
 

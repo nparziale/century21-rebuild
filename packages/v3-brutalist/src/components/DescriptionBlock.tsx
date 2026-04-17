@@ -16,7 +16,7 @@ export function DescriptionBlock({ listing, agent }: Props) {
 
   return (
     <section data-section="description">
-      <FolioRule sectionNumber={6} label="DESCRIPCIÓN" />
+      <FolioRule sectionNumber={5} total={11} label="DESCRIPCIÓN" />
       <div className="mx-auto max-w-[1920px] px-4 md:px-6 xl:px-10 py-10 xl:py-14">
         <div className="grid grid-cols-1 xl:grid-cols-12 gap-6 xl:gap-10">
           <div className="xl:col-start-2 xl:col-span-7">

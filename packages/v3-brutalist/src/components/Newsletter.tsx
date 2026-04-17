@@ -17,7 +17,7 @@ export function Newsletter() {
 
   return (
     <section data-section="newsletter" data-invert="true">
-      <FolioRule sectionNumber={10} label="BOLETÍN" invert />
+      <FolioRule sectionNumber={9} total={10} label="BOLETÍN" invert />
       <div className="mx-auto max-w-[1920px] px-4 md:px-6 xl:px-10 py-12 xl:py-20">
         <div className="grid grid-cols-4 xl:grid-cols-12 gap-4 xl:gap-6 items-start">
           <div className="col-span-4 xl:col-span-6">
@@ -25,7 +25,7 @@ export function Newsletter() {
               className="mono text-xs uppercase tracking-widest mb-3"
               style={{ fontFamily: 'var(--font-mono)', color: 'var(--color-concrete)' }}
             >
-              10 / 13 · Boletín
+              09 / 10 · Boletín
             </p>
             <h2
               className="uppercase"

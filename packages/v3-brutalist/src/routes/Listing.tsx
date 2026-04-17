@@ -62,7 +62,7 @@ export function ListingPage() {
         <SimilarGrid />
         <ShareActions listing={listing} />
       </main>
-      <Footer />
+      <Footer sectionNumber={11} total={11} />
     </MotionConfig>
   );
 }

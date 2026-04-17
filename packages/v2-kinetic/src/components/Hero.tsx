@@ -104,8 +104,11 @@ export function Hero() {
             <div className="max-w-5xl">
               <h1
                 ref={h1Ref}
-                className="v2-hero-h1 text-[var(--text-h1)] leading-[0.9] tracking-[-0.02em]"
-                style={{ ['--hero-wght' as string]: 200 }}
+                className="v2-hero-h1 leading-[0.85] tracking-[-0.035em]"
+                style={{
+                  ['--hero-wght' as string]: 200,
+                  fontSize: 'clamp(4.5rem, 2.25rem + 9vw, 13rem)',
+                }}
               >
                 <span className="block">Encontrá</span>
                 <span className="block italic">dónde vivir.</span>

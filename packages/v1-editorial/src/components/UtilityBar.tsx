@@ -12,23 +12,23 @@ export function UtilityBar() {
       aria-label="Barra de utilidad"
       className="border-b border-[color:var(--color-divider)] bg-[color:var(--color-bg)]"
     >
-      <div className="container-ed flex h-7 items-center justify-between text-[11px] tracking-[0.02em] text-[color:var(--color-ink-mute)]">
-        <div className="flex items-center gap-3 pipe-sep">
+      <div className="container-ed flex h-9 items-center justify-between gap-4 whitespace-nowrap text-[11px] tracking-[0.02em] text-[color:var(--color-ink-mute)] lg:h-7">
+        <div className="flex min-w-0 items-center gap-3 pipe-sep">
           <a
             href={`tel:+54${BRAND.phone.replace(/\D/g, '').slice(1)}`}
-            className="link-bronze font-mono"
+            className="link-bronze font-mono shrink-0"
           >
             {BRAND.phone}
           </a>
-          <span className="hidden sm:inline">ES · AR</span>
-          <a href="/directorio" className="nav-link hidden md:inline-flex">
+          <span className="hidden lg:inline">ES · AR</span>
+          <a href="/directorio" className="nav-link hidden lg:inline-flex">
             Directorio
           </a>
-          <a href="/21-online" className="nav-link hidden md:inline-flex">
+          <a href="/21-online" className="nav-link hidden lg:inline-flex">
             21 Online
           </a>
         </div>
-        <ul className="flex items-center gap-3">
+        <ul className="flex shrink-0 items-center gap-2 sm:gap-3">
           {SOCIALS.map((s) => (
             <li key={s.network}>
               <a

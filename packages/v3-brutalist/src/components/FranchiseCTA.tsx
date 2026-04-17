@@ -6,7 +6,7 @@ const PHOTO_ID = '1497366216548-37526070297c';
 export function FranchiseCTA() {
   return (
     <section data-section="franchise-cta">
-      <FolioRule sectionNumber={7} label="FRANQUICIA" />
+      <FolioRule sectionNumber={6} total={10} label="FRANQUICIA" />
       <div className="mx-auto max-w-[1920px] px-4 md:px-6 xl:px-10 py-12 xl:py-20">
         <div className="grid grid-cols-4 xl:grid-cols-12 gap-4 xl:gap-6 items-stretch">
           <div className="col-span-4 xl:col-span-6 flex flex-col justify-between">
@@ -15,7 +15,7 @@ export function FranchiseCTA() {
                 className="mono text-xs uppercase tracking-widest mb-4"
                 style={{ fontFamily: 'var(--font-mono)', color: 'var(--color-ink-mute)' }}
               >
-                07 / 13 · Licencias
+                06 / 10 · Licencias
               </p>
               <h2
                 className="uppercase"

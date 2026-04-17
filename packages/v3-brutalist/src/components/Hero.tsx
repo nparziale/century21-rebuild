@@ -11,7 +11,7 @@ const HERO_PHOTO_ID = '1600585154526-990dced4db0d';
 export function Hero() {
   return (
     <section data-section="hero" className="relative">
-      <FolioRule sectionNumber={1} label="INTRO" />
+      <FolioRule sectionNumber={1} total={10} label="INTRO" />
       <div className="mx-auto max-w-[1920px] px-4 md:px-6 xl:px-10 pb-12 xl:pb-24 pt-4 xl:pt-10">
         <div className="grid grid-cols-4 xl:grid-cols-12 gap-4 xl:gap-6">
           <div className="col-span-4 xl:col-span-8">
@@ -20,7 +20,7 @@ export function Hero() {
                 className="mono text-sm"
                 style={{ fontFamily: 'var(--font-mono)', color: 'var(--color-ink-mute)' }}
               >
-                01 / 13
+                01 / 10
               </span>
               <span
                 className="uppercase tracking-widest text-[11px]"
@@ -86,7 +86,7 @@ export function Hero() {
                 style={{ fontFamily: 'var(--font-mono)' }}
               >
                 <span>FOTO ARCHIVO</span>
-                <span>01 / 13</span>
+                <span>01 / 10</span>
               </figcaption>
             </div>
           </figure>

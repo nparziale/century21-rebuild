@@ -3,206 +3,291 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>CENTURY 21 Argentina — Tres direcciones de diseño</title>
+    <title>CENTURY 21 Argentina — Propuesta de diseño</title>
     <meta
       name="description"
-      content="Reconstrucción de century21.com.ar en tres direcciones visuales distintas. Página principal + listing 286194 (Casa en Ramos Mejía)."
+      content="Propuesta de diseño para CENTURY 21 Argentina. Tres direcciones para modernizar la presencia web, aplicadas a la página principal y una ficha de propiedad. Mobile-first."
     />
     <link rel="stylesheet" href="./showcase.css" />
   </head>
   <body>
     <header class="masthead">
       <div class="container">
-        <span class="eyebrow">Muestra de diseño · 2026</span>
-        <h1>CENTURY 21 Argentina en tres voces visuales distintas.</h1>
-        <p>
-          Reconstrucción de la página principal y el listing <a href="https://century21.com.ar/propiedad/286194_casa-de-4-ambientes-en-venta-ramos-mejia-con-pileta-y-cochera">286194 (Casa en Ramos Mejía)</a> en tres direcciones
-          que no se superponen: una editorial y pausada, otra kinética y gestual, y una tercera
-          brutalista y tipográfica. El mismo contenido, tres puntos de vista de marca, el mismo
-          compromiso con responsive móvil-primero y desktop excelente.
+        <span class="eyebrow">Propuesta · Edición 2026</span>
+        <h1>Tres direcciones para modernizar la presencia web de CENTURY 21 Argentina.</h1>
+        <p class="lede">
+          Reconstrucción de la página principal y de una ficha de propiedad
+          (Casa de 4 ambientes en Ramos Mejía) en tres voces visuales distintas.
+          El mismo contenido y la misma marca, mostrados con tres tonos posibles
+          para que elijan el que mejor representa a CENTURY 21 Argentina hoy.
         </p>
-        <p>
-          Movimiento presente pero contenido. Motion respetuoso de <code>prefers-reduced-motion</code>.
-          Accesibilidad AA como piso. Copy en español rioplatense. Datos de marca verificados contra
-          fuentes públicas (fundación global 1971, lanzamiento en Argentina 12 junio 2017, 79 países,
-          28 provincias cubiertas, legales y teléfono oficiales).
+        <p class="meta-line">
+          Cada propuesta está construida pensando en el celular primero —
+          ahí mira la mayoría de quien busca propiedades — y se expande con cuidado
+          en pantallas grandes. Logo, paleta institucional, teléfono, redes y
+          legales son los oficiales. Las propiedades, agentes y testimonios son
+          maquetas pensadas para mostrar el diseño en uso.
         </p>
-        <div class="meta">
-          <span><strong>Stack</strong> Vite 6 · React 19 · TS · Tailwind v4 · Motion 12</span>
-          <span><strong>Workspaces</strong> pnpm</span>
-          <span><strong>Idioma</strong> es-AR</span>
-          <span><strong>Marca</strong> CENTURY 21 (logo + colores oficiales)</span>
-        </div>
-        <aside class="note">
-          <strong>Nota:</strong> Propiedades individuales, agentes, testimonios y artículos son mockup
-          de diseño — no representan inventario real de CENTURY 21 Argentina. Logo, teléfono, legales,
-          redes y datos corporativos son los oficiales verificados.
-        </aside>
       </div>
     </header>
 
-    <main class="container">
-      <section class="versions" aria-label="Versiones">
-        <article class="card v1">
-          <span class="tag">V1 · Editorial Pampas</span>
-          <h2>Editorial pausada, en tono de revista.</h2>
-          <div class="palette" aria-hidden="true">
-            <span title="#FAF7F2 paper"></span>
-            <span title="#1A1714 ink"></span>
-            <span title="#9E7B4D bronze"></span>
-            <span title="#3D4A3A olive"></span>
-            <span title="#BEAF88 brand gold"></span>
-          </div>
-          <div class="type-specimen">
-            <span class="display">Acá empieza la casa</span>
-            <span class="mono">Fraunces · Satoshi · JetBrains Mono</span>
-          </div>
-          <p>
-            Márgenes amplios, fotografía arquitectónica, split editorial 60/40 en ≥1024. Gutter de
-            marginalia con notas en Fraunces cursivo en ≥1280. Motion: crop-reveal en scroll,
-            caret-swap en nav, Lottie del monograma en carga. Prioriza la pausa.
-          </p>
-          <div class="card-actions">
-            <a class="btn" href="http://localhost:5173/">Home</a>
-            <a class="btn btn-ghost" href="http://localhost:5173/propiedad/286194">Listing 286194</a>
-          </div>
-        </article>
-
-        <article class="card v2">
-          <span class="tag">V2 · Kinetic Marquee</span>
-          <h2>Suiza con motor: marquesina y tipografía viva.</h2>
-          <div class="palette" aria-hidden="true">
-            <span title="#0E0E0E ink"></span>
-            <span title="#F6F4EF off-white"></span>
-            <span title="#E64A19 torched orange"></span>
-            <span title="#2B6CB0 Río de la Plata blue"></span>
-          </div>
-          <div class="type-specimen">
-            <span class="display">Encontrá donde vivir.</span>
-            <span class="mono">Switzer · Geist Mono</span>
-          </div>
-          <p>
-            Hero con MP4 de 8 s y H1 cuyo peso se desplaza con el scroll. Marquesina horizontal de
-            listados nuevos pausable por hover/focus (WCAG 2.2.2). Mapa interactivo de Argentina.
-            Regla de un solo acento por pantalla: naranja o azul, nunca ambos.
-          </p>
-          <div class="card-actions">
-            <a class="btn" href="http://localhost:5174/">Home</a>
-            <a class="btn btn-ghost" href="http://localhost:5174/propiedad/286194">Listing 286194</a>
-          </div>
-        </article>
-
-        <article class="card v3">
-          <span class="tag">V3 · Raw Grid</span>
-          <h2>Brutalismo honesto: grilla visible y tipografía densa.</h2>
-          <div class="palette" aria-hidden="true">
-            <span title="#FFFFFF paper"></span>
-            <span title="#0A0A0A ink"></span>
-            <span title="#FF3B1F tango red"></span>
-            <span title="#D9D9D9 concrete gray"></span>
-          </div>
-          <div class="type-specimen">
-            <span class="display">CENTURY 21 · DESDE 2017</span>
-            <span class="mono">Anton · IBM Plex Sans · JetBrains Mono</span>
-          </div>
-          <p>
-            Anton ultra-condensada como único display — jerarquía por tamaño, tracking y caja, no
-            por peso. Grilla de 12 columnas con gutters visibles (1 px ink sobre paper). Rail lateral
-            con contador de sección en ≥1280. Contadores numéricos como único gesto de motion.
-          </p>
-          <div class="card-actions">
-            <a class="btn" href="http://localhost:5175/">Home</a>
-            <a class="btn btn-ghost" href="http://localhost:5175/propiedad/286194">Listing 286194</a>
-          </div>
-        </article>
-      </section>
-
-      <section class="section rationale-section">
-        <h2>Por qué estas tres direcciones</h2>
-        <p class="lede">
-          El punto de partida fue no mostrar variaciones del mismo minimalismo moderno. Cada
-          versión compromete un idioma visual distinto y, en conjunto, cubren el espectro razonable
-          para una marca inmobiliaria en Argentina.
-        </p>
-        <div class="rationale">
-          <article>
-            <h3>V1 — Editorial Pampas</h3>
-            <p>
-              Inspiración: Cereal Magazine, Kinfolk, NYT "Snow Fall", Aesop. Tradición argentina
-              de diseño moderno (Maldonado, Méndez Mosquera) — restricción, generosidad, tipografía
-              como voz.
+    <main>
+      <section class="version" id="v1">
+        <div class="container">
+          <div class="version-header">
+            <span class="tag tag-v1">Dirección 1 · Editorial</span>
+            <h2>Pausada, en tono de revista.</h2>
+            <p class="version-sub">
+              La marca como editor: foto grande, tipografía con voz, márgenes
+              generosos. Habla a un comprador que quiere mirar, leer y decidir
+              sin apuro.
             </p>
-            <ul>
-              <li>Bronce como acento de display, oliva como color de links y CTAs.</li>
-              <li>Fraunces variable: <code>WONK=1</code> sólo ≥h2 (legibilidad preservada).</li>
-              <li>El oro Century 21 (#BEAF88) es <em>sólo</em> para el logo sobre ink u oliva (falla AA sobre crema).</li>
-            </ul>
-          </article>
-          <article>
-            <h3>V2 — Kinetic Marquee</h3>
-            <p>
-              Inspiración: Bureau Cool Brands, Locomotive, Formafantasma. Poster suizo + propiedad-tech.
-              El movimiento es la firma, pero contenido por la regla de un solo acento por pantalla.
-            </p>
-            <ul>
-              <li>Hero MP4 con fallback a poster JPG — el `<video>` nunca monta bajo reduced-motion o Data Saver.</li>
-              <li>Marquesina con control "Pausar" visible + pause-on-focus — pasa WCAG 2.2.2 por construcción.</li>
-              <li>Zonas "warm" y "cool" tagueadas — el lint del diseño bloquea pares adyacentes en un mismo viewport.</li>
-            </ul>
-          </article>
-          <article>
-            <h3>V3 — Raw Grid</h3>
-            <p>
-              Inspiración: Bloomberg Businessweek, Rijksmuseum, OMA, Base Design. Respuesta brutalista
-              al lujo silencioso: rectitud tipográfica y grilla visible como estructura y decoración al mismo tiempo.
-            </p>
-            <ul>
-              <li>Anton sólo viene en 400: jerarquía por tamaño, tracking y caja — si dos Anton se tocan adyacentes, una se vuelve Plex.</li>
-              <li>Tango rojo restringido a CTA, focus ring y contador de sección — lint por <code>data-accent</code>.</li>
-              <li>Motion reducido a 4 gestos: contadores en mount, FLIP reflow en filtro, rail lateral en scroll, underline en hover CTA.</li>
-            </ul>
-          </article>
+          </div>
+
+          <div class="device-pair">
+            <figure class="device">
+              <div class="device-bezel">
+                <div class="device-screen">
+                  <img src="./showcase-assets/v1-home-mobile-full.jpg" alt="V1 — Página principal en celular" loading="lazy" />
+                </div>
+              </div>
+              <figcaption>Página principal</figcaption>
+            </figure>
+            <figure class="device">
+              <div class="device-bezel">
+                <div class="device-screen">
+                  <img src="./showcase-assets/v1-listing-mobile-full.jpg" alt="V1 — Ficha de propiedad en celular" loading="lazy" />
+                </div>
+              </div>
+              <figcaption>Ficha de propiedad</figcaption>
+            </figure>
+          </div>
+
+          <div class="rationale">
+            <article>
+              <h3>Una propiedad por vez</h3>
+              <p>
+                La página principal no apila ofertas. Muestra <em>una</em> selección
+                editorial — la propiedad del mes — con espacio para que la foto
+                respire. Comunica curaduría y criterio antes que volumen.
+              </p>
+            </article>
+            <article>
+              <h3>Tipografía como voz de marca</h3>
+              <p>
+                Titulares en <em>Fraunces</em>, una serif moderna con detalle de
+                cursiva en los acentos. Da una sensación de marca que toma la
+                palabra con calma — diferente al tono utilitario de los portales.
+              </p>
+            </article>
+            <article>
+              <h3>Verde oliva sobre crema</h3>
+              <p>
+                La paleta deja al oro institucional para el logo y suma un verde
+                oliva profundo para los botones. Más cercano a una galería o a
+                un estudio de arquitectura que a un clasificado.
+              </p>
+            </article>
+          </div>
+
+          <div class="actions">
+            <a class="btn btn-primary" href="http://localhost:5173/" target="_blank" rel="noreferrer noopener">Ver página principal en vivo</a>
+            <a class="btn btn-ghost" href="http://localhost:5173/propiedad/286194" target="_blank" rel="noreferrer noopener">Ver ficha de propiedad</a>
+          </div>
         </div>
       </section>
 
-      <section class="section decisions">
-        <h2>Decisiones del proyecto</h2>
-        <p class="lede">
-          Stack, contratos compartidos y compromisos que aplican a las tres versiones.
-        </p>
-        <ul>
-          <li><strong>Monorepo</strong><span>pnpm workspaces. Tres paquetes Vite independientes + <code>@c21/shared</code> + <code>@c21/verify</code>. Puertos 5173 / 5174 / 5175.</span></li>
-          <li><strong>Datos</strong><span>Fuente de verdad en <code>@c21/shared</code>. Marca verificada contra fuentes públicas (PLAN.md § Brand truth). El conteo de oficinas en Argentina no es público — ninguna versión lo inventa.</span></li>
-          <li><strong>Responsive</strong><span>Móvil-primero a 360 px. Verificación a 360 / 414 / 768 / 1024 / 1440 / 1920. Cero scroll horizontal. Tap targets ≥ 44×44 en &lt;1024.</span></li>
-          <li><strong>Accesibilidad</strong><span>AA como piso. Axe sin violaciones <em>serious</em> o <em>critical</em>. Heading order, focus visible, skip link, <code>prefers-reduced-motion</code> honrado en todo.</span></li>
-          <li><strong>Performance</strong><span>Lighthouse ≥ 90 móvil (85 para V2 por el video) / ≥ 95 desktop. AVIF/WebP via Unsplash URL params + <code>srcset</code> a 5 anchos. LCP con <code>fetchpriority=high</code>.</span></li>
-          <li><strong>Locale</strong><span>Español rioplatense (<code>lang="es-AR"</code>). Sin toggle EN. Formatos numéricos via <code>Intl.NumberFormat('es-AR')</code>.</span></li>
-          <li><strong>Motion</strong><span>Librería: Motion 12. Todo envuelto en <code>&lt;MotionConfig reducedMotion="user"&gt;</code>. Duración máx 500 ms. Springs preferidos.</span></li>
-          <li><strong>Tipografía libre</strong><span>Fraunces, Satoshi (Fontshare), JetBrains Mono, Switzer (Fontshare), Geist Mono, Anton, IBM Plex Sans — todas uso comercial gratuito.</span></li>
-          <li><strong>Verificación</strong><span>Playwright + axe + Lighthouse con manifiesto de secciones <code>data-section</code>. 36 celdas de cobertura (3 versiones × 2 páginas × 6 viewports).</span></li>
-        </ul>
+      <section class="version" id="v2">
+        <div class="container">
+          <div class="version-header">
+            <span class="tag tag-v2">Dirección 2 · Cinética</span>
+            <h2>Moderna, con energía y movimiento.</h2>
+            <p class="version-sub">
+              Un sitio que se siente vivo: el titular respira al hacer scroll,
+              las fotos se mueven con suavidad, hay un solo color de acento por
+              pantalla. Habla a un comprador joven, urbano, acostumbrado a apps.
+            </p>
+          </div>
+
+          <div class="device-pair">
+            <figure class="device">
+              <div class="device-bezel">
+                <div class="device-screen">
+                  <img src="./showcase-assets/v2-home-mobile-full.jpg" alt="V2 — Página principal en celular" loading="lazy" />
+                </div>
+              </div>
+              <figcaption>Página principal</figcaption>
+            </figure>
+            <figure class="device">
+              <div class="device-bezel">
+                <div class="device-screen">
+                  <img src="./showcase-assets/v2-listing-mobile-full.jpg" alt="V2 — Ficha de propiedad en celular" loading="lazy" />
+                </div>
+              </div>
+              <figcaption>Ficha de propiedad</figcaption>
+            </figure>
+          </div>
+
+          <div class="rationale">
+            <article>
+              <h3>Hero con video corto</h3>
+              <p>
+                La portada usa un loop suave de imágenes en movimiento (no es un
+                comercial: es una respiración visual). Comunica que la marca
+                está activa, no que es un catálogo estático. El movimiento nunca
+                molesta — se atenúa para quien tiene <em>reduced motion</em>
+                activado en su celular.
+              </p>
+            </article>
+            <article>
+              <h3>Inventario visible enseguida</h3>
+              <p>
+                Apenas pasa el hero, aparecen ocho propiedades destacadas en
+                grilla. El usuario ve oferta antes de scrollear demasiado. Buena
+                para un comprador que llega con la intención clara de comparar.
+              </p>
+            </article>
+            <article>
+              <h3>Un solo acento por pantalla</h3>
+              <p>
+                En cada pantalla aparece un solo color fuerte — naranja
+                <em>o</em> azul, nunca los dos juntos. Da claridad al ojo y
+                evita el ruido cromático típico de los portales inmobiliarios.
+              </p>
+            </article>
+          </div>
+
+          <div class="actions">
+            <a class="btn btn-primary" href="http://localhost:5174/" target="_blank" rel="noreferrer noopener">Ver página principal en vivo</a>
+            <a class="btn btn-ghost" href="http://localhost:5174/propiedad/286194" target="_blank" rel="noreferrer noopener">Ver ficha de propiedad</a>
+          </div>
+        </div>
       </section>
 
-      <section class="section gaps">
-        <h2>Pendientes conocidos</h2>
-        <p class="lede">
-          Lo que queda por cerrar o lo que se resolvió con placeholder de diseño, documentado
-          para el próximo paso.
-        </p>
-        <ul>
-          <li><strong>Imagen</strong><span>Fotos de propiedades son placeholders de Unsplash con IDs fijos. Reemplazables vía <code>media-todo.md</code> (nanobanana para stills, Seedance 2.0 para video).</span></li>
-          <li><strong>Hero V2</strong><span>MP4 rendered offline via Remotion en <code>tools/remotion/</code> (paths referenciados: <code>/hero/hero-portrait.{mp4,webm}</code>, <code>/hero/hero-landscape.{mp4,webm}</code>, <code>/hero/hero-poster.jpg</code>).</span></li>
-          <li><strong>Mapa de Argentina</strong><span>SVG simplificado. Versión precisa posible a partir de Natural Earth 10m admin-1 + mapshaper — dejo referencia en <code>media-todo.md</code>.</span></li>
-          <li><strong>Lottie</strong><span>V1 usa una animación SVG del monograma con stroke-dashoffset. Un Lottie JSON propiamente producido sería el upgrade.</span></li>
-          <li><strong>Mapa del listing</strong><span>Se renderiza un SVG placeholder con un pin en la lat/lng del listing (no se embebe Google Maps, intencionalmente — sitio estático).</span></li>
-        </ul>
+      <section class="version" id="v3">
+        <div class="container">
+          <div class="version-header">
+            <span class="tag tag-v3">Dirección 3 · Estructural</span>
+            <h2>Directa, densa, con personalidad fuerte.</h2>
+            <p class="version-sub">
+              Tipografía grande, grilla visible, números enmarcados como en una
+              ficha catastral. Habla a un comprador analítico — alguien que
+              quiere los datos a la vista y confía en la marca cuando se muestra
+              segura de sí misma.
+            </p>
+          </div>
+
+          <div class="device-pair">
+            <figure class="device">
+              <div class="device-bezel">
+                <div class="device-screen">
+                  <img src="./showcase-assets/v3-home-mobile-full.jpg" alt="V3 — Página principal en celular" loading="lazy" />
+                </div>
+              </div>
+              <figcaption>Página principal</figcaption>
+            </figure>
+            <figure class="device">
+              <div class="device-bezel">
+                <div class="device-screen">
+                  <img src="./showcase-assets/v3-listing-mobile-full.jpg" alt="V3 — Ficha de propiedad en celular" loading="lazy" />
+                </div>
+              </div>
+              <figcaption>Ficha de propiedad</figcaption>
+            </figure>
+          </div>
+
+          <div class="rationale">
+            <article>
+              <h3>Un titular que se ve desde la otra punta</h3>
+              <p>
+                "CENTURY 21. EN ARGENTINA DESDE 2017. UNA RED EN 79 PAÍSES."
+                ocupa toda la portada en mayúsculas grandes. El mensaje es
+                inequívoco: marca con escala internacional y raíces locales.
+              </p>
+            </article>
+            <article>
+              <h3>Toda la ficha técnica visible</h3>
+              <p>
+                En cada propiedad, las 20 comodidades, la ficha con ambientes /
+                dormitorios / baños / cocheras, los datos de superficie y la
+                walkability del barrio están todos a mano. Pensado para un
+                comprador que quiere comparar sin clicks de más.
+              </p>
+            </article>
+            <article>
+              <h3>Rojo CTA, todo lo demás en blanco y negro</h3>
+              <p>
+                El rojo se usa <em>solo</em> en los botones de acción y en el
+                contador de sección. El resto del sitio es blanco, negro y un
+                gris hormigón. Hace que las acciones — contactar, ver ficha,
+                buscar — destaquen siempre.
+              </p>
+            </article>
+          </div>
+
+          <div class="actions">
+            <a class="btn btn-primary" href="http://localhost:5175/" target="_blank" rel="noreferrer noopener">Ver página principal en vivo</a>
+            <a class="btn btn-ghost" href="http://localhost:5175/propiedad/286194" target="_blank" rel="noreferrer noopener">Ver ficha de propiedad</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="closing">
+        <div class="container">
+          <h2>Cómo seguimos.</h2>
+          <p class="lede">
+            Las tres direcciones cubren un espectro a propósito. No buscamos que
+            elijan entre tres versiones de lo mismo, sino entre tres maneras
+            distintas de que CENTURY 21 Argentina hable hoy.
+          </p>
+          <div class="next-steps">
+            <article>
+              <h3>Si su comprador está cambiando.</h3>
+              <p>
+                La dirección <strong>editorial</strong> ayuda a reposicionar la
+                marca cerca del comprador que valora curaduría — primera vivienda
+                bien pensada, mudanza de barrio, downsizing.
+              </p>
+            </article>
+            <article>
+              <h3>Si quieren competir contra apps y portales.</h3>
+              <p>
+                La dirección <strong>cinética</strong> da la sensación de
+                producto digital moderno, sin perder la solidez de marca. Es la
+                opción más cercana al tono de Properati o Mercado Libre
+                Inmuebles, pero con identidad propia.
+              </p>
+            </article>
+            <article>
+              <h3>Si quieren marcar autoridad.</h3>
+              <p>
+                La dirección <strong>estructural</strong> es la más diferenciada
+                del rubro en Argentina. Ofrece los datos sin maquillaje y deja
+                que el tamaño de la red hable por sí mismo.
+              </p>
+            </article>
+          </div>
+          <p class="next-paragraph">
+            Las tres propuestas pueden crecer hasta convertirse en el sitio
+            definitivo. Lo que se define ahora es buscar una modernización —
+            el contenido, las propiedades reales y los flujos comerciales se
+            integran en una segunda etapa, sobre la base elegida.
+          </p>
+        </div>
       </section>
     </main>
 
     <footer class="page-footer">
       <div class="container">
-        CENTURY 21® y el logotipo son propiedad de CENTURY 21 Real Estate, LLC. Cada oficina es de
-        propiedad y operación independiente. Este es un ejercicio de diseño, no un sitio en producción.
+        <p>
+          CENTURY 21® y el logotipo son propiedad de CENTURY 21 Real Estate, LLC.
+          Cada oficina es de propiedad y operación independiente.
+        </p>
+        <p class="muted">
+          Esta propuesta usa propiedades, agentes, testimonios y artículos de
+          ejemplo. Logo, paleta, teléfono, redes y legales son los oficiales
+          verificados.
+        </p>
       </div>
     </footer>
   </body>

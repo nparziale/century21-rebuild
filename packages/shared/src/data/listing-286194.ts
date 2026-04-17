@@ -102,7 +102,7 @@ export const LISTING_286194: Listing = {
       caption: 'Dormitorio principal',
     },
     {
-      src: unsplashUrl('1600566753086-00f18fe6ba68', 2400),
+      src: unsplashUrl('1552321554-5fefe8c9ef14', 2400),
       alt: 'Baño completo con bañera en planta alta',
       caption: 'Baño completo',
     },

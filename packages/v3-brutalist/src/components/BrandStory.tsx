@@ -12,14 +12,14 @@ export function BrandStory() {
   const globalYears = tenureYearsGlobal();
   return (
     <section data-section="brand-story">
-      <FolioRule sectionNumber={5} label="HISTORIA" />
+      <FolioRule sectionNumber={5} total={10} label="HISTORIA" />
       <div className="mx-auto max-w-[1920px] px-4 md:px-6 xl:px-10 py-12 xl:py-24 overflow-x-clip">
         <div className="flex items-baseline justify-between flex-wrap gap-3 mb-6">
           <p
             className="mono text-xs uppercase tracking-widest"
             style={{ fontFamily: 'var(--font-mono)', color: 'var(--color-ink-mute)' }}
           >
-            05 / 13 · Quiénes somos
+            05 / 10 · Quiénes somos
           </p>
         </div>
         <h2

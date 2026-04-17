@@ -24,10 +24,10 @@ function filtered(list: readonly FeaturedCard[], params: URLSearchParams) {
 
 export function SimilarGrid() {
   const [params] = useSearchParams();
-  const items = useMemo(() => filtered(SIMILAR_LISTINGS, params), [params]);
+  const items = useMemo(() => filtered(SIMILAR_LISTINGS, params).slice(0, 4), [params]);
   return (
     <section data-section="similar">
-      <FolioRule sectionNumber={13} label="SIMILARES" />
+      <FolioRule sectionNumber={10} total={11} label="SIMILARES" />
       <div className="mx-auto max-w-[1920px] px-4 md:px-6 xl:px-10 py-10 xl:py-14">
         <div className="flex items-baseline justify-between flex-wrap gap-3 mb-6">
           <h2
@@ -40,7 +40,7 @@ export function SimilarGrid() {
             className="mono text-xs uppercase tracking-widest"
             style={{ fontFamily: 'var(--font-mono)', color: 'var(--color-ink-mute)' }}
           >
-            13 / 15
+            10 / 11
           </span>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 xl:gap-6">

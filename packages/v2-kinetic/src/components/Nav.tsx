@@ -144,7 +144,7 @@ export function Nav({ tone = 'ink' }: { tone?: 'ink' | 'light' }) {
                   </Link>
                   <ul className="ml-2 mb-2">
                     {item.children?.map((c) => (
-                      <li key={c.href}>
+                      <li key={`${c.href}-${c.label}`}>
                         <Link
                           to={c.href}
                           onClick={() => setSheetOpen(false)}

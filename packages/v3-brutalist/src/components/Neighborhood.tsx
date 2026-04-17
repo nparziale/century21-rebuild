@@ -16,7 +16,7 @@ const NEIGHBORHOOD_STATS = {
 export function Neighborhood({ listing }: Props) {
   return (
     <section data-section="neighborhood">
-      <FolioRule sectionNumber={8} label="BARRIO" />
+      <FolioRule sectionNumber={7} total={11} label="BARRIO" />
       <div className="mx-auto max-w-[1920px] px-4 md:px-6 xl:px-10 py-10 xl:py-14">
         <div className="flex items-baseline justify-between flex-wrap gap-3 mb-6">
           <h2
@@ -29,7 +29,7 @@ export function Neighborhood({ listing }: Props) {
             className="mono text-xs uppercase tracking-widest"
             style={{ fontFamily: 'var(--font-mono)', color: 'var(--color-ink-mute)' }}
           >
-            08 / 15 · {listing.address.city}, {listing.address.province}
+            07 / 11 · {listing.address.city}, {listing.address.province}
           </span>
         </div>
         <p
