@@ -4,7 +4,7 @@ Reconstruction of [century21.com.ar](https://century21.com.ar/) (home) and the l
 [286194 — Casa en Ramos Mejía](https://century21.com.ar/propiedad/286194_casa-de-4-ambientes-en-venta-ramos-mejia-con-pileta-y-cochera)
 in three distinct design directions. Static mockup data, real Century 21 brand (logo,
 palette, taglines, legal, phone, socials), Spanish es-AR copy, mobile-first with exceptional
-desktop support. See `PLAN.md` for the full spec and `showcase.html` for the side-by-side
+desktop support. See `PLAN.md` for the full spec and `century21-rebuild/showcase.html` for the side-by-side
 explainer.
 
 ## Layout
@@ -12,7 +12,9 @@ explainer.
 ```
 century21-test/
 ├── PLAN.md                  — full approved build plan
-├── showcase.html / .css     — side-by-side explainer (standalone, no framework)
+├── century21-rebuild/
+│   ├── showcase.html / .css — side-by-side explainer (standalone, no framework)
+│   └── dist-showcase/       — built output (gitignored; produced by pnpm build:showcase)
 ├── media-todo.md            — nanobanana / Seedance prompts for real asset replacement
 ├── pnpm-workspace.yaml
 ├── package.json             — root orchestrator
@@ -45,7 +47,7 @@ pnpm dev:v2      # V2 only
 pnpm dev:v3      # V3 only
 ```
 
-Open `showcase.html` directly in a browser (or serve with `pnpm preview:showcase` after
+Open `century21-rebuild/showcase.html` directly in a browser (or serve with `pnpm preview:showcase` after
 building) to see the side-by-side explainer with rationale and direct links to each version.
 
 ## Build + showcase
@@ -54,7 +56,7 @@ building) to see the side-by-side explainer with rationale and direct links to e
 # Build all three versions
 pnpm build
 
-# Orchestrate the showcase: copies each version's dist/ into dist-showcase/v{1,2,3}/
+# Orchestrate the showcase: copies each version's dist/ into century21-rebuild/dist-showcase/v{1,2,3}/
 # and rewrites showcase.html links to the built paths
 pnpm build:showcase
 

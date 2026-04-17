@@ -5,7 +5,7 @@
  * Expects `pnpm build` to have run (each packages/v1-editorial, v2-kinetic,
  * v3-brutalist has a dist/ directory).
  *
- * Output: dist-showcase/
+ * Output: century21-rebuild/dist-showcase/
  *   ├── index.html      (showcase.html with localhost links rewritten to ./v1, ./v2, ./v3)
  *   ├── showcase.css
  *   ├── v1/…            (copy of packages/v1-editorial/dist)
@@ -19,7 +19,8 @@ import { fileURLToPath } from 'node:url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, '..');
-const OUT = resolve(ROOT, 'dist-showcase');
+const SITE = resolve(ROOT, 'century21-rebuild');
+const OUT = resolve(SITE, 'dist-showcase');
 
 const versions = [
   { id: 'v1', src: 'packages/v1-editorial/dist', port: 5173 },
@@ -38,27 +39,27 @@ async function main() {
       process.exit(1);
     }
     await cp(srcAbs, resolve(OUT, v.id), { recursive: true });
-    console.log(`✓ ${v.id} → dist-showcase/${v.id}/`);
+    console.log(`✓ ${v.id} → century21-rebuild/dist-showcase/${v.id}/`);
   }
 
-  let html = await readFile(resolve(ROOT, 'showcase.html'), 'utf8');
+  let html = await readFile(resolve(SITE, 'showcase.html'), 'utf8');
   // Rewrite dev links to built paths
   for (const v of versions) {
     html = html.replaceAll(`http://localhost:${v.port}/propiedad/286194`, `./${v.id}/index.html#/propiedad/286194`);
     html = html.replaceAll(`http://localhost:${v.port}/`, `./${v.id}/index.html`);
   }
   await writeFile(resolve(OUT, 'index.html'), html);
-  await cp(resolve(ROOT, 'showcase.css'), resolve(OUT, 'showcase.css'));
-  const assetsSrc = resolve(ROOT, 'showcase-assets');
+  await cp(resolve(SITE, 'showcase.css'), resolve(OUT, 'showcase.css'));
+  const assetsSrc = resolve(SITE, 'showcase-assets');
   if (existsSync(assetsSrc)) {
     await cp(assetsSrc, resolve(OUT, 'showcase-assets'), { recursive: true });
-    console.log(`✓ showcase.html + showcase.css + showcase-assets → dist-showcase/`);
+    console.log(`✓ showcase.html + showcase.css + showcase-assets → century21-rebuild/dist-showcase/`);
   } else {
-    console.log(`✓ showcase.html + showcase.css → dist-showcase/ (no showcase-assets dir found — run \`node scripts/showcase-assets.mjs\` to regenerate phone-frame screenshots)`);
+    console.log(`✓ showcase.html + showcase.css → century21-rebuild/dist-showcase/ (no showcase-assets dir found — run \`node scripts/showcase-assets.mjs\` to regenerate phone-frame screenshots)`);
   }
 
   console.log(`\nShowcase ready at ${OUT}`);
-  console.log(`Run: pnpm preview:showcase  (or serve dist-showcase/ with any static server)`);
+  console.log(`Run: pnpm preview:showcase  (or serve century21-rebuild/dist-showcase/ with any static server)`);
 }
 
 main().catch((err) => {

@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
- * Minimal zero-dep static server for dist-showcase/. Node 20+ uses the built-in
- * http module. Serves dist-showcase/ at http://localhost:4321.
+ * Minimal zero-dep static server for century21-rebuild/dist-showcase/. Node 20+ uses the built-in
+ * http module. Serves that directory at http://localhost:4321.
  */
 import { createReadStream, statSync } from 'node:fs';
 import { createServer } from 'node:http';
@@ -9,7 +9,7 @@ import { dirname, extname, join, normalize, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const ROOT = resolve(__dirname, '..', 'dist-showcase');
+const ROOT = resolve(__dirname, '..', 'century21-rebuild', 'dist-showcase');
 const PORT = Number(process.env.PORT ?? 4321);
 
 const MIME = {
