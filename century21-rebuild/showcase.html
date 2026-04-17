@@ -8,6 +8,13 @@
       name="description"
       content="Propuesta de diseño para CENTURY 21 Argentina. Tres direcciones para modernizar la presencia web, aplicadas a la página principal y una ficha de propiedad. Mobile-first."
     />
+    <!-- Preload heavy phone-frame screenshots so decode is ready before scroll (avoids lazy-load flicker). -->
+    <link rel="preload" as="image" href="./showcase-assets/v1-home-mobile-full.jpg" fetchpriority="high" />
+    <link rel="preload" as="image" href="./showcase-assets/v1-listing-mobile-full.jpg" fetchpriority="high" />
+    <link rel="preload" as="image" href="./showcase-assets/v2-home-mobile-full.jpg" />
+    <link rel="preload" as="image" href="./showcase-assets/v2-listing-mobile-full.jpg" />
+    <link rel="preload" as="image" href="./showcase-assets/v3-home-mobile-full.jpg" />
+    <link rel="preload" as="image" href="./showcase-assets/v3-listing-mobile-full.jpg" />
     <link rel="stylesheet" href="./showcase.css" />
   </head>
   <body>
@@ -48,7 +55,7 @@
             <figure class="device">
               <div class="device-bezel">
                 <div class="device-screen">
-                  <img src="./showcase-assets/v1-home-mobile-full.jpg" alt="V1 — Página principal en celular" loading="lazy" />
+                  <img src="./showcase-assets/v1-home-mobile-full.jpg" alt="V1 — Página principal en celular" width="780" height="17348" decoding="async" fetchpriority="high" />
                 </div>
               </div>
               <figcaption>Página principal</figcaption>
@@ -56,7 +63,7 @@
             <figure class="device">
               <div class="device-bezel">
                 <div class="device-screen">
-                  <img src="./showcase-assets/v1-listing-mobile-full.jpg" alt="V1 — Ficha de propiedad en celular" loading="lazy" />
+                  <img src="./showcase-assets/v1-listing-mobile-full.jpg" alt="V1 — Ficha de propiedad en celular" width="780" height="15044" decoding="async" fetchpriority="high" />
                 </div>
               </div>
               <figcaption>Ficha de propiedad</figcaption>
@@ -113,7 +120,7 @@
             <figure class="device">
               <div class="device-bezel">
                 <div class="device-screen">
-                  <img src="./showcase-assets/v2-home-mobile-full.jpg" alt="V2 — Página principal en celular" loading="lazy" />
+                  <img src="./showcase-assets/v2-home-mobile-full.jpg" alt="V2 — Página principal en celular" width="780" height="20512" decoding="async" fetchpriority="low" />
                 </div>
               </div>
               <figcaption>Página principal</figcaption>
@@ -121,7 +128,7 @@
             <figure class="device">
               <div class="device-bezel">
                 <div class="device-screen">
-                  <img src="./showcase-assets/v2-listing-mobile-full.jpg" alt="V2 — Ficha de propiedad en celular" loading="lazy" />
+                  <img src="./showcase-assets/v2-listing-mobile-full.jpg" alt="V2 — Ficha de propiedad en celular" width="780" height="13510" decoding="async" fetchpriority="low" />
                 </div>
               </div>
               <figcaption>Ficha de propiedad</figcaption>
@@ -181,7 +188,7 @@
             <figure class="device">
               <div class="device-bezel">
                 <div class="device-screen">
-                  <img src="./showcase-assets/v3-home-mobile-full.jpg" alt="V3 — Página principal en celular" loading="lazy" />
+                  <img src="./showcase-assets/v3-home-mobile-full.jpg" alt="V3 — Página principal en celular" width="780" height="27446" decoding="async" fetchpriority="low" />
                 </div>
               </div>
               <figcaption>Página principal</figcaption>
@@ -189,7 +196,7 @@
             <figure class="device">
               <div class="device-bezel">
                 <div class="device-screen">
-                  <img src="./showcase-assets/v3-listing-mobile-full.jpg" alt="V3 — Ficha de propiedad en celular" loading="lazy" />
+                  <img src="./showcase-assets/v3-listing-mobile-full.jpg" alt="V3 — Ficha de propiedad en celular" width="780" height="18254" decoding="async" fetchpriority="low" />
                 </div>
               </div>
               <figcaption>Ficha de propiedad</figcaption>
