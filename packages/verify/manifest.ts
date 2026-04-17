@@ -30,7 +30,6 @@ export const LISTING_SECTIONS = [
   'map',
   'agent-card',
   'contact-form',
-  'mortgage-calc',
   'similar',
   'share-actions',
   'footer',

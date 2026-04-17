@@ -13,16 +13,15 @@ import { Neighborhood } from '../components/listing/Neighborhood.tsx';
 import { MapBlock } from '../components/listing/MapBlock.tsx';
 import { AgentCard } from '../components/listing/AgentCard.tsx';
 import { ContactForm } from '../components/listing/ContactForm.tsx';
-import { MortgageCalc } from '../components/listing/MortgageCalc.tsx';
 import { Similar } from '../components/listing/Similar.tsx';
 import { ShareRail } from '../components/listing/ShareRail.tsx';
 import { Footer } from '../components/Footer.tsx';
 
 /**
  * V2 — Listing (286194 Ramos Mejía).
- * 15 required data-section keys: breadcrumb, title, gallery, price,
+ * Required data-section keys: breadcrumb, title, gallery, price,
  * quick-facts, description, amenities, neighborhood, map, agent-card,
- * contact-form, mortgage-calc, similar, share-actions, footer.
+ * contact-form, similar, share-actions, footer.
  */
 export function ListingPage() {
   const listing = LISTING_286194;
@@ -69,7 +68,6 @@ export function ListingPage() {
           </aside>
         </div>
 
-        <MortgageCalc />
         <Similar />
         <ShareRail listing={listing} />
       </main>

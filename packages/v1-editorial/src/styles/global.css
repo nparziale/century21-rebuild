@@ -333,6 +333,5 @@ footer a:focus-visible { color: var(--color-brand-gold); }
   [data-section="share-actions"],
   [data-section="nav"],
   [data-section="utility-bar"],
-  [data-section="contact-form"],
-  [data-section="mortgage-calc"] { display: none !important; }
+  [data-section="contact-form"] { display: none !important; }
 }

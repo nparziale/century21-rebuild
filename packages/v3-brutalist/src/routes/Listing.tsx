@@ -17,7 +17,6 @@ import { Neighborhood } from '../components/Neighborhood.tsx';
 import { MapBlock } from '../components/MapBlock.tsx';
 import { AgentCard } from '../components/AgentCard.tsx';
 import { ContactForm } from '../components/ContactForm.tsx';
-import { MortgageCalc } from '../components/MortgageCalc.tsx';
 import { SimilarGrid } from '../components/SimilarGrid.tsx';
 import { ShareActions } from '../components/ShareActions.tsx';
 import { Footer } from '../components/Footer.tsx';
@@ -60,7 +59,6 @@ export function ListingPage() {
           </div>
         </section>
 
-        <MortgageCalc listing={listing} />
         <SimilarGrid />
         <ShareActions listing={listing} />
       </main>

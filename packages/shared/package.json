@@ -8,7 +8,6 @@
     "./types": "./src/types.ts",
     "./brand": "./src/brand.ts",
     "./regions": "./src/regions.ts",
-    "./math/mortgage": "./src/math/mortgage.ts",
     "./data/listing-286194": "./src/data/listing-286194.ts",
     "./data/featured-listings": "./src/data/featured-listings.ts",
     "./data/offices": "./src/data/offices.ts",

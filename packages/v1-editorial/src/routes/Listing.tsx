@@ -10,7 +10,6 @@ import { AgentCard } from '../components/AgentCard';
 import { ContactForm } from '../components/ContactForm';
 import { Footer } from '../components/Footer';
 import { Gallery } from '../components/Gallery';
-import { MortgageCalc } from '../components/MortgageCalc';
 import { Nav } from '../components/Nav';
 import { ShareActions } from '../components/ShareActions';
 import { SimilarListings } from '../components/SimilarListings';
@@ -21,7 +20,7 @@ import { useCropReveal } from '../lib/useCropReveal';
  * V1 — Editorial Pampas — Listing detail.
  * 60/40 editorial split at ≥1024 px. Mobile order: breadcrumb, title, gallery,
  * price, quick-facts, description, amenities, neighborhood, map, agent-card,
- * contact-form, mortgage-calc, similar, share-actions, footer.
+ * contact-form, similar, share-actions, footer.
  */
 export function ListingPage() {
   const l = LISTING_286194;
@@ -184,7 +183,7 @@ export function ListingPage() {
             {/* Similar — spans both columns below */}
           </div>
 
-          {/* Right rail: price + quick-facts + agent-card + contact + mortgage */}
+          {/* Right rail: price + quick-facts + agent-card + contact */}
           <aside className="flex flex-col gap-10 lg:col-span-5 lg:sticky lg:top-24 lg:self-start">
             {/* Price */}
             <section data-section="price" aria-label="Precio" className="border-t border-[color:var(--color-accent)] pt-4">
@@ -226,9 +225,6 @@ export function ListingPage() {
 
             {/* Contact form */}
             <ContactForm agent={agent} listingId={l.id} />
-
-            {/* Mortgage */}
-            <MortgageCalc priceUsd={l.price.amount} />
           </aside>
         </div>
 

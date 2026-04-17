@@ -1,8 +1,6 @@
 export * from './types.ts';
 export * from './brand.ts';
 export * from './regions.ts';
-export { mortgage, MORTGAGE_REFERENCE_INPUTS, MORTGAGE_REFERENCE_MONTHLY } from './math/mortgage.ts';
-export type { MortgageInputs, MortgageResult } from './math/mortgage.ts';
 export { LISTING_286194, AMENITY_LABELS } from './data/listing-286194.ts';
 export { FEATURED_LISTINGS } from './data/featured-listings.ts';
 export { SIMILAR_LISTINGS } from './data/similar-listings.ts';
