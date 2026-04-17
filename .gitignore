@@ -1,0 +1,27 @@
+node_modules/
+dist/
+dist-showcase/
+.DS_Store
+*.log
+.env
+.env.local
+.env.*.local
+
+# Vite
+.vite/
+
+# Playwright
+/packages/verify/playwright-report/
+/packages/verify/test-results/
+/packages/verify/report/
+
+# Remotion
+/tools/remotion/out/
+
+# Worktrees (if used)
+.worktrees/
+
+# IDE
+.idea/
+.vscode/
+*.swp

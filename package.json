@@ -1,13 +1,29 @@
 {
   "name": "century21-test",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "private": true,
+  "description": "Century 21 Argentina rebuild — three distinct design versions (home + listing 286194)",
+  "packageManager": "pnpm@10.33.0",
+  "engines": {
+    "node": ">=20"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "packageManager": "pnpm@10.33.0"
+  "scripts": {
+    "dev": "pnpm -r --parallel --filter='./packages/v*' dev",
+    "dev:v1": "pnpm --filter v1-editorial dev",
+    "dev:v2": "pnpm --filter v2-kinetic dev",
+    "dev:v3": "pnpm --filter v3-brutalist dev",
+    "build": "pnpm -r --filter='./packages/v*' build",
+    "build:showcase": "node ./scripts/build-showcase.mjs",
+    "preview:showcase": "pnpm build && pnpm build:showcase && node ./scripts/serve-showcase.mjs",
+    "render:hero": "node ./tools/remotion/render.mjs",
+    "typecheck": "pnpm -r --filter='./packages/*' typecheck",
+    "verify": "pnpm --filter @c21/verify verify",
+    "verify:fast": "pnpm --filter @c21/verify verify:fast",
+    "verify:visual": "pnpm --filter @c21/verify verify:visual",
+    "verify:lighthouse": "pnpm --filter @c21/verify verify:lighthouse",
+    "verify:report": "pnpm --filter @c21/verify verify:report"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.2"
+  }
 }
