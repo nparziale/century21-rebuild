@@ -41,7 +41,7 @@ export function Testimonials() {
         >
           <ul className="snap-track" tabIndex={0}>
             {items.map((t) => (
-              <li key={t.id} className="w-[85vw]">
+              <li key={t.id}>
                 <Card t={t} />
               </li>
             ))}

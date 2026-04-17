@@ -58,10 +58,10 @@ export function Hero() {
               fontVariationSettings: "'opsz' 96, 'SOFT' 60, 'WONK' 1",
             }}
           >
-            Una casa es un lugar donde el país se vuelve propio.
+            Acá empieza la casa que buscabas.
           </h1>
           <p className="max-w-[42ch] text-[color:var(--color-ink-mute)]" style={{ fontSize: 'var(--text-body-lg)' }}>
-            Propiedades seleccionadas en Argentina, acompañadas por asesores de Century 21 desde 2017.
+            Propiedades que elegimos mirar con detalle.
           </p>
           <div className="flex flex-wrap items-center gap-4 pt-2">
             <a href="#featured" className="btn btn-olive">

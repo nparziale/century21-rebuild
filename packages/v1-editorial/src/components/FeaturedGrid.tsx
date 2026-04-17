@@ -60,22 +60,33 @@ export function FeaturedGrid() {
           </p>
         </div>
 
-        {/* Desktop 3-up with middle offset */}
-        <ul className="hidden lg:grid lg:grid-cols-3 lg:gap-8">
-          {list.slice(0, 6).map((l, i) => (
-            <li
-              key={l.id}
-              className={i % 3 === 1 ? 'lg:mt-12' : ''}
-            >
-              <Card l={l} />
+        {/* Desktop: 3-up editorial row. Middle card drops 48 px below for the
+            print-style uneven baseline. Only one row — no second-row repeat of
+            the offset (that stair-steps). Remaining cards live in a plainer
+            2-col block below so the page shows 6+ without feeling crowded. */}
+        <ul className="hidden grid-cols-3 gap-x-8 gap-y-16 lg:grid">
+          {list.slice(0, 3).map((l, i) => (
+            <li key={l.id} className={i === 1 ? 'lg:mt-12' : ''}>
+              <Card l={l} featured />
             </li>
           ))}
         </ul>
 
-        {/* Mobile snap track */}
-        <ul className="snap-track lg:hidden">
+        {list.length > 3 ? (
+          <ul className="mt-16 hidden grid-cols-3 gap-x-8 gap-y-12 lg:grid">
+            {list.slice(3, 6).map((l) => (
+              <li key={l.id}>
+                <Card l={l} />
+              </li>
+            ))}
+          </ul>
+        ) : null}
+
+        {/* Mobile: snap-track is pre-sized to 85vw columns by its class; the
+            <li> doesn't need a width override (that used to fight the grid). */}
+        <ul className="snap-track lg:hidden" tabIndex={0}>
           {list.slice(0, 6).map((l) => (
-            <li key={l.id} className="w-[85vw]">
+            <li key={l.id}>
               <Card l={l} />
             </li>
           ))}
@@ -91,7 +102,13 @@ export function FeaturedGrid() {
   );
 }
 
-function Card({ l }: { l: FeaturedCard }) {
+function Card({ l, featured = false }: { l: FeaturedCard; featured?: boolean }) {
+  // Featured cards (the primary 3-up row) use a taller 3:4 portrait. The
+  // secondary block uses a 4:3 landscape, which fills a wider-but-shorter
+  // card without feeling lanky. Either way, no aspect-[4/5] (that read as
+  // elongated postcards on a 3-col desktop grid).
+  const imgAspect = featured ? 'aspect-[3/4]' : 'aspect-[4/3]';
+
   return (
     <Link
       to={`/propiedad/${l.id}`}
@@ -99,19 +116,20 @@ function Card({ l }: { l: FeaturedCard }) {
     >
       <div className="relative overflow-hidden bg-[color:var(--color-surface)]">
         <picture>
-          <source srcSet={unsplashSrcSet(l.photoUnsplashId)} sizes="(min-width: 1024px) 30vw, 85vw" />
+          <source
+            srcSet={unsplashSrcSet(l.photoUnsplashId)}
+            sizes="(min-width: 1024px) 30vw, 85vw"
+          />
           <img
             src={unsplashUrl(l.photoUnsplashId, 1280)}
             alt={l.photoAlt}
             loading="lazy"
             decoding="async"
-            width={1280}
-            height={960}
-            className="block aspect-[4/5] w-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+            className={`block ${imgAspect} w-full object-cover transition-transform duration-700 group-hover:scale-[1.02]`}
           />
         </picture>
       </div>
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-2 border-t border-[color:var(--color-divider)] pt-4">
         <div className="flex items-center justify-between gap-2">
           <p className="eyebrow">
             {l.operation === 'alquiler' ? 'Alquiler' : 'Venta'} · {l.propertyType}
@@ -121,14 +139,18 @@ function Card({ l }: { l: FeaturedCard }) {
             {l.operation === 'alquiler' ? ' /mes' : ''}
           </p>
         </div>
-        <h3 className="font-italic text-xl leading-[1.15] text-[color:var(--color-ink)]">
+        <h3
+          className="font-italic leading-[1.15] text-[color:var(--color-ink)]"
+          style={{ fontSize: featured ? '1.5rem' : '1.25rem' }}
+        >
           {l.title}
         </h3>
         <p className="text-sm text-[color:var(--color-ink-mute)]">
           {l.neighborhood}, {l.province}
         </p>
         <p className="font-mono text-xs text-[color:var(--color-ink-mute)]">
-          {l.specsShort.ambientes} amb · {l.specsShort.dormitorios} dorm · {l.specsShort.cubierta} m²
+          {l.specsShort.ambientes} amb · {l.specsShort.dormitorios} dorm ·{' '}
+          {l.specsShort.cubierta} m²
         </p>
         <span className="link-bronze mt-2 inline-flex items-center gap-1 text-sm">
           Ver propiedad

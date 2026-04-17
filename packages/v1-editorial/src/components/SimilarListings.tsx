@@ -26,7 +26,7 @@ export function SimilarListings() {
                 fontVariationSettings: "'opsz' 72, 'SOFT' 60, 'WONK' 1",
               }}
             >
-              Otras casas similares.
+              Otras casas del oeste del GBA.
             </h2>
           </div>
           <a href="/?op=venta&tipo=casa" className="link-bronze text-sm">
@@ -40,9 +40,9 @@ export function SimilarListings() {
             </li>
           ))}
         </ul>
-        <ul className="snap-track md:hidden">
+        <ul className="snap-track md:hidden" tabIndex={0}>
           {SIMILAR_LISTINGS.map((l) => (
-            <li key={l.id} className="w-[85vw]">
+            <li key={l.id}>
               <Card l={l} />
             </li>
           ))}
@@ -54,29 +54,37 @@ export function SimilarListings() {
 
 function Card({ l }: { l: FeaturedCard }) {
   return (
-    <Link to={`/propiedad/${l.id}`} className="group flex flex-col gap-3">
+    <Link to={`/propiedad/${l.id}`} className="group flex flex-col gap-4">
       <div className="overflow-hidden bg-[color:var(--color-surface)]">
         <picture>
-          <source srcSet={unsplashSrcSet(l.photoUnsplashId)} sizes="(min-width: 768px) 30vw, 85vw" />
+          <source
+            srcSet={unsplashSrcSet(l.photoUnsplashId)}
+            sizes="(min-width: 768px) 30vw, 85vw"
+          />
           <img
             src={unsplashUrl(l.photoUnsplashId, 1280)}
             alt={l.photoAlt}
             loading="lazy"
             decoding="async"
-            width={1280}
-            height={960}
             className="block aspect-[4/3] w-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
           />
         </picture>
       </div>
-      <p className="font-italic text-lg leading-tight text-[color:var(--color-ink)]">{l.title}</p>
-      <p className="text-xs text-[color:var(--color-ink-mute)]">
-        {l.neighborhood}, {l.province}
-      </p>
-      <p className="font-mono text-sm text-[color:var(--color-ink)]">{formatMoney(l.price)}</p>
-      <span className="link-bronze inline-flex items-center gap-1 text-xs">
-        Ver propiedad <ArrowRight size={11} aria-hidden />
-      </span>
+      <div className="flex flex-col gap-2 border-t border-[color:var(--color-divider)] pt-3">
+        <p className="eyebrow">
+          {l.neighborhood} · {l.province}
+        </p>
+        <h3 className="font-italic text-xl leading-[1.15] text-[color:var(--color-ink)]">
+          {l.title}
+        </h3>
+        <p className="font-mono text-sm text-[color:var(--color-ink)]">
+          {formatMoney(l.price)}
+        </p>
+        <span className="link-bronze mt-1 inline-flex items-center gap-1 text-xs">
+          Ver propiedad
+          <ArrowRight size={11} aria-hidden />
+        </span>
+      </div>
     </Link>
   );
 }

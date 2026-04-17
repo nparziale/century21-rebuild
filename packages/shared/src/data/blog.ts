@@ -1,44 +1,49 @@
 import type { BlogCard } from '../types.ts';
 
 /**
- * Three blog/insight cards for the home page teaser. Mockup content — titles
- * are chosen to feel plausible for an Argentine real-estate audience.
+ * Three editorial cards for the homepage blog teaser. Voice: terse, specific,
+ * no marketing adjectives. Titles read as journalism or in-house bulletins,
+ * not listicles. Dates are frozen to plan date (2026-04) ± a couple weeks.
+ *
+ * Photo IDs reuse the set verified working in featured-listings.ts so cards
+ * never render broken imagery out of the box. Swap to local generated assets
+ * via media-todo.md § 6 when real covers land.
  */
 export const BLOG_CARDS: readonly BlogCard[] = [
   {
     id: 'b1',
-    slug: 'como-leer-una-escritura-antes-de-firmar',
-    title: 'Cómo leer una escritura antes de firmarla',
+    slug: 'lectura-previa-de-una-escritura-en-caba',
+    title: 'La lectura previa de una escritura en CABA',
     dek:
-      'Cinco lecturas cruzadas que hacemos antes de cerrar una operación, explicadas ' +
-      'para quien compra su primera propiedad.',
+      'Qué se mira en el título, el estado de ocupación y los cargos antes de ' +
+      'firmar. Lo que un escribano revisa en la semana previa al cierre.',
     category: 'Guías',
-    publishedAt: '2026-03-18',
-    readMinutes: 7,
-    photoUnsplashId: '1450101499163-c8848c66ca85',
+    publishedAt: '2026-04-08',
+    readMinutes: 8,
+    photoUnsplashId: '1505873242700-f289a29e1e0f',
   },
   {
     id: 'b2',
-    slug: 'ramos-mejia-el-oeste-que-volvio-a-mirarse',
-    title: 'Ramos Mejía, el oeste que volvió a mirarse',
+    slug: 'ramos-mejia-m2-primer-trimestre-2026',
+    title: 'Ramos Mejía: el m² del primer trimestre',
     dek:
-      'Repunte de precios por m² del primer trimestre, pero el movimiento está en ' +
-      'las casas sobre lote propio que el mercado porteño dejaba de lado.',
+      'El valor publicado subió 2,3 % contra diciembre. El movimiento lo empujaron ' +
+      'las casas sobre lote propio de más de 200 m². Los PH recuperan consultas.',
     category: 'Mercado',
     publishedAt: '2026-04-02',
     readMinutes: 5,
-    photoUnsplashId: '1518155317743-a8ff43ea6a5f',
+    photoUnsplashId: '1564013799919-ab600027ffc6',
   },
   {
     id: 'b3',
-    slug: 'expensas-en-caba-que-cubre-cada-categoria',
-    title: 'Expensas en CABA: qué cubre cada categoría',
+    slug: 'expensas-ordinarias-extraordinarias-fondo-de-reserva',
+    title: 'Ordinarias, extraordinarias y fondo de reserva',
     dek:
-      'Ordinarias, extraordinarias y fondos de reserva. Cómo interpretarlas en la ' +
-      'ficha de una propiedad antes de hacer una oferta.',
+      'Tres rubros que conviven en el mismo recibo y que dicen cosas distintas. ' +
+      'Cómo pedir la proyección anual antes de hacer una oferta.',
     category: 'Guías',
-    publishedAt: '2026-03-28',
+    publishedAt: '2026-03-21',
     readMinutes: 6,
-    photoUnsplashId: '1515263487990-61b07816b924',
+    photoUnsplashId: '1600047509807-ba8f99d2cdde',
   },
 ] as const;
