@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pnpm --filter @c21/verify exec playwright test --project='fast')",
+      "Bash(lsof -ti:5176)",
+      "Bash(xargs -r kill)",
+      "Bash(git add *)",
+      "Bash(git commit *)"
+    ]
+  }
+}

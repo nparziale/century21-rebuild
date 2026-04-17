@@ -15,7 +15,7 @@
     "build": "pnpm -r --filter='./packages/v*' build",
     "build:showcase": "node ./scripts/build-showcase.mjs",
     "preview:showcase": "pnpm build && pnpm build:showcase && node ./scripts/serve-showcase.mjs",
-    "render:hero": "node ./tools/remotion/render.mjs",
+    "render:hero": "bash ./tools/remotion/render.sh",
     "typecheck": "pnpm -r --filter='./packages/*' typecheck",
     "verify": "pnpm --filter @c21/verify verify",
     "verify:fast": "pnpm --filter @c21/verify verify:fast",

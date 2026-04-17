@@ -1,0 +1,22 @@
+{
+  "name": "@c21/verify",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "verify": "playwright test",
+    "verify:fast": "playwright test --project='fast'",
+    "verify:visual": "playwright test --project='visual'",
+    "verify:lighthouse": "node ./lighthouse/runner.mjs",
+    "verify:report": "playwright show-report",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@c21/shared": "workspace:*"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.49.1",
+    "@axe-core/playwright": "^4.10.1",
+    "typescript": "^5.7.2"
+  }
+}

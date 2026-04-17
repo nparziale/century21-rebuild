@@ -1,0 +1,336 @@
+/* CENTURY 21 Argentina · propuesta de diseño — standalone, no framework. */
+
+:root {
+  --ink: #121212;
+  --bg: #faf7f2;
+  --surface: #ffffff;
+  --mute: #5f5d59;
+  --divider: #e1dcd1;
+  --brand-gold: #beaf88;
+  --brand-gold-deep: #9e7b4d;
+
+  --v1-accent: #3d4a3a;
+  --v2-accent: #e64a19;
+  --v3-accent: #ff3b1f;
+
+  --font-sans:
+    -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-serif: 'Iowan Old Style', 'Palatino Linotype', Georgia, serif;
+  --font-mono: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+
+  --maxw: 1200px;
+  --pad: clamp(1.25rem, 3.5vw, 2.5rem);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+
+.container { max-width: var(--maxw); margin-inline: auto; padding-inline: var(--pad); }
+
+/* ─── Masthead ─────────────────────────────────────────────────────────── */
+.masthead {
+  padding: clamp(3.5rem, 8vw, 6.5rem) 0 clamp(2.5rem, 5vw, 4rem);
+  border-bottom: 1px solid var(--divider);
+  background:
+    radial-gradient(80% 60% at 100% 0%, rgba(190, 175, 136, 0.10), transparent 70%),
+    var(--bg);
+}
+.eyebrow {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--brand-gold-deep);
+  margin-bottom: 1.4rem;
+}
+.masthead h1 {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  letter-spacing: -0.018em;
+  line-height: 1.05;
+  font-size: clamp(2.25rem, 1.5rem + 3.6vw, 4rem);
+  margin: 0 0 1.5rem;
+  max-width: 22ch;
+}
+.lede {
+  font-size: clamp(1.05rem, 0.95rem + 0.4vw, 1.2rem);
+  line-height: 1.65;
+  color: var(--ink);
+  max-width: 60ch;
+  margin: 0 0 1rem;
+}
+.meta-line {
+  max-width: 60ch;
+  color: var(--mute);
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+/* ─── Version sections ─────────────────────────────────────────────────── */
+.version {
+  padding-block: clamp(3rem, 6vw, 5.5rem);
+  border-top: 1px solid var(--divider);
+}
+.version:first-of-type { border-top: 0; }
+
+.version-header {
+  max-width: 60ch;
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+.tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  padding: 0.4rem 0.7rem;
+  border: 1px solid currentColor;
+  margin-bottom: 1rem;
+}
+.tag-v1 { color: var(--v1-accent); }
+.tag-v2 { color: var(--v2-accent); }
+.tag-v3 { color: var(--v3-accent); }
+
+.version-header h2 {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  letter-spacing: -0.012em;
+  line-height: 1.1;
+  font-size: clamp(1.75rem, 1.4rem + 1.8vw, 2.75rem);
+  margin: 0 0 1rem;
+}
+.version-sub {
+  margin: 0;
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: var(--mute);
+  max-width: 56ch;
+}
+
+/* ─── Phone frames ─────────────────────────────────────────────────────── */
+.device-pair {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+  justify-items: center;
+}
+@media (min-width: 720px) {
+  .device-pair { grid-template-columns: repeat(2, 1fr); align-items: start; }
+}
+
+.device {
+  margin: 0;
+  width: 100%;
+  max-width: 340px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.9rem;
+}
+.device-bezel {
+  width: 100%;
+  background: #1c1c1e;
+  border-radius: 38px;
+  padding: 10px;
+  box-shadow:
+    0 1px 1px rgba(0, 0, 0, 0.06),
+    0 12px 28px -12px rgba(15, 15, 15, 0.35),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+  position: relative;
+}
+.device-bezel::before {
+  /* Speaker / camera notch */
+  content: '';
+  position: absolute;
+  top: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 18px;
+  border-radius: 999px;
+  background: #0a0a0a;
+  z-index: 2;
+}
+.device-screen {
+  position: relative;
+  border-radius: 28px;
+  overflow: hidden;
+  background: #fff;
+  /* Use viewport-tall window into a long page; user sees ~iPhone aspect */
+  aspect-ratio: 9 / 19.5;
+  width: 100%;
+}
+.device-screen img {
+  width: 100%;
+  height: auto;
+  display: block;
+  position: absolute;
+  inset: 0;
+  /* Default: image is anchored top, scrollable on hover/touch */
+}
+
+/* The screen scrolls its overflow on hover (desktop) and touch (mobile). */
+.device-screen {
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.18) transparent;
+}
+.device-screen::-webkit-scrollbar { width: 6px; }
+.device-screen::-webkit-scrollbar-thumb { background: rgba(0, 0, 0, 0.18); border-radius: 999px; }
+.device-screen img { position: static; }
+
+.device figcaption {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--mute);
+}
+
+/* ─── Rationale ─────────────────────────────────────────────────────────── */
+.rationale {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(1.5rem, 3vw, 2.25rem);
+  padding: clamp(1.75rem, 3vw, 2.5rem) 0 0;
+  border-top: 1px solid var(--divider);
+}
+@media (min-width: 760px) { .rationale { grid-template-columns: repeat(3, 1fr); } }
+
+.rationale article h3 {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: 1.25rem;
+  letter-spacing: -0.005em;
+  margin: 0 0 0.6rem;
+  line-height: 1.25;
+}
+.rationale article p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--mute);
+}
+.rationale article em { font-style: italic; color: var(--ink); }
+.rationale article p strong { color: var(--ink); font-weight: 500; }
+
+/* ─── Per-version accent on rationale h3 underline ─────────────────────── */
+#v1 .rationale article h3 { box-shadow: inset 0 -3px 0 rgba(61, 74, 58, 0.15); display: inline; padding-bottom: 1px; }
+#v2 .rationale article h3 { box-shadow: inset 0 -3px 0 rgba(230, 74, 25, 0.18); display: inline; padding-bottom: 1px; }
+#v3 .rationale article h3 { box-shadow: inset 0 -3px 0 rgba(255, 59, 31, 0.18); display: inline; padding-bottom: 1px; }
+
+/* ─── Actions row ──────────────────────────────────────────────────────── */
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: clamp(1.5rem, 3vw, 2rem);
+}
+.btn {
+  appearance: none;
+  border: 1px solid var(--ink);
+  background: var(--ink);
+  color: var(--bg);
+  padding: 0.85rem 1.25rem;
+  font: inherit;
+  font-size: 0.95rem;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 140ms ease, color 140ms ease, transform 140ms ease;
+}
+.btn:hover, .btn:focus-visible {
+  background: transparent;
+  color: var(--ink);
+  transform: translateY(-1px);
+}
+.btn-ghost {
+  background: transparent;
+  color: var(--ink);
+}
+.btn-ghost:hover, .btn-ghost:focus-visible {
+  background: var(--ink);
+  color: var(--bg);
+}
+
+#v1 .btn-primary { background: var(--v1-accent); border-color: var(--v1-accent); }
+#v1 .btn-primary:hover, #v1 .btn-primary:focus-visible { background: transparent; color: var(--v1-accent); }
+#v2 .btn-primary { background: var(--v2-accent); border-color: var(--v2-accent); }
+#v2 .btn-primary:hover, #v2 .btn-primary:focus-visible { background: transparent; color: var(--v2-accent); }
+#v3 .btn-primary { background: var(--v3-accent); border-color: var(--v3-accent); }
+#v3 .btn-primary:hover, #v3 .btn-primary:focus-visible { background: transparent; color: var(--v3-accent); }
+
+/* ─── Closing ──────────────────────────────────────────────────────────── */
+.closing {
+  padding-block: clamp(3rem, 6vw, 5.5rem);
+  border-top: 1px solid var(--divider);
+  background:
+    radial-gradient(80% 60% at 0% 0%, rgba(190, 175, 136, 0.10), transparent 70%),
+    var(--bg);
+}
+.closing h2 {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  letter-spacing: -0.012em;
+  font-size: clamp(1.75rem, 1.4rem + 1.8vw, 2.75rem);
+  line-height: 1.1;
+  margin: 0 0 1rem;
+}
+.next-steps {
+  display: grid;
+  gap: clamp(1.5rem, 3vw, 2.25rem);
+  grid-template-columns: 1fr;
+  margin-top: clamp(1.5rem, 3vw, 2.5rem);
+  padding-top: clamp(1.5rem, 3vw, 2.5rem);
+  border-top: 1px solid var(--divider);
+}
+@media (min-width: 760px) { .next-steps { grid-template-columns: repeat(3, 1fr); } }
+
+.next-steps h3 {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: 1.2rem;
+  margin: 0 0 0.6rem;
+  line-height: 1.25;
+}
+.next-steps p { color: var(--mute); margin: 0; line-height: 1.65; font-size: 1rem; }
+.next-paragraph {
+  max-width: 60ch;
+  margin: clamp(2rem, 4vw, 3rem) 0 0;
+  color: var(--mute);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+/* ─── Page footer ──────────────────────────────────────────────────────── */
+.page-footer {
+  padding-block: 2.5rem 3.5rem;
+  border-top: 1px solid var(--divider);
+  font-size: 0.875rem;
+  color: var(--mute);
+}
+.page-footer p { margin: 0 0 0.6rem; }
+.page-footer .muted { color: rgba(95, 93, 89, 0.7); font-style: italic; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+  html { scroll-behavior: auto; }
+}

@@ -1,0 +1,24 @@
+{
+  "name": "@c21/shared",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./types": "./src/types.ts",
+    "./brand": "./src/brand.ts",
+    "./regions": "./src/regions.ts",
+    "./data/listing-286194": "./src/data/listing-286194.ts",
+    "./data/featured-listings": "./src/data/featured-listings.ts",
+    "./data/offices": "./src/data/offices.ts",
+    "./data/agents": "./src/data/agents.ts",
+    "./data/testimonials": "./src/data/testimonials.ts",
+    "./data/similar-listings": "./src/data/similar-listings.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.2"
+  }
+}

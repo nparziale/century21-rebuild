@@ -1,0 +1,159 @@
+@import 'tailwindcss';
+@import './tokens.css';
+
+/* Switzer from Fontshare — Latin subset, variable weight.
+   Must precede the Geist-Mono import because that one inlines @font-face
+   rules, and CSS requires all @import statements to come first. */
+@import url('https://api.fontshare.com/v2/css?f[]=switzer@100,200,300,400,500,600,700,800,900,1000&display=swap');
+@import '@fontsource-variable/geist-mono/index.css';
+
+:root {
+  color-scheme: light dark;
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+html { scroll-behavior: smooth; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+html, body { max-width: 100vw; overflow-x: clip; }
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+/*
+ * Default link color inherits from parent. Wrapped in @layer base so Tailwind
+ * utility colors (text-white, text-[var(...)]) — which sit in @layer utilities
+ * — still win when applied directly on an <a>. Without the layer, unlayered
+ * `a {…}` would override every utility on every link.
+ */
+@layer base {
+  a { color: currentColor; text-underline-offset: 3px; }
+}
+
+*:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-focus) 18%, transparent);
+}
+
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: var(--space-2);
+  background: var(--color-ink);
+  color: var(--color-bg);
+  padding: var(--space-2) var(--space-4);
+  z-index: 100;
+}
+.skip-link:focus { left: var(--space-4); }
+
+/* Page shell — never scroll horizontally. Intentional overflow-x tracks must isolate. */
+main { display: block; }
+
+/* Marquee animation. Duplicated track so translateX(-50%) loops seamlessly. */
+@keyframes v2-marquee-l {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+@keyframes v2-marquee-r {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
+}
+
+.v2-marquee-track {
+  display: flex;
+  width: max-content;
+  gap: 1.5rem;
+  animation: v2-marquee-l var(--marquee-dur, 40s) linear infinite;
+  animation-play-state: running;
+  will-change: transform;
+}
+.v2-marquee-track[data-dir='right'] { animation-name: v2-marquee-r; }
+.v2-marquee-paused .v2-marquee-track { animation-play-state: paused; }
+@media (min-width: 1024px) {
+  .v2-marquee:hover .v2-marquee-track { animation-play-state: paused; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .v2-marquee-track { animation: none !important; transform: none !important; }
+}
+
+/* Edge fades for marquees */
+.v2-edge-fade {
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 64px, #000 calc(100% - 64px), transparent 100%);
+          mask-image: linear-gradient(to right, transparent 0, #000 64px, #000 calc(100% - 64px), transparent 100%);
+}
+
+/* Tabular mono for numbers */
+.v2-mono {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum' 1;
+}
+
+/* Tap target minimums on small screens — WCAG 2.5.8 AA floor */
+@media (max-width: 1023px) {
+  .v2-tap { min-width: 44px; min-height: 44px; }
+  select,
+  input:not([type="range"]):not([type="checkbox"]):not([type="radio"]):not([type="hidden"]),
+  textarea {
+    min-height: 36px;
+  }
+  button {
+    min-height: 36px;
+  }
+}
+
+/* Hero H1 weight morph uses a custom property updated by JS. */
+.v2-hero-h1 {
+  --hero-wght: 200;
+  font-family: var(--font-display);
+  font-variation-settings: 'wght' var(--hero-wght);
+  transition: font-variation-settings 180ms var(--ease-spring);
+}
+
+/* Zone chroma defaults (single-accent rule). */
+.zone-warm { --zone-accent: var(--color-accent-warm); }
+.zone-cool { --zone-accent: var(--color-accent-cool); }
+.zone-neutral { --zone-accent: var(--color-ink); }
+.zone-ink { background: var(--color-ink); color: var(--color-bg); --zone-accent: var(--color-brand-gold); }
+.zone-blue { background: var(--color-accent-cool); color: #fff; --zone-accent: #fff; }
+
+/* Mobile nav sheet slide-in */
+@keyframes v2-sheet-in {
+  from { transform: translateY(-100%); }
+  to   { transform: translateY(0); }
+}
+
+/* Province hover fill (map) */
+.v2-province { fill: var(--color-surface); stroke: var(--color-ink-mute); stroke-width: 0.5; transition: fill 250ms var(--ease-spring); }
+.v2-province[data-active='true'],
+.v2-province:hover,
+.v2-province:focus-visible { fill: var(--color-accent-cool); outline: none; }
+
+/* Digit slot-roll */
+@keyframes v2-slot-in {
+  from { transform: translateY(-0.4em); opacity: 0; }
+  to   { transform: translateY(0); opacity: 1; }
+}
+.v2-slot-digit { display: inline-block; animation: v2-slot-in 500ms var(--ease-spring) both; }
+@media (prefers-reduced-motion: reduce) {
+  .v2-slot-digit { animation: none !important; }
+}
