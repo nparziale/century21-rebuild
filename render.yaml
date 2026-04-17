@@ -10,6 +10,16 @@ services:
     envVars:
       - key: NODE_VERSION
         value: "22"
+    routes:
+      - type: rewrite
+        source: /v1/*
+        destination: /v1/index.html
+      - type: rewrite
+        source: /v2/*
+        destination: /v2/index.html
+      - type: rewrite
+        source: /v3/*
+        destination: /v3/index.html
     headers:
       - path: /v1/assets/*
         name: Cache-Control

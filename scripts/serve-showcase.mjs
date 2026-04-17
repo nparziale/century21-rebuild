@@ -3,7 +3,7 @@
  * Minimal zero-dep static server for century21-rebuild/dist-showcase/. Node 20+ uses the built-in
  * http module. Serves that directory at http://localhost:4321.
  */
-import { createReadStream, statSync } from 'node:fs';
+import { createReadStream, existsSync, statSync } from 'node:fs';
 import { createServer } from 'node:http';
 import { dirname, extname, join, normalize, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -38,6 +38,17 @@ function resolveSafe(urlPath) {
   return abs;
 }
 
+/**
+ * v2/v3 ship a single-page bundle; deep links like /v2/propiedad/:id need the
+ * entry HTML. v1 prerenders listing HTML under propiedad/286194/ — no fallback.
+ */
+function spaIndexFallback(rel) {
+  const m = rel.match(/^(v[23])\/(?!assets\/).+/);
+  if (!m) return null;
+  const abs = join(ROOT, m[1], 'index.html');
+  return existsSync(abs) ? abs : null;
+}
+
 function serveFile(abs, res) {
   const ext = extname(abs).toLowerCase();
   res.setHeader('Content-Type', MIME[ext] ?? 'application/octet-stream');
@@ -51,6 +62,8 @@ function serveFile(abs, res) {
 }
 
 createServer((req, res) => {
+  const decoded = decodeURIComponent((req.url ?? '/').split('?')[0] ?? '/');
+  const rel = normalize(decoded).replace(/^\/+/, '');
   let abs = resolveSafe(req.url ?? '/');
   if (!abs) {
     res.statusCode = 400;
@@ -66,6 +79,8 @@ createServer((req, res) => {
   } catch {
     // fall through
   }
+  const fallback = spaIndexFallback(rel);
+  if (fallback) return serveFile(fallback, res);
   res.statusCode = 404;
   res.end(`404 not found: ${req.url}`);
 }).listen(PORT, () => {

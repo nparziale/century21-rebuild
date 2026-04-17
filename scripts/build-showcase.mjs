@@ -6,7 +6,7 @@
  * v3-brutalist has a dist/ directory).
  *
  * Output: century21-rebuild/dist-showcase/
- *   ├── index.html      (showcase.html with localhost links rewritten to ./v1, ./v2, ./v3)
+ *   ├── index.html      (copy of showcase.html — links are already relative ./v1, ./v2, ./v3)
  *   ├── showcase.css
  *   ├── v1/…            (copy of packages/v1-editorial/dist)
  *   ├── v2/…            (copy of packages/v2-kinetic/dist)
@@ -25,9 +25,9 @@ const OUT = resolve(SITE, 'dist-showcase');
 const OUT_MIRROR = resolve(ROOT, 'dist-showcase');
 
 const versions = [
-  { id: 'v1', src: 'packages/v1-editorial/dist', port: 5173 },
-  { id: 'v2', src: 'packages/v2-kinetic/dist', port: 5174 },
-  { id: 'v3', src: 'packages/v3-brutalist/dist', port: 5175 },
+  { id: 'v1', src: 'packages/v1-editorial/dist' },
+  { id: 'v2', src: 'packages/v2-kinetic/dist' },
+  { id: 'v3', src: 'packages/v3-brutalist/dist' },
 ];
 
 async function main() {
@@ -44,12 +44,7 @@ async function main() {
     console.log(`✓ ${v.id} → century21-rebuild/dist-showcase/${v.id}/`);
   }
 
-  let html = await readFile(resolve(SITE, 'showcase.html'), 'utf8');
-  // Rewrite dev links to built paths
-  for (const v of versions) {
-    html = html.replaceAll(`http://localhost:${v.port}/propiedad/286194`, `./${v.id}/index.html#/propiedad/286194`);
-    html = html.replaceAll(`http://localhost:${v.port}/`, `./${v.id}/index.html`);
-  }
+  const html = await readFile(resolve(SITE, 'showcase.html'), 'utf8');
   await writeFile(resolve(OUT, 'index.html'), html);
   await cp(resolve(SITE, 'showcase.css'), resolve(OUT, 'showcase.css'));
   const assetsSrc = resolve(SITE, 'showcase-assets');
