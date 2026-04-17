@@ -50,11 +50,11 @@ export function Gallery({ listing }: { listing: Listing }) {
           />
           <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
           <div className="absolute bottom-4 right-4 rounded-sm bg-[var(--color-ink)] px-4 py-3 text-white md:bottom-6 md:right-6 md:px-5 md:py-4">
-            <p className="v2-mono text-[0.66rem] uppercase tracking-[0.22em] text-white/70">
+            <p className="v2-mono text-[0.66rem] uppercase tracking-[0.22em] text-white/95">
               {listing.address.neighborhood}
             </p>
             <p className="mt-1 text-[1.1rem] font-[700]">Ref. {listing.id}</p>
-            <ul className="v2-mono mt-2 flex gap-3 text-[0.78rem] text-white/80">
+            <ul className="v2-mono mt-2 flex gap-3 text-[0.78rem] text-white/95">
               <li className="inline-flex items-center gap-1"><BedDouble size={12} /> {listing.specs.dormitorios}</li>
               <li className="inline-flex items-center gap-1"><Bath size={12} /> {listing.specs.baños}</li>
               <li className="inline-flex items-center gap-1"><Ruler size={12} /> {listing.areas.cubierta} m²</li>

@@ -141,7 +141,7 @@ export function Hero() {
                 <span className="block">Encontrá</span>
                 <span className="block italic">dónde vivir.</span>
               </h1>
-              <p className="mt-8 max-w-xl text-[1rem] md:text-[1.1rem] text-white/80 leading-[1.45]">
+              <p className="mt-8 max-w-xl text-[1rem] md:text-[1.1rem] text-white/95 leading-[1.45]">
                 Presencia en 79 países. En Argentina desde 2017. Cobertura en 28 provincias.
               </p>
             </div>
@@ -150,7 +150,7 @@ export function Hero() {
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
             <Link
               to="/propiedad/286194"
-              className="v2-tap inline-flex w-full items-center justify-center gap-2 rounded-full bg-[var(--color-accent-warm)] px-6 py-4 text-[0.95rem] font-[700] text-white hover:opacity-95 sm:w-auto"
+              className="v2-tap inline-flex w-full items-center justify-center gap-2 rounded-full bg-[var(--color-accent-warm)] px-6 py-4 text-[1.1875rem] font-[700] text-white hover:opacity-95 sm:w-auto"
             >
               Ver propiedades
               <ArrowRight size={18} aria-hidden />
@@ -165,7 +165,7 @@ export function Hero() {
               <button
                 type="button"
                 onClick={handlePauseVideo}
-                className="v2-tap inline-flex items-center justify-center rounded-full border border-white/30 px-4 py-3 text-[0.8rem] text-white/80 hover:bg-white/5"
+                className="v2-tap inline-flex items-center justify-center rounded-full border border-white/30 px-4 py-3 text-[0.8rem] text-white/95 hover:bg-white/5"
                 aria-label="Pausar o reanudar vídeo del hero"
               >
                 Pausar vídeo
@@ -177,7 +177,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.4 }}
-            className="v2-mono mt-12 flex flex-wrap gap-x-8 gap-y-2 text-[0.72rem] uppercase tracking-[0.18em] text-white/60"
+            className="v2-mono mt-12 flex flex-wrap gap-x-8 gap-y-2 text-[0.72rem] uppercase tracking-[0.18em] text-white/95"
           >
             <span>79 países</span>
             <span>28 provincias</span>

@@ -24,7 +24,7 @@ export function Footer() {
       <div className="container-ed py-16 lg:py-24">
         <div className="mb-12 flex flex-col items-start gap-6 lg:flex-row lg:items-center lg:justify-between">
           <img src="/brand/c21-gold.svg" alt="CENTURY 21 Argentina" className="h-8 w-auto lg:h-10" />
-          <p className="font-italic text-sm text-[color:var(--color-brand-gold)]/80">
+          <p className="font-italic text-sm text-[color:var(--color-brand-gold)]">
             Century 21 Argentina — Edición 2026
           </p>
         </div>
@@ -59,7 +59,7 @@ export function Footer() {
         <hr className="my-12 h-px w-full border-0 bg-[color:var(--color-brand-gold)]/20" />
 
         <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
-          <p className="max-w-[70ch] text-xs text-[color:var(--color-bg)]/70">{LEGAL_FOOTER}</p>
+          <p className="max-w-[70ch] text-xs text-[color:var(--color-bg)]">{LEGAL_FOOTER}</p>
           <ul className="flex items-center gap-3">
             {SOCIALS.map((s) => (
               <li key={s.network}>
@@ -80,11 +80,11 @@ export function Footer() {
           </ul>
         </div>
 
-        <p className="mt-8 text-[11px] leading-relaxed text-[color:var(--color-bg)]/50">
+        <p className="mt-8 text-[11px] leading-relaxed text-[color:var(--color-bg)]">
           {DESIGN_BUILD_DISCLAIMER}
         </p>
 
-        <p className="mt-6 font-mono text-[11px] text-[color:var(--color-bg)]/50">
+        <p className="mt-6 font-mono text-[11px] text-[color:var(--color-bg)]">
           {BRAND.name} · {BRAND.phone} · desde 2017
         </p>
       </div>
@@ -112,7 +112,7 @@ function SimpleLinks({ links }: { links: FooterLink[] }) {
         <li key={l.label}>
           <a
             href={l.href}
-            className="text-sm text-[color:var(--color-bg)]/85 hover:text-[color:var(--color-brand-gold)]"
+            className="text-sm text-[color:var(--color-bg)] hover:text-[color:var(--color-brand-gold)]"
           >
             {l.label}
           </a>
@@ -138,13 +138,13 @@ function RegionsInner() {
     <div className="flex flex-col gap-4">
       {REGION_GROUPS.map((g) => (
         <div key={g}>
-          <p className="mb-1 font-italic text-xs text-[color:var(--color-brand-gold)]/70">{g}</p>
+          <p className="mb-1 font-italic text-xs text-[color:var(--color-brand-gold)]">{g}</p>
           <ul className="grid grid-cols-1 gap-1">
             {regionsByGroup(g).map((r) => (
               <li key={r.key}>
                 <a
                   href={`/?zona=${r.key}`}
-                  className="text-[13px] text-[color:var(--color-bg)]/80 hover:text-[color:var(--color-brand-gold)]"
+                  className="text-[13px] text-[color:var(--color-bg)] hover:text-[color:var(--color-brand-gold)]"
                 >
                   {r.label}
                 </a>
@@ -175,7 +175,7 @@ function InternationalInner() {
         <li key={c.code}>
           <a
             href={`https://century21global.com/${c.code.toLowerCase()}`}
-            className="text-[13px] text-[color:var(--color-bg)]/80 hover:text-[color:var(--color-brand-gold)]"
+            className="text-[13px] text-[color:var(--color-bg)] hover:text-[color:var(--color-brand-gold)]"
           >
             {c.name}
           </a>
@@ -184,7 +184,7 @@ function InternationalInner() {
       <li className="mt-2 border-t border-[color:var(--color-brand-gold)]/20 pt-2">
         <a
           href="/?op=venta&comercial=1"
-          className="text-[13px] text-[color:var(--color-bg)]/80 hover:text-[color:var(--color-brand-gold)]"
+          className="text-[13px] text-[color:var(--color-bg)] hover:text-[color:var(--color-brand-gold)]"
         >
           C21 Comercial
         </a>

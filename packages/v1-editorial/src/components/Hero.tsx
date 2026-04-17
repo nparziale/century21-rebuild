@@ -46,7 +46,7 @@ export function Hero() {
 
         <div className="relative flex flex-col gap-6 lg:col-span-5 lg:col-start-8 lg:row-start-1 lg:pt-[120px]">
           <span
-            className="font-italic text-[color:var(--color-accent)] text-lg tracking-wide"
+            className="font-italic text-[color:var(--color-accent-deep)] text-lg tracking-wide"
             aria-hidden
           >
             Folio 01

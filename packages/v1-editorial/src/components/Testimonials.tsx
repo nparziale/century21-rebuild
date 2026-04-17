@@ -34,13 +34,19 @@ export function Testimonials() {
           ))}
         </ul>
 
-        <ul className="snap-track lg:hidden">
-          {items.map((t) => (
-            <li key={t.id} className="w-[85vw]">
-              <Card t={t} />
-            </li>
-          ))}
-        </ul>
+        <div
+          className="lg:hidden"
+          role="region"
+          aria-label="Testimonios — deslizá horizontalmente"
+        >
+          <ul className="snap-track" tabIndex={0}>
+            {items.map((t) => (
+              <li key={t.id} className="w-[85vw]">
+                <Card t={t} />
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </section>
   );

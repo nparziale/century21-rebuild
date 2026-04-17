@@ -10,18 +10,18 @@ export function FranchiseCta() {
     <section data-section="franchise-cta" className="zone-blue relative isolate overflow-hidden py-20 md:py-28">
       <div className="mx-auto grid max-w-[var(--container-max)] grid-cols-1 gap-10 px-4 md:px-6 lg:grid-cols-12 lg:items-center">
         <div className="lg:col-span-7">
-          <p className="v2-mono text-[0.72rem] uppercase tracking-[0.22em] text-white/70">
+          <p className="v2-mono text-[0.72rem] uppercase tracking-[0.22em] text-white/95">
             Licencias CENTURY 21
           </p>
           <h2 className="mt-4 text-[var(--text-h2)] font-[700] leading-[0.92] tracking-[-0.02em] text-white">
             Adquiere una licencia{' '}
             <span className="italic font-[300]">CENTURY 21</span>
           </h2>
-          <p className="mt-6 max-w-xl text-[1rem] leading-[1.55] text-white/80">
+          <p className="mt-6 max-w-xl text-[1rem] leading-[1.55] text-white/95">
             Soporte regional, sistema 21 Online, formación continua y marca internacional.
             Solicitamos la entrevista de factibilidad en un plazo estándar de 14 días.
           </p>
-          <ul className="v2-mono mt-8 grid grid-cols-2 gap-x-6 gap-y-2 text-[0.78rem] uppercase tracking-[0.18em] text-white/80">
+          <ul className="v2-mono mt-8 grid grid-cols-2 gap-x-6 gap-y-2 text-[0.78rem] uppercase tracking-[0.18em] text-white/95">
             <li>· Marca global</li>
             <li>· 21 Online CRM</li>
             <li>· Formación continua</li>

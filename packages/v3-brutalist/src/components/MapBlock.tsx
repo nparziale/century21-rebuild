@@ -106,23 +106,24 @@ export function MapBlock({ listing }: Props) {
           </div>
           <dl className="xl:col-span-4 border border-black divide-y divide-black">
             {POIs.map((p) => (
-              <div key={p.label} className="p-4 flex items-baseline justify-between gap-4">
-                <div>
-                  <dt
-                    className="text-sm"
-                    style={{ fontFamily: 'var(--font-body)', fontWeight: 600 }}
-                  >
-                    {p.label}
-                  </dt>
-                  <p
-                    className="uppercase text-[10px] tracking-widest"
+              <div
+                key={p.label}
+                className="p-4 grid grid-cols-[1fr_auto] items-baseline gap-4"
+              >
+                <dt
+                  className="text-sm"
+                  style={{ fontFamily: 'var(--font-body)', fontWeight: 600 }}
+                >
+                  {p.label}
+                  <span
+                    className="mt-1 block uppercase text-[10px] tracking-widest font-normal"
                     style={{ color: 'var(--color-ink-mute)' }}
                   >
                     {p.kind}
-                  </p>
-                </div>
+                  </span>
+                </dt>
                 <dd
-                  className="mono text-sm shrink-0"
+                  className="mono text-sm shrink-0 self-start"
                   style={{
                     fontFamily: 'var(--font-mono)',
                     fontVariantNumeric: 'tabular-nums',

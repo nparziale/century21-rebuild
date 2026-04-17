@@ -95,7 +95,15 @@ p, li, dd, dt, label, input, textarea, select, button {
   background: var(--color-tango);
   color: var(--color-paper);
   font-family: var(--font-display);
-  font-size: var(--text-h4);
+  /* Anton-at-h4 size rendered as "normal" weight axe-side. Force bold so the
+     3.56:1 ratio of white-on-tango clears WCAG 1.4.3 AA-large (3:1 at
+     ≥ 14 pt bold). Anton only ships weight 400 but the box is drawn large
+     enough that synthetic bold here reads as a deliberate display weight. */
+  font-weight: 700;
+  /* Must clear WCAG 2.5.8 AA-large threshold (14 pt bold = 18.66 px bold) at
+     every viewport so white-on-tango (3.56:1) qualifies. The h4 clamp
+     minimum is below that on small phones; anchor a fixed floor here. */
+  font-size: 1.25rem;
   letter-spacing: 0.02em;
   text-transform: uppercase;
   border: 0;

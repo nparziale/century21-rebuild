@@ -148,7 +148,7 @@ export function Nav({ tone = 'ink' }: { tone?: 'ink' | 'light' }) {
                         <Link
                           to={c.href}
                           onClick={() => setSheetOpen(false)}
-                          className="block py-2 text-[0.95rem] text-white/70"
+                          className="block py-2 text-[0.95rem] text-white/95"
                         >
                           {c.label}
                         </Link>

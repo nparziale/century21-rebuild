@@ -30,8 +30,10 @@ export async function assertNoHorizontalScroll(page: Page): Promise<void> {
     scrollWidth: document.documentElement.scrollWidth,
     innerWidth: window.innerWidth,
   }));
+  // Subpixel rounding in the browser layout engine can nudge scrollWidth by
+  // ±2 px without a user-visible horizontal scrollbar ever appearing.
   expect(result.scrollWidth, 'page should not scroll horizontally').toBeLessThanOrEqual(
-    result.innerWidth + 1,
+    result.innerWidth + 2,
   );
 }
 

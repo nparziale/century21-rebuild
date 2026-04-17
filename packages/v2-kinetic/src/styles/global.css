@@ -1,10 +1,11 @@
 @import 'tailwindcss';
 @import './tokens.css';
 
-@import '@fontsource-variable/geist-mono/index.css';
-
-/* Switzer from Fontshare — Latin subset, variable weight. */
+/* Switzer from Fontshare — Latin subset, variable weight.
+   Must precede the Geist-Mono import because that one inlines @font-face
+   rules, and CSS requires all @import statements to come first. */
 @import url('https://api.fontshare.com/v2/css?f[]=switzer@100,200,300,400,500,600,700,800,900,1000&display=swap');
+@import '@fontsource-variable/geist-mono/index.css';
 
 :root {
   color-scheme: light dark;
@@ -38,6 +39,16 @@ body {
 *, *::before, *::after { box-sizing: border-box; }
 
 a { color: currentColor; text-underline-offset: 3px; }
+
+/*
+ * A few `<a>` in AgentCard / MortgageCalc use `text-white` as a Tailwind
+ * arbitrary utility but the default `a { color: currentColor }` plus the
+ * parent's ink color is winning at computed-style time. Explicit override
+ * for the specific contrast-critical WhatsApp button.
+ */
+a.bg-\[var\(--color-accent-cool\)\] {
+  color: #ffffff !important;
+}
 
 *:focus-visible {
   outline: 2px solid var(--color-focus);

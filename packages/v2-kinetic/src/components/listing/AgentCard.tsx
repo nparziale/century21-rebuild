@@ -77,7 +77,7 @@ export function AgentCard({ agent, office }: { agent: Agent; office?: Office }) 
             <p className="v2-mono text-[0.66rem] uppercase tracking-[0.2em] text-[var(--color-brand-gold)]">
               Perfil
             </p>
-            <p className="mt-2 text-[0.9rem] normal-case tracking-normal text-white/85 font-sans">
+            <p className="mt-2 text-[0.9rem] normal-case tracking-normal text-white/95 font-sans">
               {agent.bio}
             </p>
           </div>

@@ -49,6 +49,17 @@ body {
 
 a { color: var(--color-accent-deep); text-underline-offset: 3px; }
 
+/*
+ * Footer lives on ink — olive links (default) only hit 1.9:1 on the black
+ * background, which fails AA by a mile. Force footer links + eyebrows to the
+ * cream ink-inverse so they read at ~15:1. Tailwind's arbitrary-value
+ * text-[color:var(...)] doesn't out-specify the tag-level default above.
+ */
+footer a,
+footer a:visited { color: var(--color-bg); }
+footer a:hover,
+footer a:focus-visible { color: var(--color-brand-gold); }
+
 *:focus-visible {
   outline: 2px solid var(--color-focus);
   outline-offset: 3px;

@@ -29,7 +29,7 @@ export function MortgageCalc() {
   return (
     <section data-section="mortgage-calc" className="zone-blue py-14 md:py-20">
       <div className="mx-auto max-w-[var(--container-max)] px-4 md:px-6">
-        <p className="v2-mono text-[0.72rem] uppercase tracking-[0.22em] text-white/70">
+        <p className="v2-mono text-[0.72rem] uppercase tracking-[0.22em] text-white">
           Calculadora hipotecaria
         </p>
         <h2 className="mt-3 text-[clamp(1.75rem,1.2rem+2vw,2.75rem)] font-[700] leading-[1.05] tracking-[-0.01em] text-white">
@@ -80,8 +80,10 @@ export function MortgageCalc() {
             />
           </div>
 
-          <div className="border border-white/25 bg-white/10 p-6 text-white backdrop-blur-sm">
-            <p className="v2-mono text-[0.72rem] uppercase tracking-[0.2em] text-white/70">
+          <div className="border border-white/40 p-6 text-white">
+            {/* Solid blue background — an extra white/10 overlay lightens the
+                base and drops white contrast under 4.5:1 at small sizes. */}
+            <p className="v2-mono text-[0.72rem] uppercase tracking-[0.2em] text-white">
               Cuota mensual estimada
             </p>
             <p
@@ -91,21 +93,21 @@ export function MortgageCalc() {
             >
               <SlotText value={monthlyStr} />
             </p>
-            <dl className="v2-mono mt-6 grid grid-cols-2 gap-4 text-[0.78rem] text-white/80 tabular-nums">
+            <dl className="v2-mono mt-6 grid grid-cols-2 gap-4 text-[0.78rem] text-white tabular-nums">
               <div>
-                <dt className="uppercase tracking-[0.18em] text-white/60">Capital</dt>
+                <dt className="uppercase tracking-[0.18em] text-white/95">Capital</dt>
                 <dd className="mt-1">{formatMoney({ amount: result.principal, currency: 'USD' })}</dd>
               </div>
               <div>
-                <dt className="uppercase tracking-[0.18em] text-white/60">Total intereses</dt>
+                <dt className="uppercase tracking-[0.18em] text-white/95">Total intereses</dt>
                 <dd className="mt-1">{formatMoney({ amount: result.totalInterest, currency: 'USD' })}</dd>
               </div>
               <div className="col-span-2">
-                <dt className="uppercase tracking-[0.18em] text-white/60">Total a pagar</dt>
+                <dt className="uppercase tracking-[0.18em] text-white/95">Total a pagar</dt>
                 <dd className="mt-1">{formatMoney({ amount: result.totalPaid, currency: 'USD' })}</dd>
               </div>
             </dl>
-            <p className="v2-mono mt-5 text-[0.66rem] uppercase tracking-[0.18em] text-white/50">
+            <p className="v2-mono mt-5 text-[0.66rem] uppercase tracking-[0.18em] text-white/95">
               Cálculo referencial. Consultá condiciones con tu banco.
             </p>
           </div>
@@ -136,7 +138,7 @@ function SliderField({
 }) {
   return (
     <label className="block text-white">
-      <span className="v2-mono flex items-baseline justify-between text-[0.66rem] uppercase tracking-[0.2em] text-white/70">
+      <span className="v2-mono flex items-baseline justify-between text-[0.66rem] uppercase tracking-[0.2em] text-white">
         <span>{label}</span>
         <span className="tabular-nums text-white">{format(value)}</span>
       </span>

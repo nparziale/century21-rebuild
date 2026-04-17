@@ -147,14 +147,24 @@ function SearchFields({ op, setOp, tipo, setTipo, zona, setZona, precio, setPrec
   return (
     <div className={base}>
       <FieldCell label="Operación" stacked={stacked}>
-        <select className="field-select" value={op} onChange={(e) => setOp(e.target.value)}>
+        <select
+          className="field-select"
+          aria-label="Operación"
+          value={op}
+          onChange={(e) => setOp(e.target.value)}
+        >
           <option value="">Todas</option>
           <option value="venta">Venta</option>
           <option value="alquiler">Alquiler</option>
         </select>
       </FieldCell>
       <FieldCell label="Tipo" stacked={stacked}>
-        <select className="field-select" value={tipo} onChange={(e) => setTipo(e.target.value)}>
+        <select
+          className="field-select"
+          aria-label="Tipo de propiedad"
+          value={tipo}
+          onChange={(e) => setTipo(e.target.value)}
+        >
           <option value="">Todos</option>
           <option value="casa">Casa</option>
           <option value="departamento">Departamento</option>
@@ -165,7 +175,12 @@ function SearchFields({ op, setOp, tipo, setTipo, zona, setZona, precio, setPrec
         </select>
       </FieldCell>
       <FieldCell label="Ubicación" stacked={stacked}>
-        <select className="field-select" value={zona} onChange={(e) => setZona(e.target.value)}>
+        <select
+          className="field-select"
+          aria-label="Ubicación"
+          value={zona}
+          onChange={(e) => setZona(e.target.value)}
+        >
           <option value="">Todas las provincias</option>
           {REGIONS.map((r) => (
             <option key={r.key} value={r.key}>

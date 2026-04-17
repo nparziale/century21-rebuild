@@ -54,57 +54,52 @@ export function Gallery({ photos }: { photos: readonly Photo[] }) {
     >
       <div className="container-ed py-6">
         <div className="grid gap-3 lg:grid-cols-[1fr_110px] lg:gap-4">
-          <button
-            type="button"
-            ref={(el) => {
-              openerRef.current = el;
-            }}
-            onClick={() => setLightbox(true)}
-            aria-label={`Abrir galería en pantalla completa — imagen ${active + 1} de ${photoCount}`}
-            className="relative block aspect-[4/3] w-full overflow-hidden bg-[color:var(--color-surface)] outline-offset-2 md:aspect-[3/2]"
-          >
-            <picture>
-              <source srcSet={unsplashSrcSet(extractId(current.src))} sizes="(min-width: 1024px) 60vw, 100vw" />
-              <img
-                src={current.src}
-                alt={current.alt}
-                loading="eager"
-                decoding="async"
-                fetchPriority="high"
-                className="block h-full w-full object-cover"
-                style={{ backgroundImage: `url('${LQIP_NEUTRAL}')`, backgroundSize: 'cover' }}
-              />
-            </picture>
-            <span className="absolute bottom-3 left-3 rounded-full bg-[color:var(--color-ink)]/80 px-2 py-1 font-mono text-[11px] text-[color:var(--color-bg)]">
+          <div className="relative aspect-[4/3] w-full overflow-hidden bg-[color:var(--color-surface)] md:aspect-[3/2]">
+            <button
+              type="button"
+              ref={(el) => {
+                openerRef.current = el;
+              }}
+              onClick={() => setLightbox(true)}
+              aria-label={`Abrir galería en pantalla completa — imagen ${active + 1} de ${photoCount}`}
+              className="absolute inset-0 block outline-offset-2"
+            >
+              <picture>
+                <source
+                  srcSet={unsplashSrcSet(extractId(current.src))}
+                  sizes="(min-width: 1024px) 60vw, 100vw"
+                />
+                <img
+                  src={current.src}
+                  alt={current.alt}
+                  loading="eager"
+                  decoding="async"
+                  fetchPriority="high"
+                  className="block h-full w-full object-cover"
+                  style={{ backgroundImage: `url('${LQIP_NEUTRAL}')`, backgroundSize: 'cover' }}
+                />
+              </picture>
+            </button>
+            <span className="pointer-events-none absolute bottom-3 left-3 rounded-full bg-[color:var(--color-ink)]/80 px-2 py-1 font-mono text-[11px] text-[color:var(--color-bg)]">
               {String(active + 1).padStart(2, '0')} / {String(photoCount).padStart(2, '0')}
             </span>
-            <div className="pointer-events-none absolute inset-y-0 left-0 hidden w-16 items-center justify-start pl-2 md:flex">
-              <button
-                type="button"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  prev();
-                }}
-                aria-label="Imagen anterior"
-                className="pointer-events-auto flex h-10 w-10 items-center justify-center rounded-full bg-[color:var(--color-bg)]/80 text-[color:var(--color-ink)]"
-              >
-                <ChevronLeft size={18} aria-hidden />
-              </button>
-            </div>
-            <div className="pointer-events-none absolute inset-y-0 right-0 hidden w-16 items-center justify-end pr-2 md:flex">
-              <button
-                type="button"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  next();
-                }}
-                aria-label="Imagen siguiente"
-                className="pointer-events-auto flex h-10 w-10 items-center justify-center rounded-full bg-[color:var(--color-bg)]/80 text-[color:var(--color-ink)]"
-              >
-                <ChevronRight size={18} aria-hidden />
-              </button>
-            </div>
-          </button>
+            <button
+              type="button"
+              onClick={prev}
+              aria-label="Imagen anterior"
+              className="absolute left-2 top-1/2 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-[color:var(--color-bg)]/90 text-[color:var(--color-ink)] md:flex"
+            >
+              <ChevronLeft size={18} aria-hidden />
+            </button>
+            <button
+              type="button"
+              onClick={next}
+              aria-label="Imagen siguiente"
+              className="absolute right-2 top-1/2 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-[color:var(--color-bg)]/90 text-[color:var(--color-ink)] md:flex"
+            >
+              <ChevronRight size={18} aria-hidden />
+            </button>
+          </div>
           <ul className="hidden flex-col gap-3 lg:flex">
             {photos.slice(0, 3).map((p, i) => (
               <li key={p.src}>

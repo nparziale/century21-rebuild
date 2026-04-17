@@ -26,7 +26,7 @@ export function BrandStory() {
     >
       <ParallaxBg />
       <div className="relative mx-auto max-w-[var(--container-max)] px-4 md:px-6">
-        <p className="v2-mono text-[0.72rem] uppercase tracking-[0.22em] text-[var(--color-accent-warm)]">
+        <p className="v2-mono text-[0.72rem] uppercase tracking-[0.22em] text-[var(--color-ink)]">
           Marca global. Operación local.
         </p>
         <h2 className="mt-3 max-w-3xl text-[var(--text-h2)] font-[200] leading-[0.95] tracking-[-0.015em]">

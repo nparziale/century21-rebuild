@@ -35,7 +35,7 @@ export function VendorCta() {
     <section data-section="vendor-cta" className="zone-warm bg-[var(--color-surface)] py-16 md:py-24">
       <div className="mx-auto grid max-w-[var(--container-max)] grid-cols-1 gap-10 px-4 md:px-6 lg:grid-cols-12">
         <div className="lg:col-span-7">
-          <p className="v2-mono text-[0.72rem] uppercase tracking-[0.22em] text-[var(--color-accent-warm)]">
+          <p className="v2-mono text-[0.72rem] uppercase tracking-[0.22em] text-[var(--color-ink)]">
             Confíanos tu propiedad
           </p>
           <motion.h2

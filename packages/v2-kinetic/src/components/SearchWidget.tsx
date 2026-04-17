@@ -77,7 +77,7 @@ export function SearchWidget() {
 
             <button
               type="submit"
-              className="v2-tap inline-flex items-center justify-center gap-2 bg-[var(--color-accent-warm)] px-5 py-3.5 text-[0.95rem] font-[700] text-white hover:opacity-95"
+              className="v2-tap inline-flex items-center justify-center gap-2 bg-[var(--color-accent-warm)] px-5 py-3.5 text-[1.1875rem] font-[700] text-white hover:opacity-95"
               aria-label="Buscar"
             >
               <Search size={16} aria-hidden />

@@ -70,9 +70,9 @@ export function BrandStory() {
               >
                 <Counter value={BRAND.globalFoundedYear} kind="int" />
               </dd>
-              <p className="mt-2 text-xs" style={{ color: 'var(--color-ink-mute)' }}>
+              <dd className="mt-2 text-xs" style={{ color: 'var(--color-ink-mute)' }}>
                 fundación global ({globalYears} años)
-              </p>
+              </dd>
             </div>
             <div className="p-5 border-b border-black">
               <dt
@@ -87,9 +87,9 @@ export function BrandStory() {
               >
                 <Counter value={BRAND.countriesOperated} kind="int" />
               </dd>
-              <p className="mt-2 text-xs" style={{ color: 'var(--color-ink-mute)' }}>
+              <dd className="mt-2 text-xs" style={{ color: 'var(--color-ink-mute)' }}>
                 red global
-              </p>
+              </dd>
             </div>
             <div className="p-5 border-r border-black">
               <dt
@@ -104,9 +104,9 @@ export function BrandStory() {
               >
                 <Counter value={2017} kind="int" />
               </dd>
-              <p className="mt-2 text-xs" style={{ color: 'var(--color-ink-mute)' }}>
+              <dd className="mt-2 text-xs" style={{ color: 'var(--color-ink-mute)' }}>
                 desde {argYears} años
-              </p>
+              </dd>
             </div>
             <div className="p-5">
               <dt
@@ -121,9 +121,9 @@ export function BrandStory() {
               >
                 <Counter value={BRAND.provinciasCubiertas} kind="int" />
               </dd>
-              <p className="mt-2 text-xs" style={{ color: 'var(--color-ink-mute)' }}>
+              <dd className="mt-2 text-xs" style={{ color: 'var(--color-ink-mute)' }}>
                 cobertura Argentina
-              </p>
+              </dd>
             </div>
           </dl>
         </div>

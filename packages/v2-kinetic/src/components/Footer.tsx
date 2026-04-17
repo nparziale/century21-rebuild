@@ -21,7 +21,7 @@ export function Footer() {
         <div className="flex flex-col gap-8 border-b border-white/10 pb-10 md:flex-row md:items-end md:justify-between">
           <div>
             <img src="/brand/c21-gold.svg" alt="CENTURY 21 Argentina" className="h-10 w-auto" />
-            <p className="v2-mono mt-3 text-[0.75rem] uppercase tracking-[0.2em] text-white/60">
+            <p className="v2-mono mt-3 text-[0.75rem] uppercase tracking-[0.2em] text-white/95">
               {BRAND.tagline} · {BRAND.taglineSub}
             </p>
           </div>
@@ -55,13 +55,13 @@ export function Footer() {
             <div className="mt-4 space-y-4">
               {REGION_GROUPS.map((g) => (
                 <div key={g}>
-                  <p className="text-[0.78rem] font-[600] text-white/80">{g}</p>
+                  <p className="text-[0.78rem] font-[600] text-white/95">{g}</p>
                   <ul className="mt-1 space-y-1">
                     {regionsByGroup(g).map((r) => (
                       <li key={r.key}>
                         <a
                           href={`/?region=${r.key}`}
-                          className="text-[0.82rem] text-white/60 hover:text-white"
+                          className="text-[0.82rem] text-white/95 hover:text-white"
                         >
                           {r.label}
                         </a>
@@ -84,7 +84,7 @@ export function Footer() {
                     href={`https://century21global.com/${c.code.toLowerCase()}`}
                     rel="noreferrer noopener"
                     target="_blank"
-                    className="text-[0.82rem] text-white/60 hover:text-white"
+                    className="text-[0.82rem] text-white/95 hover:text-white"
                   >
                     {c.name}
                   </a>
@@ -105,7 +105,7 @@ export function Footer() {
         <p className="border-t border-white/10 pt-8 text-[0.76rem] leading-[1.6] text-white/55">
           {LEGAL_FOOTER}
         </p>
-        <p className="v2-mono mt-4 text-[0.7rem] uppercase tracking-[0.18em] text-white/40">
+        <p className="v2-mono mt-4 text-[0.7rem] uppercase tracking-[0.18em] text-white/95">
           © {new Date().getFullYear()} CENTURY 21 Argentina · HQ {BRAND.hq}
         </p>
       </div>
