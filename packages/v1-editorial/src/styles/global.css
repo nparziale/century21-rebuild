@@ -1,0 +1,66 @@
+@import 'tailwindcss';
+@import './tokens.css';
+
+@import '@fontsource-variable/fraunces/index.css';
+@import '@fontsource/jetbrains-mono/400.css';
+@import '@fontsource/jetbrains-mono/500.css';
+
+/*
+ * Satoshi is distributed by Fontshare. @fontsource doesn't carry it, so we
+ * load the Variable face from Fontshare's CDN with size-adjust declared to
+ * minimise CLS during font-swap.
+ */
+@font-face {
+  font-family: 'Satoshi';
+  src: url('https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&display=swap');
+  font-display: swap;
+}
+
+:root {
+  color-scheme: light;
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+html { scroll-behavior: smooth; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  overflow-x: clip;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+a { color: var(--color-accent-deep); text-underline-offset: 3px; }
+
+*:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 3px;
+}
+
+/* Skip link */
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: var(--space-2);
+  background: var(--color-ink);
+  color: var(--color-bg);
+  padding: var(--space-2) var(--space-4);
+  border-radius: 2px;
+}
+.skip-link:focus { left: var(--space-4); }

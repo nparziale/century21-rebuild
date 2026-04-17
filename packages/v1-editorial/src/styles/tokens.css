@@ -1,0 +1,56 @@
+/**
+ * V1 — Editorial Pampas design tokens.
+ * Authority: PLAN.md § "V1 — Editorial Pampas: detailed spec".
+ *
+ * Free-for-commercial type stack: Fraunces (variable) + Satoshi (Fontshare,
+ * loaded via @fontsource-variable where possible) + JetBrains Mono.
+ */
+@theme {
+  /* Brand + palette */
+  --color-bg: #faf7f2;           /* cream paper */
+  --color-surface: #f3eee5;
+  --color-ink: #1a1714;
+  --color-ink-mute: #5e574f;
+  --color-accent: #9e7b4d;        /* bronze, display only on cream */
+  --color-accent-deep: #3d4a3a;   /* olive, CTAs + links + focus */
+  --color-brand-gold: #beaf88;    /* logo lockup only, must be on ink/olive */
+  --color-divider: #e3dccf;
+  --color-focus: #3d4a3a;
+
+  /* Fonts */
+  --font-display: 'Fraunces Variable', 'Fraunces', Georgia, serif;
+  --font-body: 'Satoshi', 'Satoshi Variable', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'JetBrains Mono Variable', ui-monospace, monospace;
+
+  /* Type scale clamps (from V1 refined spec) */
+  --text-h1: clamp(2.5rem, 2rem + 4.2vw, 5.25rem);
+  --text-h2: clamp(2rem, 1.6rem + 2.8vw, 3.5rem);
+  --text-h3: clamp(1.5rem, 1.3rem + 1.2vw, 2.25rem);
+  --text-h4: clamp(1.25rem, 1.15rem + 0.6vw, 1.625rem);
+  --text-h5: 0.8125rem;
+  --text-label: 0.75rem;
+  --text-body-lg: clamp(1.125rem, 1.05rem + 0.35vw, 1.3125rem);
+  --text-body: 1rem;
+  --text-body-sm: 0.875rem;
+  --text-mono: 0.8125rem;
+
+  /* Spacing scale (rem) */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-24: 6rem;
+  --space-32: 8rem;
+  --space-48: 12rem;
+  --space-64: 16rem;
+
+  /* Motion */
+  --ease-editorial: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --dur-fast: 180ms;
+  --dur-med: 300ms;
+  --dur-slow: 400ms;
+}
