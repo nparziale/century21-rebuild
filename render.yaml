@@ -1,0 +1,39 @@
+services:
+  - type: web
+    name: century21-rebuild
+    runtime: static
+    branch: main
+    buildCommand: corepack enable && pnpm install --frozen-lockfile && pnpm build && pnpm build:showcase
+    staticPublishPath: dist-showcase
+    pullRequestPreviewsEnabled: false
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+    headers:
+      - path: /v1/assets/*
+        name: Cache-Control
+        value: public, max-age=31536000, immutable
+      - path: /v2/assets/*
+        name: Cache-Control
+        value: public, max-age=31536000, immutable
+      - path: /v3/assets/*
+        name: Cache-Control
+        value: public, max-age=31536000, immutable
+      - path: /index.html
+        name: Cache-Control
+        value: no-cache
+      - path: /v1/index.html
+        name: Cache-Control
+        value: no-cache
+      - path: /v2/index.html
+        name: Cache-Control
+        value: no-cache
+      - path: /v3/index.html
+        name: Cache-Control
+        value: no-cache
+      - path: /*
+        name: Referrer-Policy
+        value: strict-origin-when-cross-origin
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
