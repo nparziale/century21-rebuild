@@ -102,12 +102,9 @@ export function Hero() {
         <div className="relative z-10 mx-auto flex min-h-inherit max-w-[var(--container-max)] flex-col justify-end px-4 pb-10 pt-24 md:px-6 md:pb-16 md:pt-28 lg:min-h-[82vh] xl:min-h-[86vh]">
           <div className="mb-10 md:mb-14 flex items-end gap-6">
             <div className="max-w-5xl">
-              <p className="v2-mono text-[0.72rem] uppercase tracking-[0.24em] text-[var(--color-brand-gold)]">
-                Bienes raíces · Argentina
-              </p>
               <h1
                 ref={h1Ref}
-                className="v2-hero-h1 mt-6 text-[var(--text-h1)] leading-[0.9] tracking-[-0.02em]"
+                className="v2-hero-h1 text-[var(--text-h1)] leading-[0.9] tracking-[-0.02em]"
                 style={{ ['--hero-wght' as string]: 200 }}
               >
                 <span className="block">Encontrá</span>

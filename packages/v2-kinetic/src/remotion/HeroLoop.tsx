@@ -46,21 +46,47 @@ export const HeroLoop: React.FC = () => {
 
         const start = slot * slotDur;
         const end = start + slotDur;
+        const isFirst = slot === 0;
+        const isLast = slot === slotCount - 1;
 
-        // Opacity: fade-in across xfade, hold, fade-out across xfade. First
-        // and last slot clamp to edges so the composition starts/ends fully
-        // visible.
-        const opacity = interpolate(
-          frame,
-          [
-            start - XFADE_FRAMES,
-            start + XFADE_FRAMES,
-            end - XFADE_FRAMES,
-            end + XFADE_FRAMES,
-          ],
-          [0, 1, 1, 0],
-          { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' },
-        );
+        // Opacity curves.
+        //
+        // Frame 0 must render the first slot at opacity 1 (else we get a
+        // visible fade-up-from-dark on first paint — the flicker the user
+        // saw). Frame (durationInFrames - 1) must render the last slot at
+        // opacity 1 too (same photo as the first slot, scale 1.0). When
+        // <Player loop> resets to frame 0, both endpoints already show the
+        // same fully-opaque image, so the loop wraps with no visible pop.
+        //
+        // Middle slots keep the symmetric fade-in / fade-out envelope.
+        let opacity: number;
+        if (isFirst) {
+          opacity = interpolate(
+            frame,
+            [end - XFADE_FRAMES, end + XFADE_FRAMES],
+            [1, 0],
+            { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' },
+          );
+        } else if (isLast) {
+          opacity = interpolate(
+            frame,
+            [start - XFADE_FRAMES, start + XFADE_FRAMES],
+            [0, 1],
+            { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' },
+          );
+        } else {
+          opacity = interpolate(
+            frame,
+            [
+              start - XFADE_FRAMES,
+              start + XFADE_FRAMES,
+              end - XFADE_FRAMES,
+              end + XFADE_FRAMES,
+            ],
+            [0, 1, 1, 0],
+            { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' },
+          );
+        }
 
         // Slot 6 reverses the Ken-Burns (1.18 → 1.0) so its end-state matches
         // slot 1's start-state when the Player loops. A harder zoom reads as
