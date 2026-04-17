@@ -1,39 +1,70 @@
-/**
- * V3 — Raw Grid — Listing (286194 Ramos Mejía)
- *
- * STUB. Every one of the 15 required data-section keys is present. The build
- * subagent replaces each stub with the full component per the V3 refined spec
- * (poster layout with massive photo + Anton overlay, brutalist dl spec table,
- * flat edges, section-counter side-rail, number counter on price/m²).
- */
+import { MotionConfig } from 'motion/react';
+import {
+  LISTING_286194,
+  agentById,
+  officeById,
+} from '@c21/shared';
+import { Nav } from '../components/Nav.tsx';
+import { UtilityBar } from '../components/UtilityBar.tsx';
+import { Breadcrumb } from '../components/Breadcrumb.tsx';
+import { ListingTitle } from '../components/ListingTitle.tsx';
+import { Gallery } from '../components/Gallery.tsx';
+import { PriceBlock } from '../components/PriceBlock.tsx';
+import { QuickFacts } from '../components/QuickFacts.tsx';
+import { DescriptionBlock } from '../components/DescriptionBlock.tsx';
+import { Amenities } from '../components/Amenities.tsx';
+import { Neighborhood } from '../components/Neighborhood.tsx';
+import { MapBlock } from '../components/MapBlock.tsx';
+import { AgentCard } from '../components/AgentCard.tsx';
+import { ContactForm } from '../components/ContactForm.tsx';
+import { MortgageCalc } from '../components/MortgageCalc.tsx';
+import { SimilarGrid } from '../components/SimilarGrid.tsx';
+import { ShareActions } from '../components/ShareActions.tsx';
+import { Footer } from '../components/Footer.tsx';
+import { SectionCounter } from '../components/SectionCounter.tsx';
+
 export function ListingPage() {
+  const listing = LISTING_286194;
+  const agent = agentById(listing.agentId);
+  const office = officeById(listing.officeId);
+
   return (
-    <>
+    <MotionConfig reducedMotion="user">
       <a href="#main" className="skip-link">
         Saltar al contenido
       </a>
-      <header data-section="nav" hidden>
-        nav
-      </header>
+      <SectionCounter />
+      <UtilityBar />
+      <Nav />
       <main id="main">
-        <nav data-section="breadcrumb" aria-label="breadcrumb">
-          breadcrumb
-        </nav>
-        <section data-section="title">title</section>
-        <section data-section="gallery">gallery</section>
-        <section data-section="price">price</section>
-        <section data-section="quick-facts">quick-facts</section>
-        <section data-section="description">description</section>
-        <section data-section="amenities">amenities</section>
-        <section data-section="neighborhood">neighborhood</section>
-        <section data-section="map">map</section>
-        <aside data-section="agent-card">agent-card</aside>
-        <section data-section="contact-form">contact-form</section>
-        <section data-section="mortgage-calc">mortgage-calc</section>
-        <section data-section="similar">similar</section>
-        <aside data-section="share-actions">share-actions</aside>
+        <Breadcrumb listing={listing} />
+        <ListingTitle listing={listing} />
+        <Gallery photos={listing.gallery} listingId={listing.id} />
+        <PriceBlock listing={listing} />
+        <QuickFacts listing={listing} />
+        <DescriptionBlock listing={listing} agent={agent} />
+        <Amenities listing={listing} />
+        <Neighborhood listing={listing} />
+        <MapBlock listing={listing} />
+
+        <section>
+          <div className="mx-auto max-w-[1920px] px-4 md:px-6 xl:px-10 py-10 xl:py-14">
+            <div className="grid grid-cols-1 xl:grid-cols-12 gap-6 xl:gap-8">
+              <div className="xl:col-span-8">
+                <ContactForm listing={listing} />
+              </div>
+              <div className="xl:col-span-4">
+                {agent && <AgentCard agent={agent} office={office} />}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <MortgageCalc listing={listing} />
+        <SimilarGrid />
+        <ShareActions listing={listing} />
       </main>
-      <footer data-section="footer">footer</footer>
-    </>
+      <Footer />
+    </MotionConfig>
   );
 }

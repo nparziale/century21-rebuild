@@ -49,4 +49,11 @@
   --ease-hard-land: cubic-bezier(0.2, 0.9, 0.1, 1);
   --dur-fast: 180ms;
   --dur-counter: 900ms;
+
+  /* Structural */
+  --rule: 1px;
+  --tap-min: 44px;
+  --nav-height-mobile: 56px;
+  --nav-height-desktop: 72px;
+  --utility-height: 32px;
 }
