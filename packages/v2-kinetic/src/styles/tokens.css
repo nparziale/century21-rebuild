@@ -52,4 +52,10 @@
   --dur-fast: 200ms;
   --dur-med: 300ms;
   --dur-slow: 500ms;
+
+  /* Layout */
+  --container-max: 1440px;
+  --gutter-sm: 1rem;
+  --gutter-md: 1.5rem;
+  --gutter-lg: 2rem;
 }

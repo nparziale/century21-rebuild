@@ -1,33 +1,46 @@
+import { MotionRoot } from '../components/MotionRoot.tsx';
+import { UtilityBar } from '../components/UtilityBar.tsx';
+import { Nav } from '../components/Nav.tsx';
+import { Hero } from '../components/Hero.tsx';
+import { SearchWidget } from '../components/SearchWidget.tsx';
+import { FeaturedGrid } from '../components/FeaturedGrid.tsx';
+import { VendorCta } from '../components/VendorCta.tsx';
+import { BrandStory } from '../components/BrandStory.tsx';
+import { OfficeLocator } from '../components/OfficeLocator.tsx';
+import { FranchiseCta } from '../components/FranchiseCta.tsx';
+import { TestimonialsGrid } from '../components/TestimonialsGrid.tsx';
+import { BlogGrid } from '../components/BlogGrid.tsx';
+import { Newsletter } from '../components/Newsletter.tsx';
+import { Footer } from '../components/Footer.tsx';
+
 /**
  * V2 — Kinetic Marquee — Home
  *
- * STUB. Every one of the 13 required data-section keys is present. The build
- * subagent replaces each stub with the full component per the V2 refined spec
- * (Switzer weight-morph hero, pre-rendered MP4 hero b-roll, horizontal
- * marquee of fresh listings, interactive Argentina SVG map, single-accent
- * rule warm/cool zones).
+ * 13 required data-section keys:
+ *   utility-bar · nav · hero · search · featured · vendor-cta · brand-story ·
+ *   office-locator · franchise-cta · testimonials · blog · newsletter · footer
  */
 export function HomePage() {
   return (
-    <>
+    <MotionRoot>
       <a href="#main" className="skip-link">
         Saltar al contenido
       </a>
-      <section data-section="utility-bar">utility-bar</section>
-      <header data-section="nav">nav</header>
+      <UtilityBar />
+      <Nav tone="ink" />
       <main id="main">
-        <section data-section="hero">hero</section>
-        <section data-section="search">search</section>
-        <section data-section="featured">featured</section>
-        <section data-section="vendor-cta">vendor-cta</section>
-        <section data-section="brand-story">brand-story</section>
-        <section data-section="office-locator">office-locator</section>
-        <section data-section="franchise-cta">franchise-cta</section>
-        <section data-section="testimonials">testimonials</section>
-        <section data-section="blog">blog</section>
-        <section data-section="newsletter">newsletter</section>
+        <Hero />
+        <SearchWidget />
+        <FeaturedGrid />
+        <VendorCta />
+        <BrandStory />
+        <OfficeLocator />
+        <FranchiseCta />
+        <TestimonialsGrid />
+        <BlogGrid />
+        <Newsletter />
       </main>
-      <footer data-section="footer">footer</footer>
-    </>
+      <Footer />
+    </MotionRoot>
   );
 }
