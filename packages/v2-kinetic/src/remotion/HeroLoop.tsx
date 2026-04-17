@@ -19,14 +19,14 @@ import { unsplashUrl } from '@c21/shared';
  */
 
 const STILLS = [
-  { id: '1564013799919-ab600027ffc6', driftX: 0.02, driftY: 0.02 },  // exterior front
-  { id: '1600585154340-be6161a56a0c', driftX: -0.03, driftY: 0 },     // living room
-  { id: '1556912173-3bb406ef7e77', driftX: 0, driftY: -0.03 },        // kitchen
-  { id: '1600596542815-ffad4c1539a9', driftX: 0.03, driftY: 0.02 },   // pool + deck
-  { id: '1613490493576-7fde63acd811', driftX: -0.02, driftY: -0.02 }, // exterior dusk
+  { id: '1564013799919-ab600027ffc6', driftX: 0.04, driftY: 0.03 },  // exterior front
+  { id: '1600585154340-be6161a56a0c', driftX: -0.05, driftY: 0 },     // living room
+  { id: '1556912173-3bb406ef7e77', driftX: 0, driftY: -0.05 },        // kitchen
+  { id: '1600596542815-ffad4c1539a9', driftX: 0.05, driftY: 0.03 },   // pool + deck
+  { id: '1613490493576-7fde63acd811', driftX: -0.04, driftY: -0.03 }, // exterior dusk
 ];
 
-const XFADE_FRAMES = 14; // ~0.58 s at 24 fps
+const XFADE_FRAMES = 30; // 1.25 s at 24 fps — slow, editorial crossfade
 
 export const HeroLoop: React.FC = () => {
   const frame = useCurrentFrame();
@@ -62,15 +62,17 @@ export const HeroLoop: React.FC = () => {
           { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' },
         );
 
-        // Slot 6 reverses the Ken-Burns (1.12 → 1.0) so its end-state matches
-        // slot 1's start-state when the Player loops.
+        // Slot 6 reverses the Ken-Burns (1.18 → 1.0) so its end-state matches
+        // slot 1's start-state when the Player loops. A harder zoom reads as
+        // visible motion even on a dark-scrimmed hero where subtle drift gets
+        // lost.
         const isWrap = slot === STILLS.length;
         const scale = isWrap
-          ? interpolate(frame, [start, end], [1.1, 1.0], {
+          ? interpolate(frame, [start, end], [1.18, 1.0], {
               extrapolateLeft: 'clamp',
               extrapolateRight: 'clamp',
             })
-          : interpolate(frame, [start, end], [1.0, 1.1], {
+          : interpolate(frame, [start, end], [1.0, 1.18], {
               extrapolateLeft: 'clamp',
               extrapolateRight: 'clamp',
             });
@@ -79,8 +81,8 @@ export const HeroLoop: React.FC = () => {
           extrapolateLeft: 'clamp',
           extrapolateRight: 'clamp',
         });
-        const translateX = (isWrap ? -still.driftX : still.driftX) * 40 * driftProgress;
-        const translateY = (isWrap ? -still.driftY : still.driftY) * 40 * driftProgress;
+        const translateX = (isWrap ? -still.driftX : still.driftX) * 80 * driftProgress;
+        const translateY = (isWrap ? -still.driftY : still.driftY) * 80 * driftProgress;
 
         return (
           <AbsoluteFill
@@ -116,9 +118,16 @@ export const HeroLoop: React.FC = () => {
   );
 };
 
-/** Exported metadata for the <Player /> mount in Hero.tsx. */
+/**
+ * Exported metadata for the <Player /> mount in Hero.tsx.
+ *
+ * 432 frames at 24 fps = 18-second loop. Six slots × 72 frames each (3 s per
+ * slot); with a 30-frame (~1.25 s) crossfade the hold on each still is
+ * ~1.75 s visible plus ~1.25 s of graceful xfade. Deliberately slower than a
+ * typical ad video — the hero is ambient, not an attention grab.
+ */
 export const HERO_LOOP_CONFIG = {
-  durationInFrames: 192,
+  durationInFrames: 432,
   fps: 24,
   width: 1920,
   height: 1080,
