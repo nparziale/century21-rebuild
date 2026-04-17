@@ -99,7 +99,7 @@ export function Hero() {
           className="absolute inset-0 -z-10 will-change-transform"
           aria-hidden
           style={{
-            backgroundImage: `url('/hero/hero-poster.jpg.svg')`,
+            backgroundImage: `url('/hero/hero-poster.jpg')`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
           }}
@@ -113,13 +113,17 @@ export function Hero() {
               loop
               playsInline
               preload="metadata"
-              poster="/hero/hero-poster.jpg.svg"
+              poster="/hero/hero-poster.jpg"
               aria-label="Secuencia promocional de propiedades"
             >
-              <source src="/hero/hero-portrait.webm" type="video/webm" media="(max-width: 767px)" />
+              {/* MP4 H.264 ships at a smaller file size than our current
+                  VP9 WebM at visually-equivalent CRF, so MP4 is listed first
+                  and browsers pick it. WebM stays as a progressive enhancement
+                  for bandwidth-constrained clients that prefer VP9. */}
               <source src="/hero/hero-portrait.mp4" type="video/mp4" media="(max-width: 767px)" />
-              <source src="/hero/hero-landscape.webm" type="video/webm" media="(min-width: 768px)" />
+              <source src="/hero/hero-portrait.webm" type="video/webm" media="(max-width: 767px)" />
               <source src="/hero/hero-landscape.mp4" type="video/mp4" media="(min-width: 768px)" />
+              <source src="/hero/hero-landscape.webm" type="video/webm" media="(min-width: 768px)" />
               <track kind="descriptions" src="/hero/descriptions.vtt" srcLang="es" label="Descripciones" default />
             </video>
           )}

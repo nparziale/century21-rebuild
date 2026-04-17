@@ -264,21 +264,26 @@ footer a:focus-visible { color: var(--color-brand-gold); }
   color: var(--color-accent);
 }
 
-/* Horizontal snap track (featured, similar, testimonials on mobile) */
-.snap-track {
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: 85vw;
-  gap: 1rem;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scroll-padding-inline: var(--container-pad);
-  padding-inline: var(--container-pad);
-  padding-bottom: 1rem;
-  scrollbar-width: none;
+/* Horizontal snap track (featured, similar, testimonials on mobile).
+ * Wrapped in @layer components so Tailwind's utilities (e.g. `lg:hidden`,
+ * `md:hidden`) still win — otherwise `display: grid` here overrides the
+ * hide utilities and the track renders at desktop widths too. */
+@layer components {
+  .snap-track {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 85vw;
+    gap: 1rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--container-pad);
+    padding-inline: var(--container-pad);
+    padding-bottom: 1rem;
+    scrollbar-width: none;
+  }
+  .snap-track::-webkit-scrollbar { display: none; }
+  .snap-track > * { scroll-snap-align: start; }
 }
-.snap-track::-webkit-scrollbar { display: none; }
-.snap-track > * { scroll-snap-align: start; }
 
 /* Lightbox modal */
 .lightbox {
