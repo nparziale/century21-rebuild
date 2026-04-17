@@ -60,13 +60,12 @@ export function FeaturedGrid() {
           </p>
         </div>
 
-        {/* Desktop: 3-up editorial row. Middle card drops 48 px below for the
-            print-style uneven baseline. Only one row — no second-row repeat of
-            the offset (that stair-steps). Remaining cards live in a plainer
-            2-col block below so the page shows 6+ without feeling crowded. */}
+        {/* Desktop: 3-up editorial row, all cards top-aligned. Remaining cards
+            live in a plainer 3-col block below so the page shows 6+ without
+            feeling crowded. */}
         <ul className="hidden grid-cols-3 gap-x-8 gap-y-16 lg:grid">
-          {list.slice(0, 3).map((l, i) => (
-            <li key={l.id} className={i === 1 ? 'lg:mt-12' : ''}>
+          {list.slice(0, 3).map((l) => (
+            <li key={l.id}>
               <Card l={l} featured />
             </li>
           ))}

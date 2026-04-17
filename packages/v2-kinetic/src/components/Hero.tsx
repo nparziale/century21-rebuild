@@ -1,25 +1,36 @@
-import { useEffect, useRef } from 'react';
+import { Suspense, lazy, useEffect, useRef } from 'react';
 import { motion } from 'motion/react';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { unsplashUrl } from '@c21/shared';
 import { useReducedMotion, useDataSaver } from '../lib/useReducedMotion.ts';
 import { useScrollProgress } from '../lib/useScrollProgress.ts';
+
+// @remotion/player is ~200 KB gzipped. Code-split it so the rest of the hero
+// (including the poster-only path) ships without paying for it. The plate
+// reserves the space via backgroundImage so there's no CLS when Player mounts.
+const HeroPlayer = lazy(() => import('./HeroPlayer.tsx').then((m) => ({ default: m.HeroPlayer })));
+
+// LCP still — same ID Remotion uses for clip 1. Loaded via <link rel="preload"
+// as image> indirectly by being the plate background, so first paint is fast.
+const HERO_LCP_ID = '1564013799919-ab600027ffc6';
 
 /**
  * V2 hero. Switzer H1 morphs wght 200→800 on scroll 0..0.35; on ≥1280 px also
  * tracks scroll-velocity for a 180 ms spring overshoot to 860. Reduced-motion
- * → static 600 and poster-only (no <video>). Data Saver → poster-only.
+ * → static 600 and poster-only. Data Saver → poster-only.
  *
- * Referenced MP4 paths are not required to exist; the poster remains visible.
+ * The animated background is a runtime Remotion composition (HeroLoop),
+ * mounted via <Player /> in HeroPlayer.tsx. No MP4/WebM download — Remotion
+ * renders the 5-still Ken-Burns loop live in the browser.
  */
 export function Hero() {
   const reduced = useReducedMotion();
   const saver = useDataSaver();
-  const shouldVideo = !reduced && !saver;
+  const shouldComposition = !reduced && !saver;
 
   const heroRef = useRef<HTMLElement>(null);
   const h1Ref = useRef<HTMLHeadingElement>(null);
-  const videoRef = useRef<HTMLVideoElement>(null);
   const plateRef = useRef<HTMLDivElement>(null);
   const { ref: progRef, progress, velocity } = useScrollProgress<HTMLDivElement>();
 
@@ -30,7 +41,7 @@ export function Hero() {
     if (reduced) {
       wght = 600;
     } else {
-      const base = 200 + Math.min(progress, 0.35) / 0.35 * (800 - 200);
+      const base = 200 + (Math.min(progress, 0.35) / 0.35) * (800 - 200);
       const isXL = window.matchMedia('(min-width: 1280px)').matches;
       const overshoot = isXL ? Math.min(60, Math.max(0, velocity * 6)) : 0;
       wght = Math.min(860, base + overshoot);
@@ -55,35 +66,7 @@ export function Hero() {
     return () => hero.removeEventListener('pointermove', onMove);
   }, [reduced]);
 
-  // Video play/pause on viewport + preload swap
-  useEffect(() => {
-    const el = videoRef.current;
-    if (!el) return;
-    const io = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) {
-            el.preload = 'auto';
-            void el.play().catch(() => {
-              /* autoplay may fail; poster still shows */
-            });
-          } else {
-            el.pause();
-          }
-        }
-      },
-      { threshold: 0.25 },
-    );
-    io.observe(el);
-    return () => io.disconnect();
-  }, [shouldVideo]);
-
-  const handlePauseVideo = () => {
-    const el = videoRef.current;
-    if (!el) return;
-    if (el.paused) void el.play().catch(() => {});
-    else el.pause();
-  };
+  const posterUrl = unsplashUrl(HERO_LCP_ID, 2400);
 
   return (
     <section
@@ -92,42 +75,27 @@ export function Hero() {
       className="zone-ink relative isolate overflow-hidden"
       aria-label="Presentación de CENTURY 21 Argentina"
     >
-      <div ref={progRef} className="relative min-h-[640px] md:min-h-[720px] lg:min-h-[82vh] xl:min-h-[86vh]">
-        {/* Poster / video plate with parallax */}
+      <div
+        ref={progRef}
+        className="relative min-h-[640px] md:min-h-[720px] lg:min-h-[82vh] xl:min-h-[86vh]"
+      >
+        {/* Plate — poster background (LCP) + Remotion Player layered on top. */}
         <div
           ref={plateRef}
           className="absolute inset-0 -z-10 will-change-transform"
           aria-hidden
           style={{
-            backgroundImage: `url('/hero/hero-poster.jpg')`,
+            backgroundImage: `url('${posterUrl}')`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
           }}
         >
-          {shouldVideo && (
-            <video
-              ref={videoRef}
-              className="h-full w-full object-cover opacity-95"
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="metadata"
-              poster="/hero/hero-poster.jpg"
-              aria-label="Secuencia promocional de propiedades"
-            >
-              {/* MP4 H.264 ships at a smaller file size than our current
-                  VP9 WebM at visually-equivalent CRF, so MP4 is listed first
-                  and browsers pick it. WebM stays as a progressive enhancement
-                  for bandwidth-constrained clients that prefer VP9. */}
-              <source src="/hero/hero-portrait.mp4" type="video/mp4" media="(max-width: 767px)" />
-              <source src="/hero/hero-portrait.webm" type="video/webm" media="(max-width: 767px)" />
-              <source src="/hero/hero-landscape.mp4" type="video/mp4" media="(min-width: 768px)" />
-              <source src="/hero/hero-landscape.webm" type="video/webm" media="(min-width: 768px)" />
-              <track kind="descriptions" src="/hero/descriptions.vtt" srcLang="es" label="Descripciones" default />
-            </video>
-          )}
-          {/* Scrim */}
+          {shouldComposition ? (
+            <Suspense fallback={null}>
+              <HeroPlayer />
+            </Suspense>
+          ) : null}
+          {/* Scrim keeps overlaid H1 + stat block readable over any still. */}
           <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/50 to-black/80" />
         </div>
 
@@ -165,16 +133,6 @@ export function Hero() {
             >
               Buscar por ubicación
             </a>
-            {shouldVideo && (
-              <button
-                type="button"
-                onClick={handlePauseVideo}
-                className="v2-tap inline-flex items-center justify-center rounded-full border border-white/30 px-4 py-3 text-[0.8rem] text-white/95 hover:bg-white/5"
-                aria-label="Pausar o reanudar vídeo del hero"
-              >
-                Pausar vídeo
-              </button>
-            )}
           </div>
 
           <motion.div

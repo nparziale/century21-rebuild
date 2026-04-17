@@ -73,9 +73,9 @@ export function ShareActions({ listingId, title }: { listingId: string; title: s
     <aside
       data-section="share-actions"
       aria-label="Acciones de la propiedad"
-      className="fixed inset-x-0 bottom-0 z-30 border-t border-[color:var(--color-divider)] bg-[color:var(--color-bg)]/95 backdrop-blur lg:static lg:inset-auto lg:border-0 lg:bg-transparent lg:backdrop-blur-none"
+      className="fixed inset-x-0 bottom-0 z-30 border-t border-[color:var(--color-divider)] bg-[color:var(--color-bg)]/95 backdrop-blur lg:static lg:inset-auto lg:bg-transparent lg:backdrop-blur-none"
     >
-      <ul className="container-ed flex items-center justify-around gap-2 py-2 lg:mx-0 lg:flex-col lg:items-start lg:justify-start lg:gap-3 lg:px-0">
+      <ul className="container-ed flex items-center justify-around gap-2 py-2 lg:justify-start lg:gap-8 lg:py-6">
         {actions.map((a) => {
           const content = (
             <>

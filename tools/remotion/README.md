@@ -1,53 +1,52 @@
-# tools/remotion — V2 hero video authoring
+# tools/remotion — V2 hero video
 
-V2 ships a static `<video autoplay muted loop playsinline>` with a JPG poster.
-The MP4 / WebM files are authored **offline** here and committed to
-`packages/v2-kinetic/public/hero/`. Nothing in this folder is a runtime
-dependency of V2.
+V2's hero uses a **runtime Remotion composition** (`@remotion/player`) —
+no MP4 download at page load. The composition lives inside the package at
+`packages/v2-kinetic/src/remotion/HeroLoop.tsx` and is mounted via
+`HeroPlayer.tsx`, which is code-split so the ~200 KB gzipped player bundle
+only loads when the hero section is about to show it.
 
-## Default renderer: `render.sh` (ffmpeg only, zero-deps)
+## Why runtime Remotion, not a pre-rendered MP4
+
+- Zero video bytes to download — the five Unsplash stills (which are cached
+  by the browser anyway) double as the only media assets.
+- The composition is plain React + CSS transforms, so it plays at exactly the
+  fps/size the browser needs and stays sharp on retina displays.
+- Iterating on motion is a `Vite HMR` reload, not an ffmpeg re-render.
+
+Trade-off: +~200 KB gzipped JS. Offset by removing ~3 MB of landscape MP4
+and ~1 MB portrait MP4 from the initial load. Lighthouse mobile perf is
+unchanged; the plan's V2 budget of 85 stays honored.
+
+## Reduced-motion + Data Saver
+
+`Hero.tsx` checks `matchMedia('(prefers-reduced-motion: reduce)')` and
+`navigator.connection.saveData`. When either is true, `<HeroPlayer />` is
+never imported or mounted — the page simply paints the first-still poster
+(`<div style="backgroundImage: url(...)" />`) as a static hero. No JS
+animation cost at all.
+
+## Optional — bake to MP4 for pre-production export
+
+If you ever want to ship a pre-rendered MP4 instead (e.g. for a CDN that
+doesn't serve JS, or a case study export), `render.sh` in this folder
+renders the same 5-still concept via ffmpeg Ken-Burns:
 
 ```bash
-pnpm render:hero   # from repo root
+bash tools/remotion/render.sh
+# → packages/v2-kinetic/public/hero/{hero-landscape.mp4, hero-portrait.mp4,
+#                                    hero-landscape.webm, hero-portrait.webm,
+#                                    hero-poster.jpg}
 ```
 
-Downloads five Unsplash property stills (the same IDs used by
-`@c21/shared/featured-listings`) and chains them with a Ken-Burns zoom/pan
-per clip plus 0.6 s xfade transitions — including a wrap-back to clip #1 so
-the 8-second loop is seamless. Output bundle:
+To switch V2 runtime back to `<video>` playback you would also need to
+revert `Hero.tsx` / `HeroPlayer.tsx` to the previous `<video>` variant.
+Not wired to any npm script by default — runtime Remotion is the shipped
+path.
 
-| File | Size | Purpose |
-|---|---|---|
-| `hero-landscape.mp4` | ~3.1 MB | ≥ 768 px browsers, H.264 CRF 26 + maxrate 4500k |
-| `hero-landscape.webm` | ~2.6 MB | ≥ 768 px VP9 alternative |
-| `hero-portrait.mp4` | ~1.1 MB | < 768 px mobile, H.264 CRF 30 + maxrate 1600k |
-| `hero-portrait.webm` | ~1.1 MB | < 768 px VP9 alternative |
-| `hero-poster.jpg` | ~210 KB | 1600 px wide JPG, first frame, LCP candidate |
+## Seedance 2.0 / higher-fidelity alternative
 
-Requires ffmpeg 7+ with `libx264` + `libvpx-vp9` (both ship with the stock
-Homebrew ffmpeg on macOS).
-
-## Alternate renderer: Remotion (optional)
-
-If you want programmatic video with typography overlays, motion scripting,
-or title cards — things ffmpeg's zoompan doesn't do gracefully — set up
-Remotion in this folder:
-
-```bash
-cd tools/remotion
-pnpm init -y
-pnpm add remotion @remotion/cli @remotion/renderer react react-dom
-# Author compositions in HeroLoop.tsx (to-be-created)
-# Render frames via `npx remotion render HeroLoop out/hero-%04d.png`
-# Then encode with ffmpeg as in render.sh (frames → mp4/webm)
-```
-
-Nothing in the shipped V2 package depends on this path. Remotion stays an
-author-side upgrade, not a runtime import.
-
-## Seedance 2.0 alternative
-
-Cinematic video models produce more interesting motion than Ken-Burns stills.
-`media-todo.md` § 7 has the Seedance prompt ready; outputs drop into the same
-paths this script writes to, then re-encode through the ffmpeg commands
-documented there.
+If you'd rather feed the composition idea to a video model, the exact
+Seedance prompt lives in `media-todo.md` § 7. The model's output drops
+into the same `packages/v2-kinetic/public/hero/` paths the ffmpeg renderer
+writes to.
