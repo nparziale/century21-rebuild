@@ -21,6 +21,8 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, '..');
 const SITE = resolve(ROOT, 'century21-rebuild');
 const OUT = resolve(SITE, 'dist-showcase');
+/** Root mirror for hosts (e.g. Render) whose publish dir is still `dist-showcase`. */
+const OUT_MIRROR = resolve(ROOT, 'dist-showcase');
 
 const versions = [
   { id: 'v1', src: 'packages/v1-editorial/dist', port: 5173 },
@@ -58,7 +60,11 @@ async function main() {
     console.log(`✓ showcase.html + showcase.css → century21-rebuild/dist-showcase/ (no showcase-assets dir found — run \`node scripts/showcase-assets.mjs\` to regenerate phone-frame screenshots)`);
   }
 
+  if (existsSync(OUT_MIRROR)) await rm(OUT_MIRROR, { recursive: true, force: true });
+  await cp(OUT, OUT_MIRROR, { recursive: true });
+
   console.log(`\nShowcase ready at ${OUT}`);
+  console.log(`(also mirrored to ${OUT_MIRROR} for static hosts using that publish path)`);
   console.log(`Run: pnpm preview:showcase  (or serve century21-rebuild/dist-showcase/ with any static server)`);
 }
 

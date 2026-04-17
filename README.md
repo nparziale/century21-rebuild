@@ -15,6 +15,7 @@ century21-test/
 ├── century21-rebuild/
 │   ├── showcase.html / .css — side-by-side explainer (standalone, no framework)
 │   └── dist-showcase/       — built output (gitignored; produced by pnpm build:showcase)
+│                             (also mirrored to repo-root dist-showcase/ for Render)
 ├── media-todo.md            — nanobanana / Seedance prompts for real asset replacement
 ├── pnpm-workspace.yaml
 ├── package.json             — root orchestrator

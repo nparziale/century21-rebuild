@@ -1,6 +1,7 @@
 node_modules/
 dist/
 century21-rebuild/dist-showcase/
+dist-showcase/
 .DS_Store
 *.log
 .env
