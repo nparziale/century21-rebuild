@@ -9,6 +9,8 @@
       content="Propuesta de diseño para CENTURY 21 Argentina. Tres direcciones para modernizar la presencia web, aplicadas a la página principal y una ficha de propiedad. Mobile-first."
     />
     <!-- Preload heavy phone-frame screenshots so decode is ready before paint. -->
+    <link rel="preload" as="image" href="./showcase-assets/current-home-mobile-full.jpg" fetchpriority="high" />
+    <link rel="preload" as="image" href="./showcase-assets/current-listing-mobile-full.jpg" fetchpriority="high" />
     <link rel="preload" as="image" href="./showcase-assets/v1-home-mobile-full.jpg" fetchpriority="high" />
     <link rel="preload" as="image" href="./showcase-assets/v1-listing-mobile-full.jpg" fetchpriority="high" />
     <link rel="preload" as="image" href="./showcase-assets/v2-home-mobile-full.jpg" />
@@ -39,6 +41,47 @@
     </header>
 
     <main>
+      <section class="version current-site" id="current">
+        <div class="container">
+          <div class="version-header">
+            <span class="tag tag-current">Sitio actual · century21.com.ar</span>
+            <h2>Como se ven las páginas hoy.</h2>
+            <p class="version-sub">
+              Captura de referencia del sitio en producción —
+              <a href="https://century21.com.ar/" target="_blank" rel="noreferrer noopener">página principal</a>
+              y
+              <a href="https://century21.com.ar/propiedad/286194_casa-de-4-ambientes-en-venta-ramos-mejia-con-pileta-y-cochera" target="_blank" rel="noreferrer noopener">ficha 286194</a>
+              — en celular. Sirve como punto de partida para comparar con las
+              tres propuestas que siguen.
+            </p>
+          </div>
+
+          <div class="device-pair">
+            <figure class="device">
+              <div class="device-bezel">
+                <div class="device-screen">
+                  <img src="./showcase-assets/current-home-mobile-full.jpg" alt="Sitio actual — Página principal en celular" width="780" height="9322" decoding="async" fetchpriority="high" />
+                </div>
+              </div>
+              <figcaption>Página principal</figcaption>
+            </figure>
+            <figure class="device">
+              <div class="device-bezel">
+                <div class="device-screen">
+                  <img src="./showcase-assets/current-listing-mobile-full.jpg" alt="Sitio actual — Ficha de propiedad en celular" width="780" height="28076" decoding="async" fetchpriority="high" />
+                </div>
+              </div>
+              <figcaption>Ficha de propiedad</figcaption>
+            </figure>
+          </div>
+
+          <div class="actions">
+            <a class="btn btn-primary" href="https://century21.com.ar/" target="_blank" rel="noreferrer noopener">Abrir página principal</a>
+            <a class="btn btn-ghost" href="https://century21.com.ar/propiedad/286194_casa-de-4-ambientes-en-venta-ramos-mejia-con-pileta-y-cochera" target="_blank" rel="noreferrer noopener">Abrir ficha de propiedad</a>
+          </div>
+        </div>
+      </section>
+
       <section class="version" id="v1">
         <div class="container">
           <div class="version-header">
@@ -98,8 +141,8 @@
           </div>
 
           <div class="actions">
-            <a class="btn btn-primary" href="./v1/" data-c21-app="v1" data-c21-path="/">Ver página principal en vivo</a>
-            <a class="btn btn-ghost" href="./v1/propiedad/286194" data-c21-app="v1" data-c21-path="/propiedad/286194">Ver ficha de propiedad</a>
+            <a class="btn btn-primary" href="./v1/" target="_blank" rel="noreferrer noopener" data-c21-app="v1" data-c21-path="/">Ver página principal en vivo</a>
+            <a class="btn btn-ghost" href="./v1/propiedad/286194/" target="_blank" rel="noreferrer noopener" data-c21-app="v1" data-c21-path="/propiedad/286194/">Ver ficha de propiedad</a>
           </div>
         </div>
       </section>
@@ -165,8 +208,8 @@
           </div>
 
           <div class="actions">
-            <a class="btn btn-primary" href="./v2/" data-c21-app="v2" data-c21-path="/">Ver página principal en vivo</a>
-            <a class="btn btn-ghost" href="./v2/propiedad/286194" data-c21-app="v2" data-c21-path="/propiedad/286194">Ver ficha de propiedad</a>
+            <a class="btn btn-primary" href="./v2/" target="_blank" rel="noreferrer noopener" data-c21-app="v2" data-c21-path="/">Ver página principal en vivo</a>
+            <a class="btn btn-ghost" href="./v2/propiedad/286194/" target="_blank" rel="noreferrer noopener" data-c21-app="v2" data-c21-path="/propiedad/286194/">Ver ficha de propiedad</a>
           </div>
         </div>
       </section>
@@ -233,8 +276,8 @@
           </div>
 
           <div class="actions">
-            <a class="btn btn-primary" href="./v3/" data-c21-app="v3" data-c21-path="/">Ver página principal en vivo</a>
-            <a class="btn btn-ghost" href="./v3/propiedad/286194" data-c21-app="v3" data-c21-path="/propiedad/286194">Ver ficha de propiedad</a>
+            <a class="btn btn-primary" href="./v3/" target="_blank" rel="noreferrer noopener" data-c21-app="v3" data-c21-path="/">Ver página principal en vivo</a>
+            <a class="btn btn-ghost" href="./v3/propiedad/286194/" target="_blank" rel="noreferrer noopener" data-c21-app="v3" data-c21-path="/propiedad/286194/">Ver ficha de propiedad</a>
           </div>
         </div>
       </section>
