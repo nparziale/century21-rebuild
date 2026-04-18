@@ -1,4 +1,5 @@
 export * from './types.ts';
+export { reactRouterBasename } from './routerBasename.ts';
 export * from './brand.ts';
 export * from './regions.ts';
 export { LISTING_286194, AMENITY_LABELS } from './data/listing-286194.ts';

@@ -16,7 +16,7 @@ const browser = await chromium.launch();
 for (const vp of VPS) {
   const ctx = await browser.newContext({ viewport: vp, deviceScaleFactor: 1, reducedMotion: 'reduce' });
   const page = await ctx.newPage();
-  await page.goto('http://127.0.0.1:8765/showcase.html', { waitUntil: 'networkidle', timeout: 30000 });
+  await page.goto('http://127.0.0.1:8765/century21-rebuild/showcase.html', { waitUntil: 'networkidle', timeout: 30000 });
   await page.waitForTimeout(700);
 
   // Settle any scroll-triggered work + load all images

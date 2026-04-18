@@ -1,3 +1,4 @@
+import { reactRouterBasename } from '@c21/shared';
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
@@ -9,7 +10,7 @@ if (!root) throw new Error('Missing #app mount');
 
 createRoot(root).render(
   <StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename={reactRouterBasename()}>
       <App />
     </BrowserRouter>
   </StrictMode>,

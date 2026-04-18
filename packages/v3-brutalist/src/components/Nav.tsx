@@ -36,7 +36,7 @@ export function Nav() {
       style={{ minHeight: 'var(--nav-height-mobile)' }}
     >
       <div className="mx-auto max-w-[1920px] px-4 md:px-6 xl:px-10 h-14 lg:h-[72px] flex items-center justify-between gap-6">
-        <Link to="/" aria-label="Century 21 Argentina — Inicio" className="flex items-center gap-2">
+        <Link to="/" aria-label="Century 21 Argentina — Inicio" className="flex items-center">
           <img
             src="/brand/c21-black.svg"
             alt=""
@@ -44,12 +44,6 @@ export function Nav() {
             height={32}
             className="h-8 w-auto"
           />
-          <span
-            className="hidden md:inline font-display text-lg tracking-widest"
-            style={{ fontFamily: 'var(--font-display)' }}
-          >
-            CENTURY 21
-          </span>
         </Link>
         <nav aria-label="Navegación principal" className="hidden lg:flex items-center gap-8">
           {NAV_PRIMARY.map((item) => {

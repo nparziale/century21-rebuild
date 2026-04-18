@@ -1,16 +1,19 @@
 #!/usr/bin/env node
 /**
  * Capture polished mobile + desktop screenshots for the client-proposal
- * showcase. Output goes to ./showcase-assets/ next to showcase.html.
+ * showcase. Output goes to century21-rebuild/showcase-assets/ next to showcase.html.
  *
  *   {v}-{home|listing}-mobile.png   — 390×first-2-screens (~1700px), retina
  *   {v}-{home|listing}-mobile-full.png — full-page mobile, retina
  */
 import { chromium } from '/Users/nparziale/repos/century21-test/node_modules/.pnpm/playwright@1.59.1/node_modules/playwright/index.mjs';
 import { mkdir, rm } from 'node:fs/promises';
-import { resolve } from 'node:path';
+import { dirname, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const OUT = resolve(process.cwd(), 'showcase-assets');
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const ROOT = resolve(__dirname, '..');
+const OUT = resolve(ROOT, 'century21-rebuild', 'showcase-assets');
 await rm(OUT, { recursive: true, force: true });
 await mkdir(OUT, { recursive: true });
 
