@@ -39,11 +39,13 @@ function resolveSafe(urlPath) {
 }
 
 /**
- * v2/v3 ship a single-page bundle; deep links like /v2/propiedad/:id need the
- * entry HTML. v1 prerenders listing HTML under propiedad/286194/ — no fallback.
+ * All three versions ship a React SPA. Deep links like /vN/propiedad/:id that
+ * don't have a prerendered HTML on disk (v1 only prerenders 286194) should fall
+ * back to /vN/index.html so React Router can handle the route client-side —
+ * matching the Render rewrite rules in render.yaml.
  */
 function spaIndexFallback(rel) {
-  const m = rel.match(/^(v[23])\/(?!assets\/).+/);
+  const m = rel.match(/^(v[123])\/(?!assets\/).+/);
   if (!m) return null;
   const abs = join(ROOT, m[1], 'index.html');
   return existsSync(abs) ? abs : null;
@@ -72,6 +74,15 @@ createServer((req, res) => {
   try {
     let stat = statSync(abs);
     if (stat.isDirectory()) {
+      // Redirect to trailing-slash form so relative asset URLs in index.html
+      // resolve against the directory, not a sibling file.
+      const urlPath = (req.url ?? '/').split('?')[0];
+      if (!urlPath.endsWith('/')) {
+        const qs = (req.url ?? '').slice(urlPath.length);
+        res.statusCode = 301;
+        res.setHeader('Location', urlPath + '/' + qs);
+        return res.end();
+      }
       abs = join(abs, 'index.html');
       stat = statSync(abs);
     }

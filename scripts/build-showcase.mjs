@@ -55,6 +55,15 @@ async function main() {
     console.log(`✓ showcase.html + showcase.css → century21-rebuild/dist-showcase/ (no showcase-assets dir found — run \`node scripts/showcase-assets.mjs\` to regenerate phone-frame screenshots)`);
   }
 
+  // Each version's Nav/Footer hardcodes root-absolute "/brand/c21-*.svg".
+  // When served under /v1/, /v2/, /v3/ the browser resolves those at the
+  // showcase root — so mirror the shared brand directory there.
+  const brandSrc = resolve(ROOT, 'packages/shared/public/brand');
+  if (existsSync(brandSrc)) {
+    await cp(brandSrc, resolve(OUT, 'brand'), { recursive: true });
+    console.log(`✓ shared brand assets → century21-rebuild/dist-showcase/brand/`);
+  }
+
   if (existsSync(OUT_MIRROR)) await rm(OUT_MIRROR, { recursive: true, force: true });
   await cp(OUT, OUT_MIRROR, { recursive: true });
 

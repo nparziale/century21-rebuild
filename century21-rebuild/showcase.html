@@ -9,6 +9,8 @@
       content="Propuesta de diseño para CENTURY 21 Argentina. Tres direcciones para modernizar la presencia web, aplicadas a la página principal y una ficha de propiedad. Mobile-first."
     />
     <!-- Preload heavy phone-frame screenshots so decode is ready before paint. -->
+    <link rel="preload" as="image" href="./showcase-assets/current-home-mobile-full.jpg" fetchpriority="high" />
+    <link rel="preload" as="image" href="./showcase-assets/current-listing-mobile-full.jpg" fetchpriority="high" />
     <link rel="preload" as="image" href="./showcase-assets/v1-home-mobile-full.jpg" fetchpriority="high" />
     <link rel="preload" as="image" href="./showcase-assets/v1-listing-mobile-full.jpg" fetchpriority="high" />
     <link rel="preload" as="image" href="./showcase-assets/v2-home-mobile-full.jpg" />
@@ -39,6 +41,47 @@
     </header>
 
     <main>
+      <section class="version current-site" id="current">
+        <div class="container">
+          <div class="version-header">
+            <span class="tag tag-current">Sitio actual · century21.com.ar</span>
+            <h2>Como se ven las páginas hoy.</h2>
+            <p class="version-sub">
+              Captura de referencia del sitio en producción —
+              <a href="https://century21.com.ar/" target="_blank" rel="noreferrer noopener">página principal</a>
+              y
+              <a href="https://century21.com.ar/propiedad/286194_casa-de-4-ambientes-en-venta-ramos-mejia-con-pileta-y-cochera" target="_blank" rel="noreferrer noopener">ficha 286194</a>
+              — en celular. Sirve como punto de partida para comparar con las
+              tres propuestas que siguen.
+            </p>
+          </div>
+
+          <div class="device-pair">
+            <figure class="device">
+              <div class="device-bezel">
+                <div class="device-screen">
+                  <img src="./showcase-assets/current-home-mobile-full.jpg" alt="Sitio actual — Página principal en celular" width="780" height="9322" decoding="async" fetchpriority="high" />
+                </div>
+              </div>
+              <figcaption>Página principal</figcaption>
+            </figure>
+            <figure class="device">
+              <div class="device-bezel">
+                <div class="device-screen">
+                  <img src="./showcase-assets/current-listing-mobile-full.jpg" alt="Sitio actual — Ficha de propiedad en celular" width="780" height="28076" decoding="async" fetchpriority="high" />
+                </div>
+              </div>
+              <figcaption>Ficha de propiedad</figcaption>
+            </figure>
+          </div>
+
+          <div class="actions">
+            <a class="btn btn-primary" href="https://century21.com.ar/" target="_blank" rel="noreferrer noopener">Abrir página principal</a>
+            <a class="btn btn-ghost" href="https://century21.com.ar/propiedad/286194_casa-de-4-ambientes-en-venta-ramos-mejia-con-pileta-y-cochera" target="_blank" rel="noreferrer noopener">Abrir ficha de propiedad</a>
+          </div>
+        </div>
+      </section>
+
       <section class="version" id="v1">
         <div class="container">
           <div class="version-header">
@@ -98,8 +141,8 @@
           </div>
 
           <div class="actions">
-            <a class="btn btn-primary" href="./v1/" data-c21-app="v1" data-c21-path="/">Ver página principal en vivo</a>
-            <a class="btn btn-ghost" href="./v1/propiedad/286194" data-c21-app="v1" data-c21-path="/propiedad/286194">Ver ficha de propiedad</a>
+            <a class="btn btn-primary" href="./v1/" target="_blank" rel="noreferrer noopener" data-c21-app="v1" data-c21-path="/">Ver página principal en vivo</a>
+            <a class="btn btn-ghost" href="./v1/propiedad/286194/" target="_blank" rel="noreferrer noopener" data-c21-app="v1" data-c21-path="/propiedad/286194/">Ver ficha de propiedad</a>
           </div>
         </div>
       </section>
@@ -165,8 +208,8 @@
           </div>
 
           <div class="actions">
-            <a class="btn btn-primary" href="./v2/" data-c21-app="v2" data-c21-path="/">Ver página principal en vivo</a>
-            <a class="btn btn-ghost" href="./v2/propiedad/286194" data-c21-app="v2" data-c21-path="/propiedad/286194">Ver ficha de propiedad</a>
+            <a class="btn btn-primary" href="./v2/" target="_blank" rel="noreferrer noopener" data-c21-app="v2" data-c21-path="/">Ver página principal en vivo</a>
+            <a class="btn btn-ghost" href="./v2/propiedad/286194/" target="_blank" rel="noreferrer noopener" data-c21-app="v2" data-c21-path="/propiedad/286194/">Ver ficha de propiedad</a>
           </div>
         </div>
       </section>
@@ -233,8 +276,8 @@
           </div>
 
           <div class="actions">
-            <a class="btn btn-primary" href="./v3/" data-c21-app="v3" data-c21-path="/">Ver página principal en vivo</a>
-            <a class="btn btn-ghost" href="./v3/propiedad/286194" data-c21-app="v3" data-c21-path="/propiedad/286194">Ver ficha de propiedad</a>
+            <a class="btn btn-primary" href="./v3/" target="_blank" rel="noreferrer noopener" data-c21-app="v3" data-c21-path="/">Ver página principal en vivo</a>
+            <a class="btn btn-ghost" href="./v3/propiedad/286194/" target="_blank" rel="noreferrer noopener" data-c21-app="v3" data-c21-path="/propiedad/286194/">Ver ficha de propiedad</a>
           </div>
         </div>
       </section>
@@ -282,7 +325,7 @@
           </div>
 
           <p class="seo-table-mobile-hint" aria-hidden="true">
-            Cada fila es una tarjeta: tema arriba; Sitio actual y Nueva versión, lado a lado; notas debajo.
+            Cada fila es una tarjeta: tema arriba; Sitio actual y Nueva versión, lado a lado.
           </p>
           <div class="seo-table-wrap" tabindex="0" role="region" aria-label="Tabla comparativa SEO">
             <table class="seo-table">
@@ -291,7 +334,6 @@
                   <th scope="col">Tema</th>
                   <th scope="col">Sitio actual</th>
                   <th scope="col">Nueva versión</th>
-                  <th scope="col">Notas</th>
                 </tr>
               </thead>
               <tbody>
@@ -302,7 +344,6 @@
                     ✅ <code>name="description"</code> válido en cabecera, texto recortado para snippet; mismo contenido en el HTML
                     prerenderizado y sincronizado al navegar (<code>useRouteHead</code> / <code>applyHead</code>).
                   </td>
-                  <td data-label="Notas">Nueva versión: descripción recortada a longitud razonable para snippet.</td>
                 </tr>
                 <tr>
                   <th scope="row">Open Graph + Twitter (home)</th>
@@ -311,7 +352,6 @@
                     ✅ Meta Open Graph y Twitter en <code>document.head</code> (tipo, título, descripción, URL, <code>og:locale</code>,
                     <code>twitter:card</code>); también inyectadas en el HTML estático del build.
                   </td>
-                  <td data-label="Notas">Nueva versión: título, descripción, URL, tipo, <code>og:locale</code>; Twitter card resumida.</td>
                 </tr>
                 <tr>
                   <th scope="row">Open Graph + Twitter (ficha)</th>
@@ -320,7 +360,6 @@
                     ✅ OG con descripción breve, título en casing legible, <code>og:image</code> en HTTPS y
                     <code>og:image:secure_url</code> (primera foto de la galería).
                   </td>
-                  <td data-label="Notas">Nueva versión: OG más corto; imagen HTTPS (Unsplash); <code>og:image:secure_url</code>.</td>
                 </tr>
                 <tr>
                   <th scope="row">JSON-LD</th>
@@ -329,7 +368,6 @@
                     ✅ JSON-LD en <code>&lt;script type="application/ld+json"&gt;</code>: <code>RealEstateAgent</code> + <code>WebSite</code>
                     (home) y <code>RealEstateListing</code> + <code>Offer</code> (ficha), generados desde los mismos datos que la UI.
                   </td>
-                  <td data-label="Notas">Nueva versión: <code>RealEstateAgent</code> + <code>WebSite</code> (home); <code>RealEstateListing</code> + <code>Offer</code> (ficha).</td>
                 </tr>
                 <tr>
                   <th scope="row"><code>link rel="canonical"</code></th>
@@ -338,7 +376,6 @@
                     ✅ Un solo <code>link rel="canonical"</code> por URL; href absoluto usando <code>VITE_CANONICAL_BASE_URL</code> en build
                     y la misma base al sincronizar la cabecera en el cliente.
                   </td>
-                  <td data-label="Notas">URLs absolutas vía variable de entorno <code>VITE_CANONICAL_BASE_URL</code> en build.</td>
                 </tr>
                 <tr>
                   <th scope="row"><code>lang</code> en <code>&lt;html&gt;</code></th>
@@ -346,7 +383,6 @@
                   <td data-label="Nueva versión">
                     ✅ <code>&lt;html lang="es-AR"&gt;</code> fijado en <code>index.html</code> y coherente en el HTML prerenderizado.
                   </td>
-                  <td data-label="Notas">Alineado con el mercado argentino.</td>
                 </tr>
                 <tr>
                   <th scope="row">Meta <code>keywords</code> / meta redundante</th>
@@ -354,7 +390,6 @@
                   <td data-label="Nueva versión">
                     ✅ Sin meta <code>keywords</code>; un único <code>&lt;title&gt;</code> (sin <code>name="title"</code> redundante).
                   </td>
-                  <td data-label="Notas">Corregido: sin meta <code>keywords</code> ni <code>name="title"</code> duplicado.</td>
                 </tr>
                 <tr>
                   <th scope="row"><code>sitemap.xml</code> / <code>robots.txt</code></th>
@@ -363,7 +398,6 @@
                     ✅ <code>robots.txt</code> y <code>sitemap.xml</code> generados en <code>dist/</code> al final del build (script de prerender),
                     con URL base acorde a <code>VITE_CANONICAL_BASE_URL</code>.
                   </td>
-                  <td data-label="Notas">El sitemap usa la base canónica del build; conviene alinear con el dominio real en CI.</td>
                 </tr>
                 <tr>
                   <th scope="row">HTML inicial sin ejecutar JS</th>
@@ -372,10 +406,6 @@
                     ✅ Tras <code>vite build</code>, el script de prerender reemplaza <code>&lt;!-- c21-seo-inject --&gt;</code> en
                     <code>index.html</code> y escribe <code>propiedad/286194/index.html</code> con la misma cabecera SEO; en runtime
                     <code>useRouteHead</code> mantiene la cabecera al cambiar de ruta (SPA).
-                  </td>
-                  <td data-label="Notas">
-                    Tras <code>vite build</code>, script que inyecta SEO en <code>index.html</code> y en
-                    <code>propiedad/286194/index.html</code>. La app sigue siendo SPA en runtime.
                   </td>
                 </tr>
               </tbody>
