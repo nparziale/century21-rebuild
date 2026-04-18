@@ -7,5 +7,13 @@
       "Bash(git add *)",
       "Bash(git commit *)"
     ]
+  },
+  "sandbox": {
+    "network": {
+      "allowedDomains": [
+        "century21.com.ar",
+        "*.century21.com.ar"
+      ]
+    }
   }
 }

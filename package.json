@@ -24,6 +24,8 @@
     "verify:report": "pnpm --filter @c21/verify verify:report"
   },
   "devDependencies": {
+    "playwright": "^1.59.1",
+    "sharp": "^0.34.5",
     "typescript": "^5.7.2"
   }
 }

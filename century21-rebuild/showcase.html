@@ -9,8 +9,10 @@
       content="Propuesta de diseño para CENTURY 21 Argentina. Tres direcciones para modernizar la presencia web, aplicadas a la página principal y una ficha de propiedad. Mobile-first."
     />
     <!-- Preload heavy phone-frame screenshots so decode is ready before paint. -->
-    <link rel="preload" as="image" href="./showcase-assets/v1-home-mobile-full.jpg" fetchpriority="high" />
-    <link rel="preload" as="image" href="./showcase-assets/v1-listing-mobile-full.jpg" fetchpriority="high" />
+    <link rel="preload" as="image" href="./showcase-assets/actual-home-mobile-full.jpg" fetchpriority="high" />
+    <link rel="preload" as="image" href="./showcase-assets/actual-listing-mobile-full.jpg" fetchpriority="high" />
+    <link rel="preload" as="image" href="./showcase-assets/v1-home-mobile-full.jpg" />
+    <link rel="preload" as="image" href="./showcase-assets/v1-listing-mobile-full.jpg" />
     <link rel="preload" as="image" href="./showcase-assets/v2-home-mobile-full.jpg" />
     <link rel="preload" as="image" href="./showcase-assets/v2-listing-mobile-full.jpg" />
     <link rel="preload" as="image" href="./showcase-assets/v3-home-mobile-full.jpg" />
@@ -39,6 +41,73 @@
     </header>
 
     <main>
+      <section class="version" id="actual">
+        <div class="container">
+          <div class="version-header">
+            <span class="tag tag-actual">Versión actual · century21.com.ar</span>
+            <h2>El punto de partida.</h2>
+            <p class="version-sub">
+              La página principal y la ficha de propiedad 286194 tal como se ven
+              hoy en el sitio público, capturadas en celular. Es la referencia
+              que reconstruimos — abajo, tres direcciones distintas para
+              actualizarla.
+            </p>
+          </div>
+
+          <div class="device-pair">
+            <figure class="device">
+              <div class="device-bezel">
+                <div class="device-screen">
+                  <img src="./showcase-assets/actual-home-mobile-full.jpg" alt="Versión actual — Página principal en celular" decoding="async" fetchpriority="high" />
+                </div>
+              </div>
+              <figcaption>Página principal</figcaption>
+            </figure>
+            <figure class="device">
+              <div class="device-bezel">
+                <div class="device-screen">
+                  <img src="./showcase-assets/actual-listing-mobile-full.jpg" alt="Versión actual — Ficha de propiedad en celular" decoding="async" fetchpriority="high" />
+                </div>
+              </div>
+              <figcaption>Ficha de propiedad</figcaption>
+            </figure>
+          </div>
+
+          <div class="rationale">
+            <article>
+              <h3>La home hoy</h3>
+              <p>
+                Buscador arriba, grillas de listados y módulos verticales. Mucha
+                densidad de oferta desde el primer scroll, sin una jerarquía
+                editorial clara que distinga la marca del resto de los portales.
+              </p>
+            </article>
+            <article>
+              <h3>La ficha hoy</h3>
+              <p>
+                Galería, datos y contacto resueltos con los patrones clásicos
+                del sector. Cumple, pero el tono visual — tipografía, paleta,
+                ritmo — es el mismo que se ve en cualquier clasificado.
+              </p>
+            </article>
+            <article>
+              <h3>Por qué rediseñar</h3>
+              <p>
+                Las tres propuestas que siguen toman el <em>mismo contenido</em>
+                — la misma home, la misma propiedad 286194 — y lo llevan a
+                tres voces visuales distintas. Ninguna inventa datos; todas
+                reordenan el punto de partida.
+              </p>
+            </article>
+          </div>
+
+          <div class="actions">
+            <a class="btn btn-primary" href="https://century21.com.ar/" target="_blank" rel="noreferrer noopener">Abrir sitio actual</a>
+            <a class="btn btn-ghost" href="https://century21.com.ar/propiedad/286194_casa-de-4-ambientes-en-venta-ramos-mejia-con-pileta-y-cochera" target="_blank" rel="noreferrer noopener">Abrir ficha actual</a>
+          </div>
+        </div>
+      </section>
+
       <section class="version" id="v1">
         <div class="container">
           <div class="version-header">
@@ -55,7 +124,7 @@
             <figure class="device">
               <div class="device-bezel">
                 <div class="device-screen">
-                  <img src="./showcase-assets/v1-home-mobile-full.jpg" alt="Nueva versión — Página principal en celular" width="780" height="17348" decoding="async" fetchpriority="high" />
+                  <img src="./showcase-assets/v1-home-mobile-full.jpg" alt="Nueva versión — Página principal en celular" width="780" height="17348" decoding="async" fetchpriority="low" />
                 </div>
               </div>
               <figcaption>Página principal</figcaption>
@@ -63,7 +132,7 @@
             <figure class="device">
               <div class="device-bezel">
                 <div class="device-screen">
-                  <img src="./showcase-assets/v1-listing-mobile-full.jpg" alt="Nueva versión — Ficha de propiedad en celular" width="780" height="15044" decoding="async" fetchpriority="high" />
+                  <img src="./showcase-assets/v1-listing-mobile-full.jpg" alt="Nueva versión — Ficha de propiedad en celular" width="780" height="15044" decoding="async" fetchpriority="low" />
                 </div>
               </div>
               <figcaption>Ficha de propiedad</figcaption>
